@@ -17,5 +17,9 @@ export const DefaultTheme = {
     success: "#388e3c",
     confused: "#ab47bc",
     danger: "#dc3545",
+    font: {
+      primary: "OpenSans_400Regular",
+      secondary: "OpenSans_800ExtraBold",
+    },
   },
 };

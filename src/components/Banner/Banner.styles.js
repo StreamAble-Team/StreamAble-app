@@ -1,71 +1,54 @@
 import styled from "styled-components/native";
 
-/* prettier-ignore */
 export const BannerContainer = styled.View`
-//   background-color: ${({ theme }) => theme.base.darkBg};
+  //   background-color: ${({ theme }) => theme.base.darkBg};
   height: 230px;
   width: 100%;
-  marginBottom: 20px;
+  margin-bottom: 15px;
   color: #fff;
   overflow: hidden;
   position: relative;
+  border-bottom-width: 1px;
+  border-bottom-color: ${({ theme }) => theme.base.navBg};
 `;
 
-/* prettier-ignore */
 export const BannerImage = styled.ImageBackground`
   width: 100%;
   height: 100%;
-  resizeMode: cover;
-  
 `;
 
-/* prettier-ignore */
 export const BannerContent = styled.View`
-  backgroundColor: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.6);
   height: 100%;
   width: 100%;
   padding: 15px 20px;
   display: flex;
-  justifyContent: flex-end;
+  justify-content: flex-end;
 `;
 
-/* prettier-ignore */
 export const BannerTitle = styled.Text`
-  color: #fff;    
-  fontSize: 25px;
-  fontFamily: OpenSans_800ExtraBold;
+  color: #fff;
+  font-size: 25px;
+  font-family: ${({ theme }) => theme.text.font.secondary};
 `;
 
-/* prettier-ignore */
 export const BannerDescription = styled.Text`
   color: ${({ theme }) => theme.text.offWhite};
-  fontsize: 15px;
-  fontFamily: OpenSans_400Regular;
+  font-size: 11px;
+  font-family: ${({ theme }) => theme.text.font.primary};
 `;
 
-/* prettier-ignore */
 export const BannerMeta = styled.View`
   display: flex;
-  justifyContent: flex-start;
-  flexDirection: row;
-  alignItems: center;
-  marginTop: 17px;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 17px;
 `;
 
-/* prettier-ignore */
 export const BannerMetaItem = styled.Text`
   color: ${({ theme }) => theme.text.offWhite};
-  fontSize: 10px;
-  fontFamily: OpenSans_400Regular;
-  marginRight: 10px;
-`;
-
-/* prettier-ignore */
-export const BannerMetaDot = styled.View`
-  height: 3px;
-  width: 3px;
-  borderRadius: 50%;
-  backgroundColor: ${({ theme }) => theme.text.offWhite};
-  marginRight: 10px;
-  
+  font-size: 10px;
+  font-family: ${({ theme }) => theme.text.font.primary};
+  margin-right: 15px;
 `;

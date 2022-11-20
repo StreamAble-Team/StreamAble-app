@@ -2850,3 +2850,203 @@ export const TestARRAY = [
     ],
   },
 ];
+
+export const TestTrendingArray = {
+  currentPage: 1,
+  hasNextPage: true,
+  results: [
+    {
+      id: "142838",
+      malId: 50602,
+      title: {
+        romaji: "SPY×FAMILY Part 2",
+        english: "SPY x FAMILY Cour 2",
+        native: "SPY×FAMILY 2クール",
+        userPreferred: "SPY×FAMILY Part 2",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx142838-ECZSqfknAqAT.jpg",
+      trailer: {
+        id: "jR1L1EK3kN0",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/jR1L1EK3kN0/hqdefault.jpg",
+      },
+      description: "The second half of <i>SPYxFAMILY</i>.",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/142838-tynuN00wxmKO.jpg",
+      rating: 85,
+      releaseDate: 2022,
+      genres: ["Action", "Comedy", "Slice of Life", "Supernatural"],
+      totalEpisodes: 13,
+      duration: 24,
+      type: "TV",
+    },
+    {
+      id: "137822",
+      malId: 49596,
+      title: {
+        romaji: "Blue Lock",
+        english: "BLUELOCK",
+        native: "ブルーロック",
+        userPreferred: "Blue Lock",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx137822-4dVWMSHLpGf8.png",
+      trailer: {
+        id: "IVsII3dLbWc",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/IVsII3dLbWc/hqdefault.jpg",
+      },
+      description:
+        "After a disastrous defeat at the 2018 World Cup, Japan's team struggles to regroup. But what's missing? An absolute Ace Striker, who can guide them to the win. The Japan Football Union is hell-bent on creating a striker who hungers for goals and thirsts for victory, and who can be the decisive instrument in turning around a losing match...and to do so, they've gathered 300 of Japan's best and brightest youth players. Who will emerge to lead the team...and will they be able to out-muscle and out-ego everyone who stands in their way? <br>\n<br>\n(Source: Kodansha USA)<br>\n<br>\n<i>Note: The first episode received a pre-screening at the AnimagiC convention on August 6, 2022.</i>",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/137822-c5BPEeXDEgtW.jpg",
+      rating: 78,
+      releaseDate: 2022,
+      genres: ["Action", "Drama", "Sports"],
+      totalEpisodes: 24,
+      duration: 25,
+      type: "TV",
+    },
+    {
+      id: "139630",
+      malId: 49918,
+      title: {
+        romaji: "Boku no Hero Academia 6",
+        english: "My Hero Academia Season 6",
+        native: "僕のヒーローアカデミア６",
+        userPreferred: "Boku no Hero Academia 6",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx139630-oc4l8OtJ4tRQ.jpg",
+      trailer: {
+        id: "WxCJMYbGtzA",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/WxCJMYbGtzA/hqdefault.jpg",
+      },
+      description: "The sixth season of <i>Boku no Hero Academia</i>.",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/139630-XLc90c6CJjZv.jpg",
+      rating: 80,
+      releaseDate: 2022,
+      genres: ["Action", "Adventure", "Comedy"],
+      totalEpisodes: 25,
+      duration: 24,
+      type: "TV",
+    },
+    {
+      id: "130003",
+      malId: 47917,
+      title: {
+        romaji: "Bocchi the Rock!",
+        english: "BOCCHI THE ROCK!",
+        native: "ぼっち・ざ・ろっく！",
+        userPreferred: "Bocchi the Rock!",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx130003-5Y8rYzg982sq.png",
+      trailer: {
+        id: "SyMMZF5zNW4",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/SyMMZF5zNW4/hqdefault.jpg",
+      },
+      description:
+        "Hitori Gotou is a high school girl who starting learning to playing the guitar because she dreams of being in a band, but she's so shy that she hasn't made a single friend. However, her dream might come true after she meets Nijika Ijichi, a girl who plays the drums and is looking for a new guitarist for her band.",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/130003-Ht7myAxpdNPo.jpg",
+      rating: 84,
+      releaseDate: 2022,
+      genres: ["Comedy", "Music", "Slice of Life"],
+      totalEpisodes: 12,
+      duration: 24,
+      type: "TV",
+    },
+    {
+      id: "127230",
+      malId: 44511,
+      title: {
+        romaji: "Chainsaw Man",
+        english: "Chainsaw Man",
+        native: "チェンソーマン",
+        userPreferred: "Chainsaw Man",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx127230-FlochcFsyoF4.png",
+      trailer: {
+        id: "v4yLeNt-kCU",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/v4yLeNt-kCU/hqdefault.jpg",
+      },
+      description:
+        'Denji is a teenage boy living with a Chainsaw Devil named Pochita. Due to the debt his father left behind, he has been living a rock-bottom life while repaying his debt by harvesting devil corpses with Pochita.<br><br>\nOne day, Denji is betrayed and killed. As his consciousness fades, he makes a contract with Pochita and gets revived as "Chainsaw Man" — a man with a devil\'s heart.<br>\n<br>\n(Source: Crunchyroll)',
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/127230-lf01ya5ny8aH.jpg",
+      rating: 86,
+      releaseDate: 2022,
+      genres: ["Action", "Comedy", "Drama", "Horror", "Supernatural"],
+      totalEpisodes: 12,
+      duration: 25,
+      type: "TV",
+    },
+    {
+      id: "21",
+      malId: 21,
+      title: {
+        romaji: "ONE PIECE",
+        english: "ONE PIECE",
+        native: "ONE PIECE",
+        userPreferred: "ONE PIECE",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/nx21-tXMN3Y20PIL9.jpg",
+      trailer: {},
+      description:
+        "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most coveted of titles for the person who found it, the title of the Pirate King.<br><br>\nEnter Monkey D. Luffy, a 17-year-old boy that defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate who ransacks villages for fun, Luffy’s reason for being a pirate is one of pure wonder; the thought of an exciting adventure and meeting new and intriguing people, along with finding One Piece, are his reasons of becoming a pirate. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach One Piece.<br><br>\n<b>*This includes following special episodes:</b><br>\n- Chopperman to the Rescue! Protect the TV Station by the Shore! (Episode 336)<br>\n- The Strongest Tag-Team! Luffy and Toriko's Hard Struggle! (Episode 492)<br>\n- Team Formation! Save Chopper (Episode 542)<br>\n- History's Strongest Collaboration vs. Glutton of the Sea (Episode 590)<br>\n- 20th Anniversary! Special Romance Dawn (Episode 907)",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
+      rating: 87,
+      releaseDate: 1999,
+      genres: ["Action", "Adventure", "Comedy", "Drama", "Fantasy"],
+      totalEpisodes: 1041,
+      duration: 24,
+      type: "TV",
+    },
+    {
+      id: "150695",
+      malId: 52046,
+      title: {
+        romaji:
+          "Yuusha Party wo Tsuihou Sareta Beast Tamer, Saikyoushu no Nekomimi Shoujo to Deau",
+        english: "Beast Tamer",
+        native:
+          "勇者パーティーを追放されたビーストテイマー、最強種の猫耳少女と出会う",
+        userPreferred:
+          "Yuusha Party wo Tsuihou Sareta Beast Tamer, Saikyoushu no Nekomimi Shoujo to Deau",
+      },
+      image:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/cover/large/bx150695-UOQF6Zz2iCTX.jpg",
+      trailer: {
+        id: "s5-f9RDK1B4",
+        site: "youtube",
+        thumbnail: "https://i.ytimg.com/vi/s5-f9RDK1B4/hqdefault.jpg",
+      },
+      description:
+        "Because Rain was a weak and simple beast tamer, he was expelled from the hero's group but that didn't stop his desire to be an adventurer. By taking simple quests afterwards he has a destined encounter with a strong cat girl.",
+      status: "Ongoing",
+      cover:
+        "https://s4.anilist.co/file/anilistcdn/media/anime/banner/150695-w0Mbe0FpxICk.jpg",
+      rating: 67,
+      releaseDate: 2022,
+      genres: ["Adventure", "Fantasy"],
+      totalEpisodes: 13,
+      duration: 24,
+      type: "TV",
+    },
+  ],
+};
