@@ -10,7 +10,7 @@ import {
 
 const Card = (props) => {
   return (
-    <CardContainer>
+    <CardContainer index={props.index}>
       <CardBackground source={{ uri: props.image }}>
         <CardContent>
           <CardTitle numberOfLines={1}>{props.title.romaji}</CardTitle>

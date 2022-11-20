@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const CardContainer = styled.TouchableOpacity`
-  margin-right: 15px;
+  margin-left: ${({ index }) => (index === 0 ? 0 : 20)}px;
   overflow: hidden;
   width: 115px;
   height: 155px;
@@ -17,7 +17,7 @@ export const CardBackground = styled.ImageBackground`
 export const CardContent = styled.View`
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.65);
   display: flex;
   justify-content: flex-end;
   align-items: center;

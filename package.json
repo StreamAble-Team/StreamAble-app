@@ -21,6 +21,7 @@
     "react-native": "0.70.5",
     "react-native-safe-area-context": "4.4.1",
     "react-native-screens": "~3.18.0",
+    "react-native-vector-image": "^0.3.3",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

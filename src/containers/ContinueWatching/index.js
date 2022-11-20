@@ -1,20 +1,20 @@
 import { ScrollView } from "react-native";
 import React from "react";
 import { TestTrendingArray } from "../../utils/testData";
-import { Card } from "../../components";
 import { Container, Title } from "../Container.styles";
+import WatchingCard from "../../components/WatchingCard";
 
-const Popular = () => {
+const ContinueWatching = () => {
   return (
     <Container>
-      <Title>Popular right now</Title>
+      <Title>Continue Watching</Title>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {TestTrendingArray.results.map((item, i) => (
-          <Card key={item.id} {...item} index={i} />
+          <WatchingCard key={item.id} {...item} index={i} />
         ))}
       </ScrollView>
     </Container>
   );
 };
 
-export default Popular;
+export default ContinueWatching;

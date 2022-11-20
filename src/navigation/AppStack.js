@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
@@ -6,7 +5,7 @@ import { HomeScreen } from "../screens";
 
 const Stack = createNativeStackNavigator();
 
-const Navigation = () => {
+const AppStack = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator
@@ -14,7 +13,7 @@ const Navigation = () => {
         screenOptions={{
           headerShown: false,
           contentStyle: {
-            backgroundColor: "#1f2429",
+            backgroundColor: "#0f0f0f",
           },
         }}
       >
@@ -24,4 +23,4 @@ const Navigation = () => {
   );
 };
 
-export default Navigation;
+export default AppStack;

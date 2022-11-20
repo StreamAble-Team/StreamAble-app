@@ -6,7 +6,6 @@ import {
   BannerDescription,
   BannerImage,
   BannerMeta,
-  BannerMetaDot,
   BannerMetaItem,
   BannerTitle,
 } from "./Banner.styles";
@@ -19,7 +18,7 @@ const Banner = () => {
       <BannerContainer key={test.id}>
         <BannerImage source={{ uri: test.cover }} alt={test.title}>
           <BannerContent>
-            <BannerDescription numberOfLines={3}>
+            <BannerDescription numberOfLines={4}>
               {test.description}
             </BannerDescription>
             <BannerMeta>

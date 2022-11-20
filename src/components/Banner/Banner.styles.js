@@ -2,7 +2,7 @@ import styled from "styled-components/native";
 
 export const BannerContainer = styled.View`
   //   background-color: ${({ theme }) => theme.base.darkBg};
-  height: 230px;
+  height: 260px;
   width: 100%;
   margin-bottom: 15px;
   color: #fff;
@@ -18,7 +18,7 @@ export const BannerImage = styled.ImageBackground`
 `;
 
 export const BannerContent = styled.View`
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.65);
   height: 100%;
   width: 100%;
   padding: 15px 20px;

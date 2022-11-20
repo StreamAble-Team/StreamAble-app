@@ -1,12 +1,13 @@
 import { StatusBar } from "expo-status-bar";
+import AppStack from "./src/navigation/AppStack";
 import { ThemeProvider } from "styled-components";
 import { DefaultTheme } from "./src/assets/theme/default";
-import Navigation from "./src/navigation";
 import {
   useFonts,
   OpenSans_400Regular,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
+import { NavBar } from "./src/components";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -20,7 +21,8 @@ export default function App() {
 
   return (
     <ThemeProvider theme={DefaultTheme}>
-      <Navigation />
+      <AppStack />
+      <NavBar />
     </ThemeProvider>
   );
 }

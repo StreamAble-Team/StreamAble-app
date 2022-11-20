@@ -4,11 +4,13 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Banner, Card } from "../../components";
 
 import { Popular } from "../../containers";
+import ContinueWatching from "../../containers/ContinueWatching";
 
 const HomeScreen = () => {
   return (
     <SafeAreaView>
       <Banner />
+      <ContinueWatching />
       <Popular />
     </SafeAreaView>
   );
