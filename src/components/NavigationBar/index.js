@@ -6,18 +6,25 @@ import {
   NavBarIconItem,
   NavBarWrapper,
 } from "./NavBar.styles";
+import { useNavigation } from "@react-navigation/native";
 
 const NavBar = () => {
+  const navigation = useNavigation();
+
+  const handleStackChange = (stackName) => {
+    navigation.navigate(stackName);
+  };
+
   return (
     <NavBarContainer>
       <NavBarWrapper>
-        <NavBarIconItem>
+        <NavBarIconItem onPress={() => handleStackChange("Search")}>
           <NavBarIcon name="search" />
         </NavBarIconItem>
-        <NavBarIconItem>
+        <NavBarIconItem onPress={() => handleStackChange("Home")}>
           <NavBarIcon name="home" />
         </NavBarIconItem>
-        <NavBarIconItem>
+        <NavBarIconItem onPress={() => handleStackChange("Info")}>
           <NavBarIcon name="list-ul" />
         </NavBarIconItem>
       </NavBarWrapper>

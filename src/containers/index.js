@@ -1,3 +1,5 @@
 import Popular from "./Popular";
+import ContinueWatching from "./ContinueWatching";
+import Info from "./Info";
 
-export { Popular };
+export { Popular, ContinueWatching, Info };

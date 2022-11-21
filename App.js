@@ -7,7 +7,6 @@ import {
   OpenSans_400Regular,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
-import { NavBar } from "./src/components";
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -21,8 +20,8 @@ export default function App() {
 
   return (
     <ThemeProvider theme={DefaultTheme}>
+      <StatusBar style={"light"} />
       <AppStack />
-      <NavBar />
     </ThemeProvider>
   );
 }

@@ -3,8 +3,7 @@ import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Banner, Card } from "../../components";
 
-import { Popular } from "../../containers";
-import ContinueWatching from "../../containers/ContinueWatching";
+import { Popular, ContinueWatching } from "../../containers";
 
 const HomeScreen = () => {
   return (
