@@ -3,10 +3,13 @@ import React from "react";
 import {
   InfoTopContainer,
   InfoTopDescription,
+  InfoTopDescriptionText,
   InfoTopEpisode,
   InfoTopImage,
   InfoTopImageContainer,
   InfoTopImageWrapper,
+  InfoTopPlayButton,
+  InfoTopPlayButtonText,
   InfoTopPoster,
   InfoTopPosterContainer,
   InfoTopTitle,
@@ -34,9 +37,16 @@ const InfoTop = (props) => {
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode>
+          <InfoTopPlayButton>
+            <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
+          </InfoTopPlayButton>
         </InfoTopWrapper>
       </InfoTopPosterContainer>
-      <InfoTopDescription numberOfLines={4}>{description}</InfoTopDescription>
+      <InfoTopDescription>
+        <InfoTopDescriptionText numberOfLines={4}>
+          {description}
+        </InfoTopDescriptionText>
+      </InfoTopDescription>
     </InfoTopContainer>
   );
 };

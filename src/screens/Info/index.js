@@ -6,7 +6,7 @@ import { TestTrendingArray } from "../../utils/testData";
 const InfoScreen = () => {
   return (
     <SafeAreaView>
-      <Info {...TestTrendingArray.results[1]} />
+      <Info {...TestTrendingArray.results[0]} />
     </SafeAreaView>
   );
 };

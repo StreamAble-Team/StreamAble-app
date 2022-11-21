@@ -49,15 +49,16 @@ export const InfoTopPoster = styled.Image`
 `;
 
 export const InfoTopWrapper = styled.View`
-  margin-top: 100px;
+  margin-top: 90px;
   padding: 0 15px;
+  width: 70%;
 `;
 
 export const InfoTopTitle = styled.Text`
   font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
-  font-size: 22px;
+  font-size: 20px;
 `;
 
 export const InfoTopEpisode = styled.Text`
@@ -67,11 +68,36 @@ export const InfoTopEpisode = styled.Text`
   font-size: 13px;
 `;
 
-export const InfoTopDescription = styled.Text`
+export const InfoTopDescription = styled.View`
+  padding: 28px 25px;
+  height: 130px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+`;
+
+export const InfoTopDescriptionText = styled.Text`
   font-family: ${({ theme }) => theme.text.font.primary};
   color: ${({ theme }) => theme.text.offWhite};
   font-size: 13px;
-  padding: 15px 25px;
-  height: 130px;
-  overflow: hidden;
+`;
+
+export const InfoTopPlayButton = styled.TouchableOpacity`
+  margin-top: 15px;
+  padding: 5px 15px;
+  background: ${({ theme }) => theme.base.mainColor};
+  border-radius: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  // width: 100%;
+`;
+
+export const InfoTopPlayButtonText = styled.Text`
+  font-family: ${({ theme }) => theme.text.font.secondary};
+  color: ${({ theme }) => theme.text.primary};
+  text-transform: uppercase;
+  font-size: 13px;
 `;

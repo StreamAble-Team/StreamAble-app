@@ -1,12 +1,12 @@
 import { View, Text } from "react-native";
 import React from "react";
-import { Container } from "../Container.styles";
-import InfoTop from "../../components/Info/Top";
+import { InfoTop, PillMenu } from "../../components";
 
 const Info = (props) => {
   return (
     <View>
       <InfoTop {...props} />
+      <PillMenu />
     </View>
   );
 };
