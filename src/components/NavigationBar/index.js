@@ -1,14 +1,13 @@
-import { View, Text } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   NavBarContainer,
   NavBarIcon,
   NavBarIconItem,
   NavBarWrapper,
 } from "./NavBar.styles";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useFocusEffect } from "@react-navigation/native";
 
-const NavBar = () => {
+const NavBar = ({ currentRoute }) => {
   const navigation = useNavigation();
 
   const handleStackChange = (stackName) => {
@@ -19,13 +18,22 @@ const NavBar = () => {
     <NavBarContainer>
       <NavBarWrapper>
         <NavBarIconItem onPress={() => handleStackChange("Search")}>
-          <NavBarIcon name="search" />
+          <NavBarIcon
+            name="search"
+            isFocused={currentRoute === "Search" ? true : false}
+          />
         </NavBarIconItem>
         <NavBarIconItem onPress={() => handleStackChange("Home")}>
-          <NavBarIcon name="home" />
+          <NavBarIcon
+            name="home"
+            isFocused={currentRoute === "Home" ? true : false}
+          />
         </NavBarIconItem>
         <NavBarIconItem onPress={() => handleStackChange("Info")}>
-          <NavBarIcon name="list-ul" />
+          <NavBarIcon
+            name="list-ul"
+            isFocused={currentRoute === "Info" ? true : false}
+          />
         </NavBarIconItem>
       </NavBarWrapper>
     </NavBarContainer>
