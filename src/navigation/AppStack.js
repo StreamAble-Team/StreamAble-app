@@ -1,5 +1,8 @@
-import React from "react";
-import { NavigationContainer } from "@react-navigation/native";
+import React, { useRef, useState } from "react";
+import {
+  NavigationContainer,
+  useNavigationContainerRef,
+} from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen, SearchScreen, InfoScreen, PlayerScreen } from "../screens";
 import { NavBar } from "../components";
@@ -7,8 +10,26 @@ import { NavBar } from "../components";
 const Stack = createNativeStackNavigator();
 
 const AppStack = () => {
+  const navigationRef = useNavigationContainerRef();
+  const [routeNameRef, setRouteNameRef] = useState();
+
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onReady={() => {
+        setRouteNameRef(navigationRef.getCurrentRoute().name);
+      }}
+      onStateChange={async () => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = navigationRef.getCurrentRoute().name;
+
+        if (previousRouteName !== currentRouteName) {
+          // console.log(currentRouteName);
+          // Save the current route name for later comparison
+          setRouteNameRef(currentRouteName);
+        }
+      }}
+    >
       <Stack.Navigator
         initialRouteName="Home"
         screenOptions={{
@@ -23,7 +44,9 @@ const AppStack = () => {
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Player" component={PlayerScreen} />
       </Stack.Navigator>
-      <NavBar />
+      <NavBar
+        currentRoute={routeNameRef === undefined ? "loading" : routeNameRef}
+      />
     </NavigationContainer>
   );
 };

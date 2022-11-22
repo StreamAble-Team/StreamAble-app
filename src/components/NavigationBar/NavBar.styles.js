@@ -29,5 +29,6 @@ export const NavBarIconItem = styled.TouchableOpacity``;
 
 export const NavBarIcon = styled(Icon)`
   font-size: 23px;
-  color: ${({ theme }) => theme.text.primary};
+  color: ${({ theme, isFocused }) =>
+    !isFocused ? theme.text.primary : theme.base.mainColor};
 `;
