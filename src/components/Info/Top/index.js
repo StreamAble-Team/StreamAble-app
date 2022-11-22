@@ -18,9 +18,20 @@ import {
   WatchedContainer,
 } from "./InfoTop.styles";
 import { textSanitizer } from "../../../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const InfoTop = (props) => {
+  const navigation = useNavigation();
   const description = textSanitizer(props.description);
+
+  const gotoPlayer = () => {
+    navigation.navigate("Player", {
+      id: props.id,
+      title: props.title,
+      poster: props.poster,
+      description: props.description,
+    });
+  };
 
   return (
     <InfoTopContainer>
@@ -37,7 +48,7 @@ const InfoTop = (props) => {
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode>
-          <InfoTopPlayButton>
+          <InfoTopPlayButton onPress={gotoPlayer}>
             <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
           </InfoTopPlayButton>
         </InfoTopWrapper>
