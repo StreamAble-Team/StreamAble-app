@@ -14,6 +14,7 @@ const NavBar = ({ currentRoute }) => {
     navigation.navigate(stackName);
   };
 
+  if (currentRoute === "Player") return null;
   return (
     <NavBarContainer>
       <NavBarWrapper>

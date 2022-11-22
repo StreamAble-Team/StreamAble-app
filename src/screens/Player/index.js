@@ -22,6 +22,7 @@ const PlayerScreen = ({ navigation }) => {
           },
         }}
         useNativeControls
+        shouldPlay={true}
         resizeMode={ResizeMode.CONTAIN}
         errorCallback={(error) => {
           console.error(error);
