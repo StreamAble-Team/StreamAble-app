@@ -25,6 +25,7 @@ const PlayerScreen = ({ navigation }) => {
         shouldPlay={true}
         resizeMode={ResizeMode.CONTAIN}
         errorCallback={(error) => {
+          a;
           console.error(error);
         }}
       />

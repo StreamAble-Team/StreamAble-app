@@ -5,7 +5,7 @@ export const PillContainer = styled.TouchableOpacity`
   background: rgba(0, 0, 0, 0.5);
   border-radius: 20px;
   overflow: hidden;
-  margin-right: 14px;
+  margin-left: ${({ index }) => (index === 0 ? 0 : "14px")};
 `;
 
 export const PillTitle = styled.Text`

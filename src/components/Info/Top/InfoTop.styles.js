@@ -41,8 +41,17 @@ export const InfoTopPosterContainer = styled.View`
   height: 184px;
   padding: 0 25px;
 `;
-export const InfoTopPoster = styled.Image`
+
+export const InfoTopPosterImageWrapper = styled.View`
   width: 122px;
+  height: 100%;
+  // border-radius: 8px;
+  // overflow: hidden;
+  // border: 8px solid ${({ theme }) => theme.base.darkBg};
+`;
+
+export const InfoTopPoster = styled.Image`
+  width: 100%;
   height: 100%;
   border-radius: 8px;
   overflow: hidden;
@@ -65,20 +74,6 @@ export const InfoTopEpisode = styled.Text`
   font-family: ${({ theme }) => theme.text.font.primary};
   color: ${({ theme }) => theme.text.offWhite};
   text-transform: uppercase;
-  font-size: 13px;
-`;
-
-export const InfoTopDescription = styled.View`
-  padding: 28px 25px;
-  height: 130px;
-  overflow: hidden;
-  display: flex;
-  justify-content: center;
-`;
-
-export const InfoTopDescriptionText = styled.Text`
-  font-family: ${({ theme }) => theme.text.font.primary};
-  color: ${({ theme }) => theme.text.offWhite};
   font-size: 13px;
 `;
 

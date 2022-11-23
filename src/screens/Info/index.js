@@ -1,12 +1,12 @@
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Info } from "../../containers";
-import { TestTrendingArray } from "../../utils/testData";
+import { InfoJSOn } from "../../utils/testData";
 
 const InfoScreen = () => {
   return (
     <SafeAreaView>
-      <Info {...TestTrendingArray.results[0]} />
+      <Info {...InfoJSOn} />
     </SafeAreaView>
   );
 };

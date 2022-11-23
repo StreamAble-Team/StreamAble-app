@@ -12,6 +12,7 @@ import {
   InfoTopPlayButtonText,
   InfoTopPoster,
   InfoTopPosterContainer,
+  InfoTopPosterImageWrapper,
   InfoTopTitle,
   InfoTopWrapper,
   WatchedAmount,
@@ -44,7 +45,9 @@ const InfoTop = (props) => {
         </WatchedContainer>
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
-        <InfoTopPoster source={{ uri: props.image }} />
+        <InfoTopPosterImageWrapper>
+          <InfoTopPoster source={{ uri: props.image }} />
+        </InfoTopPosterImageWrapper>
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode>
@@ -53,11 +56,6 @@ const InfoTop = (props) => {
           </InfoTopPlayButton>
         </InfoTopWrapper>
       </InfoTopPosterContainer>
-      <InfoTopDescription>
-        <InfoTopDescriptionText numberOfLines={4}>
-          {description}
-        </InfoTopDescriptionText>
-      </InfoTopDescription>
     </InfoTopContainer>
   );
 };

@@ -6,10 +6,6 @@ export const MenuContainer = styled.View`
 `;
 
 export const MenuWrapper = styled.View`
-  margin: 15px 25px;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-between;
+  width: 100%;
+  margin: 15px 5px;
 `;

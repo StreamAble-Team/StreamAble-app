@@ -7,10 +7,14 @@ const PillMenu = () => {
   return (
     <MenuContainer>
       <MenuWrapper>
-        <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-          <Pill title={`EPISODES`} />
-          <Pill title={`RELATIONS`} />
-          <Pill title={`CHARACTERS`} />
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+        >
+          <Pill title={`EPISODES`} index={0} />
+          <Pill title={`RELATIONS`} index={1} />
+          <Pill title={`CHARACTERS`} index={2} />
         </ScrollView>
       </MenuWrapper>
     </MenuContainer>
