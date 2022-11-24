@@ -2,6 +2,8 @@ import styled from "styled-components/native";
 import { Video } from "expo-av";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
+export const PressableIcon = styled.TouchableOpacity``;
+
 export const VideoPlayer = styled(Video)`
   width: 100%;
   height: 100%;

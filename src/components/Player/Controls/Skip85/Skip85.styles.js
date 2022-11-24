@@ -9,7 +9,6 @@ export const Container = styled.View`
   margin: 25px;
   margin-bottom: 120px;
   z-index: 10;
-  elevation: 10;
 `;
 
 export const Wrapper = styled.TouchableOpacity`

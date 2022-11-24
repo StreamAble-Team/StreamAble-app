@@ -16,7 +16,6 @@ const SeekBar = ({ videoRef, status }) => {
   const durationTime = dayjs(durationMillis).format(formatTime);
 
   const handleSeekStart = () => {
-    console.log("tst");
     videoRef.current.pauseAsync();
   };
 

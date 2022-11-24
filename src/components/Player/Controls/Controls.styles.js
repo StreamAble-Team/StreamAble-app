@@ -28,13 +28,43 @@ export const WrapperFlex = styled.View`
   margin-top: 10px;
 `;
 
-export const GoBackWrapper = styled.Pressable`
+export const GoBackWrapper = styled.View`
   position: absolute;
   top: 0;
   left: 0;
   margin: 15px;
   z-index: 10;
-  elevation: 10;
+`;
+
+export const FlexBox = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+export const GoBackWrapperPressable = styled.Pressable``;
+
+export const EpisodeTitle = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+}))`
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 11px;
+  font-family: ${({ theme }) => theme.text.font.secondary};
+  margin-left: 15px;
+  margin-top: -10px;
+`;
+
+export const EpisodeNumber = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+}))`
+  width: 100%;
+  flex: 2;
+  color: ${({ theme }) => theme.text.offWhite};
+  margin-left: 40px;
+  margin-top: -13px;
+  font-size: 13px;
+  font-family: ${({ theme }) => theme.text.font.primary};
 `;
 
 export const ClickToDismiss = styled.Pressable`
@@ -44,5 +74,4 @@ export const ClickToDismiss = styled.Pressable`
   width: 100%;
   height: 100%;
   z-index: 1;
-  elevation: 1;
 `;

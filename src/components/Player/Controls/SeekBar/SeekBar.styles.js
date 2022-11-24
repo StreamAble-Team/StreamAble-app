@@ -7,6 +7,8 @@ export const SeekBarContainer = styled.View`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  position: relative;
+  z-index: 12;
 `;
 
 export const SeekBarComponent = styled(Slider).attrs(({ theme }) => ({
