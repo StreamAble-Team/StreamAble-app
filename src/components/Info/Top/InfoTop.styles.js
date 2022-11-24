@@ -1,6 +1,22 @@
 import styled from "styled-components/native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 export const InfoTopContainer = styled.View``;
+
+export const GoBackContainer = styled.Pressable`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 10px;
+  z-index: 2;
+`;
+
+export const GoBackIcon = styled(Icon).attrs(() => ({
+  name: "arrow-left",
+}))`
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 20px;
+`;
 
 export const InfoTopImageContainer = styled.View`
   width: 100%;
@@ -58,7 +74,7 @@ export const InfoTopPoster = styled.Image`
 `;
 
 export const InfoTopWrapper = styled.View`
-  margin-top: 90px;
+  margin-top: 100px;
   padding: 0 15px;
   width: 70%;
 `;
@@ -68,6 +84,7 @@ export const InfoTopTitle = styled.Text`
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
   font-size: 20px;
+  margin-bottom: 10px;
 `;
 
 export const InfoTopEpisode = styled.Text`

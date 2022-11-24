@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import React from "react";
 import {
   BannerContainer,
@@ -10,30 +9,34 @@ import {
   BannerTitle,
 } from "./Banner.styles";
 
-import { TestARRAY } from "../../utils/testData";
+import { useQuery } from "react-query";
+
+import { api, textSanitizer } from "../../utils";
 
 const Banner = () => {
-  return TestARRAY.map((test) => {
-    return (
-      <BannerContainer key={test.id}>
-        <BannerImage source={{ uri: test.cover }} alt={test.title}>
-          <BannerContent>
-            <BannerDescription numberOfLines={4}>
-              {test.description}
-            </BannerDescription>
-            <BannerMeta>
-              <BannerMetaItem>{test.releaseDate}</BannerMetaItem>
-              <BannerMetaItem>{test.totalEpisodes}</BannerMetaItem>
-              <BannerMetaItem>{test.rating / 10}</BannerMetaItem>
-              <BannerMetaItem>{test.status.toUpperCase()}</BannerMetaItem>
-              <BannerMetaItem>{test.type.toUpperCase()}</BannerMetaItem>
-            </BannerMeta>
-            <BannerTitle numberOfLines={1}>{test.title.romaji}</BannerTitle>
-          </BannerContent>
-        </BannerImage>
-      </BannerContainer>
-    );
-  });
+  const { data } = useQuery("BannerData", () => api.getTopRated(1));
+
+  if (!data?.results) return null;
+
+  const item = data.results[0];
+  const description = textSanitizer(item.description);
+  return (
+    <BannerContainer key={item.id}>
+      <BannerImage source={{ uri: item.cover }} alt={item.title}>
+        <BannerContent>
+          <BannerDescription numberOfLines={4}>{description}</BannerDescription>
+          <BannerMeta>
+            <BannerMetaItem>{item.releaseDate}</BannerMetaItem>
+            <BannerMetaItem>{item.totalEpisodes}</BannerMetaItem>
+            <BannerMetaItem>{item.rating / 10}</BannerMetaItem>
+            <BannerMetaItem>{item.status.toUpperCase()}</BannerMetaItem>
+            <BannerMetaItem>{item.type.toUpperCase()}</BannerMetaItem>
+          </BannerMeta>
+          <BannerTitle numberOfLines={1}>{item.title.romaji}</BannerTitle>
+        </BannerContent>
+      </BannerImage>
+    </BannerContainer>
+  );
 };
 
 export default Banner;

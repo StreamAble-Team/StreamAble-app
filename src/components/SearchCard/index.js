@@ -1,3 +1,4 @@
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { textSanitizer } from "../../utils";
 import {
@@ -12,10 +13,16 @@ import {
 } from "./SearchCard.styles";
 
 const SearchCard = (props) => {
+  const navigation = useNavigation();
+
+  const handlePress = (event) => {
+    navigation.navigate("Info", { id: props.id });
+  };
+
   const description = textSanitizer(props.description);
 
   return (
-    <SearchCardContainer>
+    <SearchCardContainer onPress={handlePress}>
       <SearchCardImageContainer>
         <SearchCardImage source={{ uri: props.image }} />
       </SearchCardImageContainer>

@@ -10,11 +10,31 @@ import {
   WatchedAmount,
   WatchedContainer,
 } from "./Episode.styles";
+import { useQuery } from "react-query";
+import { api } from "../../../../utils";
+import { useNavigation } from "@react-navigation/native";
 
 const Episode = (props) => {
+  const navigation = useNavigation();
+  const handlePress = async () => {
+    const { headers, sources } = await api.getSource(props.id);
+    const source = sources.find(
+      (source) =>
+        source.quality.includes("1080") ||
+        source.quality.includes("720") ||
+        source.quality.includes("default")
+    );
+    navigation.navigate("Player", {
+      title: props.title,
+      episode: props.number,
+      source: source.url,
+      referer: headers.Referer,
+    });
+  };
+
   const amount = Math.random() * 100;
   return (
-    <Container>
+    <Container onPress={handlePress}>
       <CardImage source={{ uri: props.image }}>
         <CardContent>
           <Title numberOfLines={1}>{props.title}</Title>
@@ -22,9 +42,9 @@ const Episode = (props) => {
             Episode {props.number}
           </EpisodeNumber>
         </CardContent>
-        <WatchedContainer>
-          <WatchedAmount amount={amount} />
-        </WatchedContainer>
+        {/* <WatchedContainer> */}
+        {/* <WatchedAmount amount={amount} /> */}
+        {/* </WatchedContainer> */}
       </CardImage>
     </Container>
   );

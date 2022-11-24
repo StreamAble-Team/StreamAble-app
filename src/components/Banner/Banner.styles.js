@@ -18,7 +18,7 @@ export const BannerImage = styled.ImageBackground`
 `;
 
 export const BannerContent = styled.View`
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.55);
   height: 100%;
   width: 100%;
   padding: 15px 20px;

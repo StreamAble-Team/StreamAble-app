@@ -17,7 +17,7 @@ export const CardBackground = styled.ImageBackground`
 export const CardContent = styled.View`
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.65);
+  background-color: rgba(0, 0, 0, 0.55);
   display: flex;
   justify-content: flex-end;
   align-items: center;

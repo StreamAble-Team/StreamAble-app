@@ -1,16 +1,19 @@
-import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Banner, Card } from "../../components";
 
-import { Popular, ContinueWatching } from "../../containers";
+import { Popular, ContinueWatching, Trending } from "../../containers";
+import { ScrollView } from "./home.styles";
 
 const HomeScreen = () => {
   return (
     <SafeAreaView>
-      <Banner />
-      <ContinueWatching />
-      <Popular />
+      <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
+        <Banner />
+        {/* <ContinueWatching /> */}
+        <Trending />
+        <Popular />
+      </ScrollView>
     </SafeAreaView>
   );
 };

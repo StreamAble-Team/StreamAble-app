@@ -9,6 +9,7 @@ import {
   WatchingCardEpisode,
   WatchingCardTitle,
 } from "./WatchingCard.styles";
+import { api } from "../../utils";
 
 const WatchingCard = (props) => {
   return (

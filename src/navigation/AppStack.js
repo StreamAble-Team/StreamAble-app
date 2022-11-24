@@ -1,17 +1,28 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   NavigationContainer,
   useNavigationContainerRef,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { HomeScreen, SearchScreen, InfoScreen, PlayerScreen } from "../screens";
+import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
 const Stack = createNativeStackNavigator();
 
-const AppStack = () => {
+const AppStack = ({ setHiddenStatusBar }) => {
   const navigationRef = useNavigationContainerRef();
   const [routeNameRef, setRouteNameRef] = useState();
+
+  useEffect(() => {
+    if (routeNameRef === "Player") {
+      ScreenOrientation.unlockAsync();
+      setHiddenStatusBar(true);
+    } else {
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+      setHiddenStatusBar(false);
+    }
+  }, [routeNameRef]);
 
   return (
     <NavigationContainer

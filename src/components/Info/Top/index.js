@@ -1,6 +1,8 @@
 import { View, Text } from "react-native";
 import React from "react";
 import {
+  GoBackContainer,
+  GoBackIcon,
   InfoTopContainer,
   InfoTopDescription,
   InfoTopDescriptionText,
@@ -38,11 +40,14 @@ const InfoTop = (props) => {
     <InfoTopContainer>
       <InfoTopImageContainer>
         <InfoTopImage source={{ uri: props.cover }}>
+          <GoBackContainer onPress={() => navigation.goBack()}>
+            <GoBackIcon />
+          </GoBackContainer>
           <InfoTopImageWrapper />
         </InfoTopImage>
-        <WatchedContainer>
+        {/* <WatchedContainer>
           <WatchedAmount />
-        </WatchedContainer>
+        </WatchedContainer> */}
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
         <InfoTopPosterImageWrapper>
@@ -50,7 +55,7 @@ const InfoTop = (props) => {
         </InfoTopPosterImageWrapper>
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
-          <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode>
+          {/* <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode> */}
           <InfoTopPlayButton onPress={gotoPlayer}>
             <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
           </InfoTopPlayButton>

@@ -11,7 +11,7 @@ const Info = (props) => {
       <Container vertical={true}>
         <InfoTop {...props} />
         <Description desc={props.description} />
-        <PillMenu />
+        {/* <PillMenu /> */}
         <Episodes episodes={props.episodes} />
       </Container>
     </View>

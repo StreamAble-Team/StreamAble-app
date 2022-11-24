@@ -6,11 +6,11 @@ export const CanPressIcon = styled.TouchableOpacity``;
 export const PlayIcon = styled(IconItem).attrs({
   name: "play",
 })`
-  margin: 0 25px;
+  margin: 0 130px;
 `;
 
 export const PauseIcon = styled(IconItem).attrs({
   name: "pause",
 })`
-  margin: 0 25px;
+  margin: 0 130px;
 `;

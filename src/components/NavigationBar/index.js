@@ -30,10 +30,10 @@ const NavBar = ({ currentRoute }) => {
             isFocused={currentRoute === "Home" ? true : false}
           />
         </NavBarIconItem>
-        <NavBarIconItem onPress={() => handleStackChange("Info")}>
+        <NavBarIconItem onPress={() => handleStackChange("Home")}>
           <NavBarIcon
             name="list-ul"
-            isFocused={currentRoute === "Info" ? true : false}
+            isFocused={currentRoute === "List" ? true : false}
           />
         </NavBarIconItem>
       </NavBarWrapper>
