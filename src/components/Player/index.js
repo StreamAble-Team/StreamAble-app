@@ -12,7 +12,7 @@ const videoId = `https://cache.387e6278d8e06083d813358762e0ac63.com/222936330334
 const sampleVideo = "https://d23dyxeqlo5psv.cloudfront.net/big_buck_bunny.mp4";
 const uri = `${proxyURL}${videoId}`;
 
-const Player = ({ source, referer, title, episode }) => {
+const Player = ({ source, referer, title, episode, nextEpisodeId }) => {
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
   const [playing, setPlaying] = useState(false);
@@ -41,6 +41,7 @@ const Player = ({ source, referer, title, episode }) => {
         setPlaying={setPlaying}
         title={title}
         episode={episode}
+        nextEpisodeId={nextEpisodeId}
       />
     </View>
   );

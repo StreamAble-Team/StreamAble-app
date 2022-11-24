@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Container, TextSkip, Wrapper, SkipIcon } from "./Skip85.styles";
 
-const Skip85 = ({ videoRef, status }) => {
+const Skip85 = ({ videoRef, status, nextEpisodeId }) => {
+  const currentTime = status.positionMillis;
+  const duration = status.durationMillis;
+  const [changeSkip, setChangeSkip] = useState(false);
   const handleSkip = () => {
-    const currentTIme = status.positionMillis;
-    videoRef.current.setPositionAsync(currentTIme + 85 * 1000);
+    videoRef.current.setPositionAsync(currentTime + 85 * 1000);
   };
 
-  return (
-    <Container>
-      <Wrapper onPress={handleSkip}>
-        <TextSkip>85s</TextSkip>
-        <SkipIcon name="fast-forward" />
-      </Wrapper>
-    </Container>
-  );
+  // useEffect(() => {
+  //   const watchPoint = Math.floor((currentTime / duration) * 100);
+  //   if (watchPoint >= 90) {
+  //     setChangeSkip(true);
+  //   }
+  // }, [currentTime]);
+
+  if (!changeSkip)
+    return (
+      <Container>
+        <Wrapper onPress={handleSkip}>
+          <TextSkip>85s</TextSkip>
+          <SkipIcon name="fast-forward" />
+        </Wrapper>
+      </Container>
+    );
 };
 
 export default Skip85;

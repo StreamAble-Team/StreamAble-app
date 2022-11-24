@@ -23,6 +23,7 @@ const Controls = ({
   playing,
   title,
   episode,
+  nextEpisodeId,
 }) => {
   const [hideControls, setHideControls] = useState(false);
   const navigation = useNavigation();
@@ -44,7 +45,13 @@ const Controls = ({
         </FlexBox>
         <EpisodeNumber>Episode {episode || 1}</EpisodeNumber>
       </GoBackWrapper>
-      <Skip85 videoRef={videoRef} status={status} />
+      <Skip85
+        videoRef={videoRef}
+        status={status}
+        nextEpisodeId={nextEpisodeId}
+        title={title}
+        episode={episode}
+      />
       <ClickToDismiss onPress={() => setHideControls((prev) => !prev)} />
       <WrapperWithBg>
         <SeekBar videoRef={videoRef} status={status} />

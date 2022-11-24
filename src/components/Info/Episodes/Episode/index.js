@@ -16,6 +16,7 @@ import { useNavigation } from "@react-navigation/native";
 
 const Episode = (props) => {
   const navigation = useNavigation();
+
   const handlePress = async () => {
     const { headers, sources } = await api.getSource(props.id);
     const source = sources.find(
@@ -29,6 +30,10 @@ const Episode = (props) => {
       episode: props.number,
       source: source.url,
       referer: headers.Referer,
+      handlePress: handlePress,
+      nextEpisodeId: `${props.id.split("-").splice(0, 3).join("-")}-${
+        props.number + 1
+      }`,
     });
   };
 
