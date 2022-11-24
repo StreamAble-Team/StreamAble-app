@@ -8,6 +8,6 @@ export const VideoPlayer = styled(Video)`
 `;
 
 export const IconItem = styled(Icon)`
-  font-size: 35px;
+  font-size: 30px;
   color: ${({ theme }) => theme.text.primary};
 `;

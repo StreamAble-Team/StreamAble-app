@@ -25,7 +25,7 @@ export const WrapperFlex = styled.View`
   justify-content: center;
 `;
 
-export const GoBackWrapper = styled.View`
+export const GoBackWrapper = styled.TouchableOpacity`
   position: absolute;
   top: 0;
   left: 0;

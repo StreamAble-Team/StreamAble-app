@@ -3,9 +3,9 @@ import { IconItem } from "../../styles";
 
 export const CanPressIcon = styled.TouchableOpacity``;
 
-export const PlayIcon = styled(IconItem).attrs((props) => ({
+export const PlayIcon = styled(IconItem).attrs({
   name: "play",
-}))`
+})`
   margin: 0 25px;
 `;
 
