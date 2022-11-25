@@ -1,5 +1,7 @@
 <div align="center">
+<a href="#">
     <img src="./assets/icon.png"/>
+</a>
 </div>
 
 <br />
@@ -25,7 +27,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 
 ## Features/Planned Features
 
-- [x] Ads Free
+- [x] Ad Free
 - [x] Custom video player
 - [ ] Dub support
 - [ ] Sync with anilist, mal etc etc
