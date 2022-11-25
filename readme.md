@@ -23,7 +23,7 @@
 
 ## DISCLAIMER
 
-The app is still in alpha, so it may not work as expected. If you find any bugs, please report them in the [issues](github.com/sstreamable/sstreamable/issues) section.
+The app is still in alpha, so it may not work as expected. If you find any bugs, please report them in the [issues](https://github.com/TDanks2000/StreamAble-app/issues) section.
 
 ## Features/Planned Features
 
