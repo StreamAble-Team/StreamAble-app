@@ -2,9 +2,10 @@ import axios from "axios";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
+const baseURL = `https://consume-api.onrender.com/api`;
 
 const api = axios.create({
-  baseURL: "https://consume-api.onrender.com/api",
+  baseURL: baseURL,
   headers: {
     "User-Agent": USER_AGENT,
   },
@@ -77,8 +78,10 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
   return results;
 };
 
-export const getInfo = async (id, dub) => {
-  const { data } = await api.get(`/anilist/info/${id}?dub=${dub}`);
+export const getInfo = async (id, dub, fetchFiller = true) => {
+  const { data } = await api.get(
+    `/anilist/info/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
+  );
 
   if (!data)
     return {
@@ -90,6 +93,19 @@ export const getInfo = async (id, dub) => {
 
 export const getSource = async (episodeId, server) => {
   let { data } = await api.get(`/anilist/watch?episodeId=${episodeId}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
+export const getEpisodes = async (id, dub = false, fetchFiller = true) => {
+  const { data } = await api.get(
+    `/anilist/episodes/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
+  );
 
   if (!data)
     return {

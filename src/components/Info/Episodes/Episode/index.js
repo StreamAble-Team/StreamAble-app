@@ -5,6 +5,8 @@ import {
   CardImage,
   Container,
   EpisodeNumber,
+  IsFiller,
+  IsFillerText,
   Text,
   Title,
   WatchedAmount,
@@ -30,7 +32,6 @@ const Episode = (props) => {
       episode: props.number,
       source: source.url,
       referer: headers.Referer,
-      handlePress: handlePress,
       nextEpisodeId: `${props.id.split("-").splice(0, 3).join("-")}-${
         props.number + 1
       }`,
@@ -42,6 +43,11 @@ const Episode = (props) => {
     <Container onPress={handlePress}>
       <CardImage source={{ uri: props.image }}>
         <CardContent>
+          {props.isFiller ? (
+            <IsFiller>
+              <IsFillerText>FILLER</IsFillerText>
+            </IsFiller>
+          ) : null}
           <Title numberOfLines={1}>{props.title}</Title>
           <EpisodeNumber numberOfLines={1}>
             Episode {props.number}

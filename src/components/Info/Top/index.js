@@ -3,6 +3,7 @@ import React from "react";
 import {
   GoBackContainer,
   GoBackIcon,
+  InfoTopButtons,
   InfoTopContainer,
   InfoTopDescription,
   InfoTopDescriptionText,
@@ -24,6 +25,7 @@ import { textSanitizer } from "../../../utils";
 import { useNavigation } from "@react-navigation/native";
 
 const InfoTop = (props) => {
+  const { setEpisodes, setDub } = props;
   const navigation = useNavigation();
   const description = textSanitizer(props.description);
 
@@ -56,9 +58,17 @@ const InfoTop = (props) => {
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
           {/* <InfoTopEpisode numberOfLines={1}>Episode 1</InfoTopEpisode> */}
-          <InfoTopPlayButton onPress={gotoPlayer}>
-            <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
-          </InfoTopPlayButton>
+          <InfoTopButtons>
+            <InfoTopPlayButton onPress={gotoPlayer}>
+              <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
+            </InfoTopPlayButton>
+            <InfoTopPlayButton
+              onPress={() => setDub((prev) => !prev)}
+              style={{ marginLeft: 10 }}
+            >
+              <InfoTopPlayButtonText>{props.subOrDub}</InfoTopPlayButtonText>
+            </InfoTopPlayButton>
+          </InfoTopButtons>
         </InfoTopWrapper>
       </InfoTopPosterContainer>
     </InfoTopContainer>

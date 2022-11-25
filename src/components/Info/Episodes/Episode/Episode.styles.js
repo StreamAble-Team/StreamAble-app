@@ -1,3 +1,4 @@
+import { rgba } from "polished";
 import styled from "styled-components/native";
 
 export const Container = styled.TouchableOpacity`
@@ -57,4 +58,21 @@ export const WatchedAmount = styled.View`
   width: ${({ amount }) => amount}%;
   height: 100%;
   background: ${({ theme }) => theme.base.mainColor};
+`;
+
+export const IsFiller = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 5px 10px;
+  // margin: 5px;
+  background: ${({ theme }) => rgba(theme.text.warning, 0.3)};
+  border-bottom-right-radius: 8px;
+`;
+
+export const IsFillerText = styled.Text`
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 12px;
+  font-family: ${({ theme }) => theme.text.font.secondary};
+  text-transform: uppercase;
 `;

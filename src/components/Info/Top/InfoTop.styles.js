@@ -94,17 +94,24 @@ export const InfoTopEpisode = styled.Text`
   font-size: 13px;
 `;
 
-export const InfoTopPlayButton = styled.TouchableOpacity`
+export const InfoTopButtons = styled.View`
   margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+`;
+
+export const InfoTopPlayButton = styled.TouchableOpacity`
   padding: 5px 15px;
   background: ${({ theme }) => theme.base.mainColor};
   border-radius: 10px;
+  width: 70px;
+  // width: 100%;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  width: 70px;
-  // width: 100%;
 `;
 
 export const InfoTopPlayButtonText = styled.Text`
