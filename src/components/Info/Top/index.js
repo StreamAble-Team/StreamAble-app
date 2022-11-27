@@ -23,7 +23,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InfoTop = (props) => {
-  const { setEpisodes, setDub } = props;
+  const { setEpisodes, setDub, id, totalEpisodes } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
   const description = textSanitizer(props.description);
@@ -38,6 +38,8 @@ const InfoTop = (props) => {
         source.quality.includes("default")
     );
     navigation.navigate("Player", {
+      animeId: id,
+      totalEpisodes: totalEpisodes,
       id: whatEpisodeToGet.id,
       title: whatEpisodeToGet.title,
       episode: whatEpisodeToGet.number,

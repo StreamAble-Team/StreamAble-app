@@ -28,6 +28,7 @@ const Episode = (props) => {
         source.quality.includes("720") ||
         source.quality.includes("default")
     );
+
     navigation.navigate("Player", {
       ...props,
       id: props.id,
