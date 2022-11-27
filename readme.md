@@ -28,6 +28,8 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 ## Features/Planned Features
 
 - [x] Ad Free
+- [x] Fast
+- [x] Responsive
 - [x] Custom video player
 - [x] Dub support
 - [ ] Sync with anilist, mal etc etc
