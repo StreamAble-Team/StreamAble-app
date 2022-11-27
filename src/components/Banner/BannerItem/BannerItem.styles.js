@@ -43,12 +43,12 @@ export const BannerMeta = styled.View`
   justify-content: flex-start;
   flex-direction: row;
   align-items: center;
-  margin-top: 17px;
+  margin-top: 18px;
 `;
 
 export const BannerMetaItem = styled.Text`
   color: ${({ theme }) => theme.text.offWhite};
-  font-size: 10px;
+  font-size: 11px;
   font-family: ${({ theme }) => theme.text.font.primary};
   margin-right: 15px;
 `;

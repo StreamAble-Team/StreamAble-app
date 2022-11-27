@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const DescriptionView = styled.TouchableOpacity`
-  padding: 25px 25px;
+  padding: 22px 25px;
   height: ${({ expand }) => (expand == false ? "140px" : "auto")};
   overflow: hidden;
   display: flex;

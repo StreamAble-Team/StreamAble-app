@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import React, { useEffect, useRef, useState } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ResizeMode } from "expo-av";
@@ -29,7 +29,7 @@ const Player = (props) => {
     const find =
       [getStorageJSON].find((item) => item?.episode === props?.episode) ||
       props;
-    if (watched > 90 && find?.watched !== true) {
+    if (watched > 85 && find?.watched !== true) {
       if (!getStorageJSON) {
         const newData = {
           id: id,

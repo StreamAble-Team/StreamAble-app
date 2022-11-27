@@ -16,7 +16,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
 
   useEffect(() => {
     if (routeNameRef === "Player") {
-      ScreenOrientation.unlockAsync();
+      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
       setHiddenStatusBar(true);
     } else {
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);

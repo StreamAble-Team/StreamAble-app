@@ -29,9 +29,9 @@ const BannerItem = (props) => {
         <BannerContent>
           <BannerDescription numberOfLines={4}>{description}</BannerDescription>
           <BannerMeta>
+            <BannerMetaItem>{(item.rating / 10).toFixed(1)}</BannerMetaItem>
             <BannerMetaItem>{item.releaseDate}</BannerMetaItem>
             <BannerMetaItem>{item.totalEpisodes}</BannerMetaItem>
-            <BannerMetaItem>{item.rating / 10}</BannerMetaItem>
             <BannerMetaItem>{item.status.toUpperCase()}</BannerMetaItem>
             <BannerMetaItem>{item.type.toUpperCase()}</BannerMetaItem>
           </BannerMeta>
