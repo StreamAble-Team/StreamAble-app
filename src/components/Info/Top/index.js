@@ -28,7 +28,6 @@ const InfoTop = (props) => {
   const navigation = useNavigation();
   const description = textSanitizer(props.description);
 
-  // TODO: STORE EACH EPISODE IN ITS ANIME'S ID
   const gotoPlayer = async () => {
     const whatEpisodeToGet = !nextEpisode ? props.episodes[0] : nextEpisode;
     const { headers, sources } = await api.getSource(whatEpisodeToGet.id);
@@ -53,26 +52,23 @@ const InfoTop = (props) => {
 
   const getHighestWatched = async () => {
     try {
-      const keys = await AsyncStorage.getAllKeys();
-      const results = await AsyncStorage.multiGet(keys);
+      const getStorage = await AsyncStorage.getItem(props.id);
+      const getStorageJSON = JSON.parse(getStorage);
 
       const maxNumber = await Math.max(
-        ...results.map((o) => {
-          const json = JSON.parse(o[1]);
-          return json.episode;
-        })
+        Math.max(
+          [getStorageJSON].map((item) => {
+            return item?.episode || 1;
+          })
+        )
       );
 
-      const max = await results.find((result) => {
-        const json = JSON.parse(result[1]);
-        return json.episode === maxNumber;
+      const max = await [getStorageJSON].find((result) => {
+        return result?.episode === maxNumber;
       });
 
-      const json = JSON.parse(max[1]);
-      console.log(json);
-
-      const find = await props.episodes.find(
-        (ep) => ep.id === json.nextEpisodeId
+      const find = await props.episodes.find((ep) =>
+        max ? ep?.id === max?.nextEpisodeId : ep.number === 1
       );
 
       setNextEpisode(find);
@@ -111,6 +107,9 @@ const InfoTop = (props) => {
           </InfoTopEpisode>
           <InfoTopButtons>
             <InfoTopPlayButton onPress={gotoPlayer}>
+              {/* <InfoTopPlayButtonText>
+                {nextEpisode && nextEpisode.number > 1 ? `Continue` : `Play`}
+              </InfoTopPlayButtonText> */}
               <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
             </InfoTopPlayButton>
             <InfoTopPlayButton

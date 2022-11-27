@@ -16,7 +16,6 @@ import { api } from "../../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-// TODO: STORE EACH EPISODE IN ITS ANIME'S ID
 const Episode = (props) => {
   const navigation = useNavigation();
   const [watched, setWatched] = useState(false);
@@ -30,6 +29,7 @@ const Episode = (props) => {
         source.quality.includes("default")
     );
     navigation.navigate("Player", {
+      ...props,
       id: props.id,
       title: props.title,
       episode: props.number,
@@ -42,9 +42,12 @@ const Episode = (props) => {
   };
 
   const checkIfWatched = async () => {
-    const getStorage = await AsyncStorage.getItem(props.id);
-    const JSONStorage = await JSON.parse(getStorage);
-    setWatched(JSONStorage?.watched === true ? true : false);
+    const getStorage = await AsyncStorage.getItem(props.animeId);
+    const getStorageJSON = JSON.parse(getStorage);
+    const find = [getStorageJSON].find((item) =>
+      !item ? 1 : item.episode === props.number
+    );
+    setWatched(find?.watched === true ? true : false);
   };
 
   useFocusEffect(

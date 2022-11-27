@@ -13,7 +13,7 @@ const Info = (props) => {
         <InfoTop {...props} setEpisodes={setEpisodes} />
         <Description desc={props.description} />
         {/* <PillMenu /> */}
-        <Episodes episodes={episodes} />
+        <Episodes {...props} />
       </Container>
     </View>
   );

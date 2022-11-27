@@ -1,6 +1,7 @@
 {
   "name": "streamable-app",
   "version": "0.0.3",
+  "license": "MIT",
   "scripts": {
     "start": "expo start",
     "startDev": "expo start --dev-client",
