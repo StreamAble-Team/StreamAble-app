@@ -15,6 +15,8 @@ import {
   InfoTopPosterImageWrapper,
   InfoTopTitle,
   InfoTopWrapper,
+  MetaContainer,
+  MetaItem,
 } from "./InfoTop.styles";
 import { api } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";

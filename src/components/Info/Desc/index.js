@@ -1,14 +1,26 @@
-import React from "react";
-import { DescriptionText, DescriptionView } from "./Description.styles";
+import React, { useState } from "react";
+import {
+  DescriptionModel,
+  DescriptionText,
+  DescriptionView,
+} from "./Description.styles";
 import { textSanitizer } from "../../../utils";
+import { View } from "react-native";
 
 const Description = ({ desc }) => {
+  const [expand, setExpand] = useState(false);
   const description = textSanitizer(desc);
-
   return (
-    <DescriptionView>
-      <DescriptionText numberOfLines={4}>{description}</DescriptionText>
-    </DescriptionView>
+    <View>
+      <DescriptionView
+        onPress={() => setExpand((prev) => !prev)}
+        expand={expand}
+      >
+        <DescriptionText numberOfLines={expand === false ? 5 : 0}>
+          {description}
+        </DescriptionText>
+      </DescriptionView>
+    </View>
   );
 };
 

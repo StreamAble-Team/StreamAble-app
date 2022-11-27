@@ -13,7 +13,7 @@ const PillMenu = ({ setCurrent, current }) => {
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ flexGrow: 1, justifyContent: "center" }}
+          contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-start" }}
         >
           <Pill
             title={`EPISODES`}

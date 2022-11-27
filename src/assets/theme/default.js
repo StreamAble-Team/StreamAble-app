@@ -7,6 +7,7 @@ export const DefaultTheme = {
     navBg: "#141414",
     darkBg: "#0f0f0f",
     offDarkBg: "#212121",
+    gold: "#FFDF00",
   },
   text: {
     primary: "#fff",
