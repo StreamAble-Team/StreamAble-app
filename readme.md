@@ -77,4 +77,4 @@ StreamAble is made with the love and passion that I have for anime and manga. I 
 
 # ❤️
 
-### Reminder that _you are great, you are enough, and your presence is valued._ If you are struggling with your mental health, please reach out to someone you love and consult a professional. You are not alone.
+Reminder that <strong><i>you are great, you are enough, and your presence is valued.</i></strong> If you are struggling with your mental health, please reach out to someone you love and consult a professional. You are not alone.
