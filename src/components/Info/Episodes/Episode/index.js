@@ -35,9 +35,10 @@ const Episode = (props) => {
       episode: props.number,
       source: source.url,
       referer: headers.Referer,
-      nextEpisodeId: `${props.id.split("-").splice(0, 3).join("-")}-${
-        props.number + 1
-      }`,
+      nextEpisodeId:
+        props.number !== props.totalEpisodes
+          ? `${props.id.split("-").splice(0, 3).join("-")}-${props.number + 1}`
+          : props.id,
     });
   };
 

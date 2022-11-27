@@ -5,7 +5,7 @@ import { Container, Text, Wrapper } from "./Episodes.styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Episodes = (props) => {
-  const { episodes } = props;
+  const { episodes, totalEpisodes } = props;
   const [selectedPage, setSelectedPage] = useState(1);
 
   const pageSize = 50;
@@ -25,7 +25,12 @@ const Episodes = (props) => {
             selectedPage === 1 ? pageSize : pageSize * selectedPage + 1
           )
           .map((episode, i) => (
-            <Episode key={`episode-${i}`} {...episode} animeId={props.id} />
+            <Episode
+              key={`episode-${i}`}
+              {...episode}
+              animeId={props.id}
+              totalEpisodes={totalEpisodes}
+            />
           ))}
       </Wrapper>
     </Container>
