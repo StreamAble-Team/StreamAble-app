@@ -12,7 +12,7 @@
 
 <div align="center">
     <p align="center">
-    <a href="https://sstreamable.netlify.app/download/app">
+    <a href="https://github.com/TDanks2000/StreamAble-app/releases">
         <img src="https://img.shields.io/badge/Download-App-blueviolet?style=for-the-badge"/>
     </a>
     <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
@@ -75,7 +75,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 <p>Make sure you have install from unknown sources enabled</p>
 <p>it will most likely ask you to enable this anyway</p>
 
-1. [Download the apk.](https://sstreamable.netlify.app/download/app)
+1. [Download the apk.](https://github.com/TDanks2000/StreamAble-app/releases)
 2. Install the apk.
 3. Open the app.
 
