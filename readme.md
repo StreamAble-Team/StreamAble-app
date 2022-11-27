@@ -40,6 +40,34 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 
 <br />
 
+## Screenshot
+
+<table>
+  <thead>
+    <tr>
+      <th colspan="5">ANDROID</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+        <td>
+            <img src="./misc/images/Home.png"/>
+        </td>
+        <td>
+            <img src="./misc/images/Search.png""/>
+        </td>
+        <td>
+            <img src="./misc/images/Info.png"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="3">
+            <img src="./misc/images/Player.png"/>
+        </td>
+    </tr>
+  </tbody>
+</table>
+
 ## INSTALLATION INSTRUCTIONS
 
 <details>
