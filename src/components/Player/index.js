@@ -10,7 +10,7 @@ const USER_AGENT =
 export const proxyURL = "https://cors.proxy.consumet.org/";
 
 const Player = (props) => {
-  const { source, referer, title, episode, nextEpisodeId, animeId } = props;
+  const { source, referer, title, episode, nextEpisodeId, animeId, id } = props;
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
   const [playing, setPlaying] = useState(false);
@@ -26,8 +26,6 @@ const Player = (props) => {
     const watched = (positionMillis / durationMillis) * 100;
     const getStorage = await AsyncStorage.getItem(animeId);
     const getStorageJSON = JSON.parse(getStorage);
-    // console.log("NONE JSON", getStorage);
-    // console.log("JSON", getStorageJSON);
     const find =
       [getStorageJSON].find((item) => item?.episode === props?.episode) ||
       props;
@@ -51,7 +49,6 @@ const Player = (props) => {
             watched: true,
           })
         );
-        return console.log(newPlusOldData);
         AsyncStorage.setItem(animeId, JSON.stringify(newPlusOldData));
       }
     }
