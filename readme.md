@@ -40,7 +40,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 
 <br />
 
-## Screenshot
+## SCREENSHOTS
 
 <table>
   <thead>
