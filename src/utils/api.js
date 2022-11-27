@@ -78,9 +78,9 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
   return results;
 };
 
-export const getInfo = async (id, dub, fetchFiller = true) => {
+export const getInfo = async (id, dub) => {
   const { data } = await api.get(
-    `/anilist/info/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
+    `/anilist/info/${id}?dub=${dub}&fetchFiller=true`
   );
 
   if (!data)

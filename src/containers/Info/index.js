@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import {
   Characters,
   Description,
@@ -15,6 +15,7 @@ import { MetaInformation } from "../../components/Info";
 const Info = (props) => {
   const [current, setCurrent] = useState(1);
   const [episodes, setEpisodes] = useState(props.episodes);
+
   return (
     <View>
       <Container vertical={true}>

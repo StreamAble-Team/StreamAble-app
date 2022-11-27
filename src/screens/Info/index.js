@@ -4,7 +4,6 @@ import { useQuery } from "react-query";
 import InfoSkeleton from "../../components/Skeletons/Info/InfoSkeleton";
 import { Info } from "../../containers";
 import { api } from "../../utils";
-import { InfoJSOn } from "../../utils/testData";
 
 const InfoScreen = ({ route }) => {
   const [dub, setDub] = useState(false);
@@ -12,7 +11,7 @@ const InfoScreen = ({ route }) => {
 
   const { data } = useQuery(
     ["Info-Data", dub, id],
-    () => api.getInfo(id, dub, true),
+    () => api.getInfo(id, dub),
     {
       cacheTime: 0,
     }

@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import {
   GoBackContainer,
   GoBackIcon,
@@ -95,7 +95,7 @@ const InfoTop = (props) => {
         </InfoTopImage>
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
-        <InfoTopPosterImageWrapper>
+        <InfoTopPosterImageWrapper onLongPress={() => console.log("test")}>
           <InfoTopPoster source={{ uri: props.image }} />
         </InfoTopPosterImageWrapper>
         <InfoTopWrapper>

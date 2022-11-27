@@ -5,6 +5,7 @@ import Description from "./Desc";
 import Relations from "./Relations";
 import Characters from "./Characters";
 import MetaInformation from "./MetaInformation";
+import ActionBar from "./Actions";
 
 export {
   InfoTop,
@@ -14,4 +15,5 @@ export {
   Relations,
   Characters,
   MetaInformation,
+  ActionBar,
 };

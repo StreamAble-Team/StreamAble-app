@@ -11,6 +11,7 @@ import {
   Episodes,
   Relations,
   Characters,
+  ActionBar,
 } from "./Info";
 
 export {
@@ -26,4 +27,5 @@ export {
   Episodes,
   Relations,
   Characters,
+  ActionBar,
 };

@@ -1,7 +1,9 @@
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 
-export const InfoTopContainer = styled.View``;
+export const InfoTopContainer = styled.View`
+  // margin-bottom: 10px;
+`;
 
 export const GoBackContainer = styled.Pressable`
   position: absolute;
@@ -58,7 +60,7 @@ export const InfoTopPosterContainer = styled.View`
   padding: 0 25px;
 `;
 
-export const InfoTopPosterImageWrapper = styled.View`
+export const InfoTopPosterImageWrapper = styled.Pressable`
   width: 122px;
   height: 100%;
   // border-radius: 8px;
@@ -69,6 +71,8 @@ export const InfoTopPosterImageWrapper = styled.View`
 export const InfoTopPoster = styled.Image`
   width: 100%;
   height: 100%;
+  // border-top-left-radius: 8px;
+  // border-top-right-radius: 8px;
   border-radius: 8px;
   overflow: hidden;
 `;
