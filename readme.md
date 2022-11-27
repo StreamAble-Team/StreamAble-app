@@ -28,8 +28,10 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 ## Features/Planned Features
 
 - [x] Ad Free
+- [x] Fast
+- [x] Responsive
 - [x] Custom video player
-- [ ] Dub support
+- [x] Dub support
 - [ ] Sync with anilist, mal etc etc
 - [ ] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Picture in picture
@@ -75,4 +77,4 @@ StreamAble is made with the love and passion that I have for anime and manga. I 
 
 # ❤️
 
-### Reminder that _you are great, you are enough, and your presence is valued._ If you are struggling with your mental health, please reach out to someone you love and consult a professional. You are not alone.
+Reminder that <strong><i>you are great, you are enough, and your presence is valued.</i></strong> If you are struggling with your mental health, please reach out to someone you love and consult a professional. You are not alone.
