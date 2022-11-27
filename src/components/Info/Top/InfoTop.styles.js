@@ -84,7 +84,6 @@ export const InfoTopTitle = styled.Text`
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
   font-size: 20px;
-  margin-bottom: 10px;
 `;
 
 export const InfoTopEpisode = styled.Text`
@@ -92,10 +91,11 @@ export const InfoTopEpisode = styled.Text`
   color: ${({ theme }) => theme.text.offWhite};
   text-transform: uppercase;
   font-size: 13px;
+  margin-bottom: 5px;
 `;
 
 export const InfoTopButtons = styled.View`
-  margin-top: 15px;
+  margin-top: 5px;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Paginate from "../../Paginate";
 import Episode from "./Episode";
 import { Container, Text, Wrapper } from "./Episodes.styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const Episodes = ({ episodes }) => {
   const [selectedPage, setSelectedPage] = useState(1);

@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import {
   CardContent,
   CardImage,
@@ -12,12 +12,14 @@ import {
   WatchedAmount,
   WatchedContainer,
 } from "./Episode.styles";
-import { useQuery } from "react-query";
 import { api } from "../../../../utils";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
+// TODO: STORE EACH EPISODE IN ITS ANIME'S ID
 const Episode = (props) => {
   const navigation = useNavigation();
+  const [watched, setWatched] = useState(false);
 
   const handlePress = async () => {
     const { headers, sources } = await api.getSource(props.id);
@@ -28,6 +30,7 @@ const Episode = (props) => {
         source.quality.includes("default")
     );
     navigation.navigate("Player", {
+      id: props.id,
       title: props.title,
       episode: props.number,
       source: source.url,
@@ -37,6 +40,18 @@ const Episode = (props) => {
       }`,
     });
   };
+
+  const checkIfWatched = async () => {
+    const getStorage = await AsyncStorage.getItem(props.id);
+    const JSONStorage = await JSON.parse(getStorage);
+    setWatched(JSONStorage?.watched === true ? true : false);
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      checkIfWatched();
+    }, [props])
+  );
 
   const amount = Math.random() * 100;
   return (
@@ -53,9 +68,11 @@ const Episode = (props) => {
             Episode {props.number}
           </EpisodeNumber>
         </CardContent>
-        {/* <WatchedContainer> */}
-        {/* <WatchedAmount amount={amount} /> */}
-        {/* </WatchedContainer> */}
+        {watched ? (
+          <WatchedContainer>
+            <WatchedAmount amount={100} />
+          </WatchedContainer>
+        ) : null}
       </CardImage>
     </Container>
   );

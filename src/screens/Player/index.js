@@ -5,16 +5,9 @@ import { useKeepAwake } from "expo-keep-awake";
 
 const PlayerScreen = ({ navigation, route }) => {
   useKeepAwake();
-  const { source, referer, title, episode, nextEpisodeId } = route.params;
   return (
     <SafeAreaView>
-      <Player
-        source={source}
-        referer={referer}
-        title={title}
-        episode={episode}
-        nextEpisodeId={nextEpisodeId}
-      />
+      <Player {...route.params} />
     </SafeAreaView>
   );
 };
