@@ -29,7 +29,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 
 - [x] Ad Free
 - [x] Custom video player
-- [ ] Dub support
+- [x] Dub support
 - [ ] Sync with anilist, mal etc etc
 - [ ] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Picture in picture
