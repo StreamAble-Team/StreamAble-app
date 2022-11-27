@@ -4,8 +4,14 @@ import WatchingCard from "./WatchingCard";
 import NavBar from "./NavigationBar";
 import SearchBar from "./SearchBar";
 import Pill from "./Pill";
-import InfoTop from "./Info/Top";
-import PillMenu from "./Info/PillMenu";
+import {
+  InfoTop,
+  PillMenu,
+  Description,
+  Episodes,
+  Relations,
+  Characters,
+} from "./Info";
 
 export {
   Banner,
@@ -16,4 +22,8 @@ export {
   Pill,
   InfoTop,
   PillMenu,
+  Description,
+  Episodes,
+  Relations,
+  Characters,
 };

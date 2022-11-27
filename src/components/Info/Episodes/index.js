@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import Paginate from "../../Paginate";
+import { Container, Wrapper } from "../../styles";
 import Episode from "./Episode";
-import { Container, Text, Wrapper } from "./Episodes.styles";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { Text } from "./Episodes.styles";
 
 const Episodes = (props) => {
   const { episodes, totalEpisodes } = props;

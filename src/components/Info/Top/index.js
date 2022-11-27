@@ -15,18 +15,15 @@ import {
   InfoTopPosterImageWrapper,
   InfoTopTitle,
   InfoTopWrapper,
-  WatchedAmount,
-  WatchedContainer,
 } from "./InfoTop.styles";
-import { api, textSanitizer } from "../../../utils";
+import { api } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InfoTop = (props) => {
-  const { setEpisodes, setDub, id, totalEpisodes } = props;
+  const { setDub, id, totalEpisodes } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
-  const description = textSanitizer(props.description);
 
   const gotoPlayer = async () => {
     const whatEpisodeToGet = !nextEpisode ? props.episodes[0] : nextEpisode;
@@ -94,9 +91,6 @@ const InfoTop = (props) => {
           </GoBackContainer>
           <InfoTopImageWrapper />
         </InfoTopImage>
-        {/* <WatchedContainer>
-          <WatchedAmount />
-        </WatchedContainer> */}
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
         <InfoTopPosterImageWrapper>
