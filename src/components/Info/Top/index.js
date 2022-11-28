@@ -21,9 +21,10 @@ import {
 import { api } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import SubOrDub from "./SubOrDub";
 
 const InfoTop = (props) => {
-  const { setDub, id, totalEpisodes, setShowModal } = props;
+  const { setDub, dub, id, totalEpisodes, setShowModal } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
 
@@ -53,10 +54,10 @@ const InfoTop = (props) => {
 
   const getHighestWatched = async () => {
     try {
-      const getStorage = await AsyncStorage.getItem(props.id);
+      const getStorage = await AsyncStorage.getItem(`@anime:${props.id}`);
       const getStorageJSON = JSON.parse(getStorage);
 
-      const maxNumber = await Math.max(
+      const maxNumber = Math.max(
         Math.max(
           [getStorageJSON].map((item) => {
             return item?.episode || 1;
@@ -112,12 +113,7 @@ const InfoTop = (props) => {
               </InfoTopPlayButtonText> */}
               <InfoTopPlayButtonText>Play</InfoTopPlayButtonText>
             </InfoTopPlayButton>
-            <InfoTopPlayButton
-              onPress={() => setDub((prev) => !prev)}
-              style={{ marginLeft: 10 }}
-            >
-              <InfoTopPlayButtonText>{props.subOrDub}</InfoTopPlayButtonText>
-            </InfoTopPlayButton>
+            <SubOrDub subOrDub={props.subOrDub} setDub={setDub} dub={dub} />
           </InfoTopButtons>
         </InfoTopWrapper>
       </InfoTopPosterContainer>

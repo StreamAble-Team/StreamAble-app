@@ -24,7 +24,7 @@ const Player = (props) => {
   const handleUpdateWatched = async (status) => {
     const { positionMillis, durationMillis } = status;
     const watched = (positionMillis / durationMillis) * 100;
-    const getStorage = await AsyncStorage.getItem(animeId);
+    const getStorage = await AsyncStorage.getItem(`@anime:${animeId}`);
     const getStorageJSON = JSON.parse(getStorage);
     const find =
       [getStorageJSON].find((item) => item?.episode === props?.episode) ||
@@ -38,7 +38,7 @@ const Player = (props) => {
           nextEpisodeId,
           watched: true,
         };
-        AsyncStorage.setItem(animeId, JSON.stringify(newData));
+        AsyncStorage.setItem(`@anime:${animeId}`, JSON.stringify(newData));
       } else {
         const newPlusOldData = getStorage.concat(
           JSON.stringify({
@@ -49,7 +49,10 @@ const Player = (props) => {
             watched: true,
           })
         );
-        AsyncStorage.setItem(animeId, JSON.stringify(newPlusOldData));
+        AsyncStorage.setItem(
+          `@anime:${animeId}`,
+          JSON.stringify(newPlusOldData)
+        );
       }
     }
   };

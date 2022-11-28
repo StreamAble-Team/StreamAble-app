@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useQuery } from "react-query";
 import { InfoModal } from "../../components";
@@ -8,8 +10,24 @@ import { api } from "../../utils";
 
 const InfoScreen = ({ route }) => {
   const [showModal, setShowModal] = useState(false);
-  const [dub, setDub] = useState(false);
+  const [dub, setDub] = useState(null);
   const { id } = route.params;
+
+  const getDub = async () => {
+    try {
+      const getStorage = await AsyncStorage.getItem("dub");
+      const getStorageJSON = JSON.parse(getStorage);
+      setDub(getStorageJSON);
+    } catch (error) {
+      setDub(false);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getDub();
+    }, [dub])
+  );
 
   const { data } = useQuery(
     ["Info-Data", dub, id],

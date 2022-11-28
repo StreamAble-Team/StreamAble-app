@@ -44,7 +44,7 @@ const Episode = (props) => {
   };
 
   const checkIfWatched = async () => {
-    const getStorage = await AsyncStorage.getItem(props.animeId);
+    const getStorage = await AsyncStorage.getItem(`@anime:${props.animeId}`);
     const getStorageJSON = JSON.parse(getStorage);
     const find = [getStorageJSON].find((item) =>
       !item ? 1 : item.episode === props.number
