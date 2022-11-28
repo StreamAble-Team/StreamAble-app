@@ -75,6 +75,7 @@ export const InfoTopPoster = styled.Image`
   // border-top-right-radius: 8px;
   border-radius: 8px;
   overflow: hidden;
+  opacity: ${({ pressed }) => (!pressed ? 1 : 0.8)};
 `;
 
 export const InfoTopWrapper = styled.View`

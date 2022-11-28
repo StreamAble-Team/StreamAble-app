@@ -13,6 +13,7 @@ import {
   Characters,
   ActionBar,
 } from "./Info";
+import { InfoModal } from "./Modals";
 
 export {
   Banner,
@@ -28,4 +29,5 @@ export {
   Relations,
   Characters,
   ActionBar,
+  InfoModal,
 };

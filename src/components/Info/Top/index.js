@@ -23,7 +23,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 const InfoTop = (props) => {
-  const { setDub, id, totalEpisodes } = props;
+  const { setDub, id, totalEpisodes, setShowModal } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
 
@@ -95,8 +95,10 @@ const InfoTop = (props) => {
         </InfoTopImage>
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
-        <InfoTopPosterImageWrapper onLongPress={() => console.log("test")}>
-          <InfoTopPoster source={{ uri: props.image }} />
+        <InfoTopPosterImageWrapper onLongPress={() => setShowModal(true)}>
+          {({ pressed }) => (
+            <InfoTopPoster source={{ uri: props.image }} pressed={pressed} />
+          )}
         </InfoTopPosterImageWrapper>
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
