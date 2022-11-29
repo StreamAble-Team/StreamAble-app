@@ -1,0 +1,133 @@
+import { getDBConnection } from "./db";
+
+export const openDatabase = async () => {
+  return await getDBConnection("episode-data");
+};
+
+export const createTable = async (db) => {
+  // //Delete table
+  // await db.transaction((tx) => {
+  //   tx.executeSql(
+  //     `DROP TABLE IF EXISTS anime`,
+  //     [],
+  //     (txObj, resultSet) => {
+  //       console.log("Table deleted");
+  //     },
+  //     (txObj, error) => {
+  //       console.log("Error", error);
+  //     }
+  //   );
+  // });
+
+  // create table if not exists
+  const query = `CREATE TABLE IF NOT EXISTS anime (
+    id TEXT PRIMARY KEY NOT NULL,
+    title TEXT NOT NULL,
+    animeId INTEGER NOT NULL,
+    image TEXT NOT NULL,
+    episode INTEGER NOT NULL,
+    nextEpisodeId TEXT NOT NULL,
+    watched BOOLEAN DEFAULT(FALSE),
+    watchedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);`;
+
+  //Execute query
+  try {
+    const DB = await db.transaction((tx) => {
+      return tx.executeSql(query, []);
+    });
+    return DB;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const insert = async (db, data) => {
+  // Update the episode data
+  const query = `INSERT INTO anime (id, title, animeId, image, episode, nextEpisodeId, watched) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+
+  // Execute query
+  return await db.transaction((tx) => {
+    return tx.executeSql(query, [
+      String(data.id),
+      String(data.title),
+      parseFloat(data.animeId),
+      String(data.image),
+      parseInt(data.episode),
+      String(data.nextEpisodeId),
+      Boolean(data.watched),
+    ]);
+  });
+};
+
+export const select = async (db, animeId) => {
+  //SELECT ALL DATA AND RETURN IT AS AN PROMISE
+  const query = `SELECT * FROM anime WHERE animeId = ? ORDER BY episode DESC`;
+
+  // CREATE PROMISE
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        query,
+        [animeId],
+        (txObj, { rows: { _array } }) => {
+          resolve(_array);
+        },
+        (txObj, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  // RETURN PROMISE
+  return promise;
+};
+
+export const selectAllWatched = async (db, animeId) => {
+  //SELECT ALL DATA AND RETURN IT AS AN PROMISE
+  const query = `SELECT * FROM anime WHERE animeId = ? AND watched = 1`;
+
+  // CREATE PROMISE
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        query,
+        [animeId],
+        (txObj, { rows: { _array } }) => {
+          resolve(_array);
+        },
+        (txObj, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  // RETURN PROMISE
+  return promise;
+};
+
+export const selectAll = async (db) => {
+  //SELECT ALL DATA AND RETURN IT AS AN PROMISE
+  const query = `SELECT * FROM anime WHERE watched = 1`;
+
+  // CREATE PROMISE
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        query,
+        [],
+        (txObj, { rows: { _array } }) => {
+          resolve(_array);
+        },
+        (txObj, error) => {
+          reject(error);
+        }
+      );
+    });
+  });
+
+  // RETURN PROMISE
+  return promise;
+};

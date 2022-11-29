@@ -22,6 +22,11 @@ import { api } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import SubOrDub from "./SubOrDub";
+import {
+  createEpisodeTable,
+  openEpisodeDatabase,
+  selectEpisode,
+} from "../../../database";
 
 const InfoTop = (props) => {
   const { setDub, dub, id, totalEpisodes, setShowModal } = props;
@@ -38,6 +43,7 @@ const InfoTop = (props) => {
         source.quality.includes("default")
     );
     navigation.navigate("Player", {
+      ...whatEpisodeToGet,
       animeId: id,
       totalEpisodes: totalEpisodes,
       id: whatEpisodeToGet.id,
@@ -54,23 +60,19 @@ const InfoTop = (props) => {
 
   const getHighestWatched = async () => {
     try {
-      const getStorage = await AsyncStorage.getItem(`@anime:${props.id}`);
-      const getStorageJSON = JSON.parse(getStorage);
+      // get the highest watched episode
+      const db = await openEpisodeDatabase();
+      await createEpisodeTable(db, id);
 
-      const maxNumber = Math.max(
-        Math.max(
-          [getStorageJSON].map((item) => {
-            return item?.episode || 1;
-          })
-        )
-      );
+      const select = await selectEpisode(db, id);
 
-      const max = await [getStorageJSON].find((result) => {
-        return result?.episode === maxNumber;
-      });
+      const highestWatched = select
+        .filter((item) => item.watched)
+        .sort((a, b) => b.number - a.number)[0];
 
-      const find = await props.episodes.find((ep) =>
-        max ? ep?.id === max?.nextEpisodeId : ep.number === 1
+      // find the highest watched episode in props.episodes
+      const find = props.episodes.find(
+        (item) => item.id === highestWatched.nextEpisodeId
       );
 
       setNextEpisode(find);

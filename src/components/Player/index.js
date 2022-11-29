@@ -1,9 +1,14 @@
 import { View } from "react-native";
-import React, { useEffect, useRef, useState } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import React, { useRef, useState } from "react";
 import { ResizeMode } from "expo-av";
 import { VideoPlayer } from "./styles";
 import Controls from "./Controls";
+import {
+  createEpisodeTable,
+  insertEpisode,
+  openEpisodeDatabase,
+  selectEpisode,
+} from "../../database";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
@@ -14,52 +19,39 @@ const Player = (props) => {
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
   const [playing, setPlaying] = useState(false);
+  const [watched, setWatched] = useState(false);
 
-  const deleteALL = () => {
-    AsyncStorage.getAllKeys().then((keys) => {
-      AsyncStorage.multiRemove(keys);
-    });
-  };
-
-  const handleUpdateWatched = async (status) => {
+  const HandleUpdateWatched = async () => {
+    if (watched === true) return false;
     const { positionMillis, durationMillis } = status;
     const watched = (positionMillis / durationMillis) * 100;
-    const getStorage = await AsyncStorage.getItem(`@anime:${animeId}`);
-    const getStorageJSON = JSON.parse(getStorage);
-    const find =
-      [getStorageJSON].find((item) => item?.episode === props?.episode) ||
-      props;
-    if (watched > 85 && find?.watched !== true) {
-      if (!getStorageJSON) {
-        const newData = {
-          id: id,
-          title,
-          episode,
-          nextEpisodeId,
-          watched: true,
-        };
-        AsyncStorage.setItem(`@anime:${animeId}`, JSON.stringify(newData));
-      } else {
-        const newPlusOldData = getStorage.concat(
-          JSON.stringify({
-            id: id,
-            title,
-            episode,
-            nextEpisodeId,
-            watched: true,
-          })
-        );
-        AsyncStorage.setItem(
-          `@anime:${animeId}`,
-          JSON.stringify(newPlusOldData)
-        );
-      }
+
+    //Get data from db
+    const db = await openEpisodeDatabase();
+    await createEpisodeTable(db, animeId);
+
+    //select all data
+    const select = await selectEpisode(db, animeId);
+
+    // Find the episode that was just watched
+    const find = select.find((item) => item.id === id) || props;
+
+    // Check if watched is greater than 85%
+    if (watched > 85 && find?.watched !== 1) {
+      console.log("updating watched");
+      // Update the watched status to true
+      await insertEpisode(db, {
+        id,
+        title,
+        animeId,
+        image: props.image,
+        episode,
+        nextEpisodeId,
+        watched: true,
+      });
+      setWatched(true);
     }
   };
-
-  useEffect(() => {
-    // deleteALL();
-  }, []);
 
   return (
     <View>
@@ -74,7 +66,7 @@ const Player = (props) => {
         }}
         resizeMode={ResizeMode.CONTAIN}
         onPlaybackStatusUpdate={(status) => {
-          handleUpdateWatched(status);
+          HandleUpdateWatched(status);
           return setStatus(() => status);
         }}
         onError={(err) => console.log(err)}

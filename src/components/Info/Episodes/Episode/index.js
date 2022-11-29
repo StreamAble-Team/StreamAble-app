@@ -14,7 +14,11 @@ import {
 } from "./Episode.styles";
 import { api } from "../../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import {
+  createEpisodeTable,
+  openEpisodeDatabase,
+  selectAllWatchedEpisodes,
+} from "../../../../database";
 
 const Episode = (props) => {
   const navigation = useNavigation();
@@ -44,12 +48,13 @@ const Episode = (props) => {
   };
 
   const checkIfWatched = async () => {
-    const getStorage = await AsyncStorage.getItem(`@anime:${props.animeId}`);
-    const getStorageJSON = JSON.parse(getStorage);
-    const find = [getStorageJSON].find((item) =>
-      !item ? 1 : item.episode === props.number
-    );
-    setWatched(find?.watched === true ? true : false);
+    // Get data from sqlite and check if the episode is watched
+    const db = await openEpisodeDatabase();
+    await createEpisodeTable(db);
+
+    const select = await selectAllWatchedEpisodes(db, props.animeId);
+    const find = select.find((item) => item.id === props.id) || props;
+    setWatched(find?.watched);
   };
 
   useFocusEffect(

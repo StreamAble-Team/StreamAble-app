@@ -10,7 +10,7 @@ const HomeScreen = () => {
     <SafeAreaView>
       <ScrollView vertical={true} showsVerticalScrollIndicator={false}>
         <Banner />
-        {/* <ContinueWatching /> */}
+        <ContinueWatching />
         <Trending />
         <Popular />
       </ScrollView>

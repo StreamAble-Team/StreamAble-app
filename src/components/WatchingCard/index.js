@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import {
   WatchingBar,
@@ -9,17 +9,24 @@ import {
   WatchingCardEpisode,
   WatchingCardTitle,
 } from "./WatchingCard.styles";
-import { api } from "../../utils";
 
 const WatchingCard = (props) => {
+  const navigation = useNavigation();
+
+  const handlePress = () => {
+    navigation.navigate("Info", {
+      id: props.animeId,
+    });
+  };
+
   return (
-    <WatchingCardContainer>
-      <WatchingCardBackground source={{ uri: props.cover }}>
+    <WatchingCardContainer onPress={handlePress}>
+      <WatchingCardBackground source={{ uri: props.image }}>
         <WatchingCardContent>
-          <WatchingCardTitle numberOfLines={1}>
-            {props.title.romaji}
-          </WatchingCardTitle>
-          <WatchingCardEpisode numberOfLines={1}>Episode 1</WatchingCardEpisode>
+          <WatchingCardTitle numberOfLines={1}>{props.title}</WatchingCardTitle>
+          <WatchingCardEpisode numberOfLines={1}>
+            Episode {props.episode + 1}
+          </WatchingCardEpisode>
         </WatchingCardContent>
       </WatchingCardBackground>
       <WatchingBarHolder>
