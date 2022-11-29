@@ -20,7 +20,7 @@
     "axios": "^1.2.0",
     "dayjs": "^1.11.6",
     "expo": "~47.0.8",
-    "expo-av": "~13.0.1",
+    "expo-av": "~13.0.2",
     "expo-font": "~11.0.1",
     "expo-keep-awake": "~11.0.1",
     "expo-screen-orientation": "~5.0.1",
@@ -32,7 +32,7 @@
     "react": "18.1.0",
     "react-native": "0.70.5",
     "react-native-safe-area-context": "4.4.1",
-    "react-native-screens": "~3.18.2",
+    "react-native-screens": "~3.18.0",
     "react-native-snap-carousel": "^3.9.1",
     "react-native-vector-image": "^0.3.3",
     "react-query": "^3.39.2",
@@ -40,7 +40,7 @@
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "@babel/core": "^7.20.2"
+    "@babel/core": "^7.19.3"
   },
   "private": false
 }
