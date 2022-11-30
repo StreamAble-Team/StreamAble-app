@@ -1,4 +1,5 @@
 import styled from "styled-components/native";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 export const WatchingCardContainer = styled.TouchableOpacity`
   position: relative;
@@ -58,4 +59,23 @@ export const WatchingBar = styled.View`
   width: 15%;
   height: 3px;
   background-color: ${({ theme }) => theme.base.mainColor};
+`;
+
+export const Delete = styled.TouchableOpacity`
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 22px;
+  height: 22px;
+  margin: 2px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+`;
+
+export const DeleteIcon = styled(Icon)`
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 13px;
 `;

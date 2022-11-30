@@ -14,6 +14,7 @@ import {
   ActionBar,
 } from "./Info";
 import { InfoModal } from "./Modals";
+import Settings from "./settings";
 
 export {
   Banner,
@@ -30,4 +31,5 @@ export {
   Characters,
   ActionBar,
   InfoModal,
+  Settings,
 };

@@ -131,3 +131,40 @@ export const selectAll = async (db) => {
   // RETURN PROMISE
   return promise;
 };
+
+export const update = async (db, data) => {
+  // Update the episode data
+  const query = `UPDATE anime SET watched = ?, watchedAt = CURRENT_TIMESTAMP WHERE id = ?`;
+
+  // Execute query
+  return await db.transaction((tx) => {
+    return tx.executeSql(query, [Boolean(data.watched), String(data.id)]);
+  });
+};
+
+export const deleteData = async (db, id) => {
+  // Delete the episode data
+  const query = `DELETE FROM anime WHERE id = ?`;
+
+  // Execute query
+  return await db.transaction((tx) => {
+    return tx.executeSql(query, [id]);
+  });
+};
+
+export const deleteAllFromSameAnime = async (db, animeId) => {
+  // Delete the episode data
+  const query = `DELETE FROM anime WHERE animeId = ?`;
+
+  // Execute query
+  return await db.transaction((tx) => {
+    return (
+      tx.executeSql(query, [animeId], (_txObj, _resultSet) => {
+        console.log("Deleted all from same anime");
+      }),
+      (_txObj, error) => {
+        console.log("Error", error);
+      }
+    );
+  });
+};

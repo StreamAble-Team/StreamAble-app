@@ -35,7 +35,11 @@ const BannerItem = (props) => {
             <BannerMetaItem>{item.status.toUpperCase()}</BannerMetaItem>
             <BannerMetaItem>{item.type.toUpperCase()}</BannerMetaItem>
           </BannerMeta>
-          <BannerTitle numberOfLines={1}>{item.title.romaji}</BannerTitle>
+          <BannerTitle numberOfLines={1}>
+            {item?.title?.english ||
+              item?.title?.userPreferred ||
+              item?.title?.romaji}
+          </BannerTitle>
         </BannerContent>
       </BannerImage>
     </BannerContainer>

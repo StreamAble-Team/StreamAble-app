@@ -14,7 +14,7 @@ const NavBar = ({ currentRoute }) => {
     navigation.navigate(stackName);
   };
 
-  if (currentRoute === "Player") return null;
+  if (currentRoute === "Player" || currentRoute === "Settings") return null;
   return (
     <NavBarContainer>
       <NavBarWrapper>
@@ -30,7 +30,7 @@ const NavBar = ({ currentRoute }) => {
             isFocused={currentRoute === "Home" ? true : false}
           />
         </NavBarIconItem>
-        <NavBarIconItem>
+        <NavBarIconItem onPress={() => handleStackChange("Settings")}>
           <NavBarIcon
             name="list-ul"
             isFocused={currentRoute === "List" ? true : false}

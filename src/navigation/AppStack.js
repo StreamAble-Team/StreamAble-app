@@ -4,7 +4,13 @@ import {
   useNavigationContainerRef,
 } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import { HomeScreen, SearchScreen, InfoScreen, PlayerScreen } from "../screens";
+import {
+  HomeScreen,
+  SearchScreen,
+  InfoScreen,
+  PlayerScreen,
+  SettingsScreen,
+} from "../screens";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
@@ -53,6 +59,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Info" component={InfoScreen} />
+        <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Player" component={PlayerScreen} />
       </Stack.Navigator>
       <NavBar

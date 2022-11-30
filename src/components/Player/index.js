@@ -37,9 +37,9 @@ const Player = (props) => {
     const find = select.find((item) => item.id === id) || props;
 
     // Check if watched is greater than 85%
-    if (watched > 85 && find?.watched !== 1) {
-      console.log("updating watched");
+    if (watched > 85 && find?.watched !== 1 && watched !== true) {
       // Update the watched status to true
+      setWatched(true);
       await insertEpisode(db, {
         id,
         title,
@@ -49,7 +49,6 @@ const Player = (props) => {
         nextEpisodeId,
         watched: true,
       });
-      setWatched(true);
     }
   };
 

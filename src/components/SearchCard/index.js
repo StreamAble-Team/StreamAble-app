@@ -41,7 +41,9 @@ const SearchCard = (props) => {
         </SearchCardMeta>
 
         <SearchCardTitle numberOfLines={1}>
-          {props.title.romaji}
+          {props?.title?.english ||
+            props?.title?.userPreferred ||
+            props?.title?.romaji}
         </SearchCardTitle>
       </SearchCardInfo>
     </SearchCardContainer>

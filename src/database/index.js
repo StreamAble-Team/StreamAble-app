@@ -9,6 +9,9 @@ import {
   select as selectEpisode,
   selectAllWatched as selectAllWatchedEpisodes,
   selectAll as selectAllEpisodes,
+  update as updateEpisode,
+  deleteData as deleteEpisodeData,
+  deleteAllFromSameAnime as deleteAllEpisodesFromSameAnime,
 } from "./episode-data";
 
 // Export all the functions from this file
@@ -20,4 +23,7 @@ export {
   selectEpisode,
   selectAllEpisodes,
   selectAllWatchedEpisodes,
+  updateEpisode,
+  deleteEpisodeData,
+  deleteAllEpisodesFromSameAnime,
 };

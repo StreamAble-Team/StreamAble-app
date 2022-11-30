@@ -1,5 +1,5 @@
 import { ScrollView } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { TestTrendingArray } from "../../utils/testData";
 import { Container, Title } from "../Container.styles";
 import WatchingCard from "../../components/WatchingCard";
@@ -10,9 +10,10 @@ import {
   selectEpisode,
 } from "../../database";
 import { groupBy } from "../../utils/utils";
+import { useFocusEffect } from "@react-navigation/native";
 
 const ContinueWatching = () => {
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
 
   const getContinueWatching = async () => {
     const db = await openEpisodeDatabase();
@@ -29,14 +30,13 @@ const ContinueWatching = () => {
     setData(highest);
   };
 
-  useEffect(() => {
-    getContinueWatching();
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      getContinueWatching();
+    }, [data])
+  );
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
+  if (!data || data.length === 0) return null;
   return (
     <Container>
       <Title>Continue Watching</Title>

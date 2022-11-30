@@ -29,8 +29,8 @@ const Card = (props) => {
     <CardContainer index={props.index} onPress={handlePress}>
       <CardBackground source={{ uri: image }}>
         <CardContent>
-          <CardTitle numberOfLines={1}>
-            {title_userPreferred || title_romaji || title_english}
+          <CardTitle numberOfLines={2}>
+            {title_english || title_userPreferred || title_romaji}
           </CardTitle>
         </CardContent>
       </CardBackground>
