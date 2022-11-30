@@ -1,7 +1,8 @@
-// Import OpenDatabase function
 import { getDBConnection } from "./db";
 
-// Import the functions from the episode-data.js file
+/*
+ * EPISODES
+ */
 import {
   openDatabase as openEpisodeDatabase,
   createTable as createEpisodeTable,
@@ -14,9 +15,26 @@ import {
   deleteAllFromSameAnime as deleteAllEpisodesFromSameAnime,
 } from "./episode-data";
 
+/*
+ * COLLECTIONS
+ */
+import {
+  openDatabase as openCollectionsDatabase,
+  createTable as createCollectionTable,
+  insert as insertCollection,
+  select as selectCollection,
+  update as updateCollection,
+  deleteData as deleteCollectionData,
+  createInsertData as createInsertCollectionData,
+} from "./collections";
+
 // Export all the functions from this file
 export {
   getDBConnection,
+
+  /*
+   * EPISODES
+   */
   openEpisodeDatabase,
   createEpisodeTable,
   insertEpisode,
@@ -26,4 +44,15 @@ export {
   updateEpisode,
   deleteEpisodeData,
   deleteAllEpisodesFromSameAnime,
+
+  /*
+   * COLLECTIONS
+   */
+  openCollectionsDatabase,
+  createCollectionTable,
+  insertCollection,
+  selectCollection,
+  updateCollection,
+  deleteCollectionData,
+  createInsertCollectionData,
 };

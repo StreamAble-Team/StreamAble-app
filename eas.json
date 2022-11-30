@@ -3,7 +3,8 @@
     "version": ">= 2.7.1"
   },
   "build": {
-    "preview": {
+    "apk": {
+      "autoIncrement": true,
       "android": {
         "buildType": "apk"
       }

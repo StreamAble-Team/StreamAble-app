@@ -1,7 +1,7 @@
 import { getDBConnection } from "./db";
 
 export const openDatabase = async () => {
-  return await getDBConnection("episode-data");
+  return await getDBConnection();
 };
 
 export const createTable = async (db) => {
@@ -20,7 +20,7 @@ export const createTable = async (db) => {
   // });
 
   // create table if not exists
-  const query = `CREATE TABLE IF NOT EXISTS anime (
+  const query = `CREATE TABLE IF NOT EXISTS episodes (
     id TEXT PRIMARY KEY NOT NULL,
     title TEXT NOT NULL,
     animeId INTEGER NOT NULL,
@@ -44,7 +44,7 @@ export const createTable = async (db) => {
 
 export const insert = async (db, data) => {
   // Update the episode data
-  const query = `INSERT INTO anime (id, title, animeId, image, episode, nextEpisodeId, watched) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO episodes (id, title, animeId, image, episode, nextEpisodeId, watched) VALUES (?, ?, ?, ?, ?, ?, ?)`;
 
   // Execute query
   return await db.transaction((tx) => {
@@ -62,7 +62,7 @@ export const insert = async (db, data) => {
 
 export const select = async (db, animeId) => {
   //SELECT ALL DATA AND RETURN IT AS AN PROMISE
-  const query = `SELECT * FROM anime WHERE animeId = ? ORDER BY episode DESC`;
+  const query = `SELECT * FROM episodes WHERE animeId = ? ORDER BY episode DESC`;
 
   // CREATE PROMISE
   const promise = new Promise((resolve, reject) => {
@@ -86,7 +86,7 @@ export const select = async (db, animeId) => {
 
 export const selectAllWatched = async (db, animeId) => {
   //SELECT ALL DATA AND RETURN IT AS AN PROMISE
-  const query = `SELECT * FROM anime WHERE animeId = ? AND watched = 1`;
+  const query = `SELECT * FROM episodes WHERE animeId = ? AND watched = 1`;
 
   // CREATE PROMISE
   const promise = new Promise((resolve, reject) => {
@@ -110,7 +110,7 @@ export const selectAllWatched = async (db, animeId) => {
 
 export const selectAll = async (db) => {
   //SELECT ALL DATA AND RETURN IT AS AN PROMISE
-  const query = `SELECT * FROM anime WHERE watched = 1`;
+  const query = `SELECT * FROM episodes WHERE watched = 1`;
 
   // CREATE PROMISE
   const promise = new Promise((resolve, reject) => {
@@ -134,7 +134,7 @@ export const selectAll = async (db) => {
 
 export const update = async (db, data) => {
   // Update the episode data
-  const query = `UPDATE anime SET watched = ?, watchedAt = CURRENT_TIMESTAMP WHERE id = ?`;
+  const query = `UPDATE episodes SET watched = ?, watchedAt = CURRENT_TIMESTAMP WHERE id = ?`;
 
   // Execute query
   return await db.transaction((tx) => {
@@ -144,7 +144,7 @@ export const update = async (db, data) => {
 
 export const deleteData = async (db, id) => {
   // Delete the episode data
-  const query = `DELETE FROM anime WHERE id = ?`;
+  const query = `DELETE FROM episodes WHERE id = ?`;
 
   // Execute query
   return await db.transaction((tx) => {
@@ -154,7 +154,7 @@ export const deleteData = async (db, id) => {
 
 export const deleteAllFromSameAnime = async (db, animeId) => {
   // Delete the episode data
-  const query = `DELETE FROM anime WHERE animeId = ?`;
+  const query = `DELETE FROM episodes WHERE animeId = ?`;
 
   // Execute query
   return await db.transaction((tx) => {

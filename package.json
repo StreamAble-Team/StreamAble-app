@@ -6,7 +6,7 @@
     "start": "expo start",
     "startDev": "expo start --dev-client",
     "android": "expo run:android",
-    "build": "eas build",
+    "build": "eas build -p android --profile apk",
     "ios": "expo run:ios",
     "web": "expo start --web"
   },

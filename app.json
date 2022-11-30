@@ -3,7 +3,6 @@
     "name": "StreamAble",
     "slug": "StreamAble",
     "version": "0.0.5",
-    // "orientation": "portrait",
     "plugins": [
       [
         "expo-screen-orientation",
@@ -22,7 +21,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.tdanks2000.StreamAble"
@@ -32,7 +33,8 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#0f0f0f"
       },
-      "package": "com.tdanks2000.StreamAble"
+      "package": "com.tdanks2000.StreamAble",
+      "versionCode": 2
     },
     "web": {
       "favicon": "./assets/favicon.png"
