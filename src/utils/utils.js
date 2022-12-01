@@ -15,4 +15,8 @@ const groupBy = (array, key) => {
   }, {});
 };
 
-export { textSanitizer, groupBy };
+const addZero = (num) => {
+  return num < 10 ? `0${num}` : num;
+};
+
+export { textSanitizer, groupBy, addZero };

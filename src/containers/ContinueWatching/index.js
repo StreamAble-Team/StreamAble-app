@@ -1,13 +1,12 @@
 import { ScrollView } from "react-native";
-import React, { useCallback, useEffect, useState } from "react";
-import { TestTrendingArray } from "../../utils/testData";
+import React, { useCallback, useState } from "react";
+
 import { Container, Title } from "../Container.styles";
 import WatchingCard from "../../components/WatchingCard";
 import {
+  createEpisodeTable,
   openEpisodeDatabase,
   selectAllEpisodes,
-  selectAllWatchedEpisodes,
-  selectEpisode,
 } from "../../database";
 import { groupBy } from "../../utils/utils";
 import { useFocusEffect } from "@react-navigation/native";
@@ -17,6 +16,7 @@ const ContinueWatching = () => {
 
   const getContinueWatching = async () => {
     const db = await openEpisodeDatabase();
+    await createEpisodeTable(db);
     const select = await selectAllEpisodes(db);
     const grouped = groupBy(select, "animeId");
 

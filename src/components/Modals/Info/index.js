@@ -3,6 +3,7 @@ import React from "react";
 import { Container, Title, Wrapper, WrapperInner } from "./Info.styles";
 import Actions from "./Actions";
 import RemoveFromList from "./RemoveFromList";
+import WatchedEpisodes from "./WatchedEpisodes";
 
 const InfoModal = ({ visible, setShowModal, data }) => {
   return (
@@ -12,6 +13,7 @@ const InfoModal = ({ visible, setShowModal, data }) => {
           <WrapperInner>
             <Title numberOfLines={2}>{data.title.romaji}</Title>
             <Actions data={data} />
+            <WatchedEpisodes data={data} />
           </WrapperInner>
           <RemoveFromList />
         </Wrapper>

@@ -13,7 +13,7 @@ export const Container = styled.View`
 
 export const Wrapper = styled.TouchableOpacity`
   padding: 10px 25px;
-  background: ${({ theme }) => rgba(theme.base.mainColor, 0.7)};
+  background: ${({ theme }) => rgba(theme.base.mainColor, 0.8)};
   border-radius: 10px;
   display: flex;
   flex-direction: row;

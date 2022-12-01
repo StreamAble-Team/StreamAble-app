@@ -1,3 +1,4 @@
+import { rgba } from "polished";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -19,7 +20,8 @@ export const Action = styled.TouchableOpacity`
   // border: 1px solid ${({ theme }) => theme.text.secondary};
   margin-right: 15px;
   margin-bottom: 15px;
-  background: rgba(255, 255, 255, 0.1);
+  background: ${({ theme, active }) =>
+    !active ? "rgba(255, 255, 255, 0.1)" : rgba(theme.base.mainColor, 0.8)};
 `;
 
 export const ActionText = styled.Text`
