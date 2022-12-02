@@ -32,8 +32,8 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 - [x] Responsive
 - [x] Custom video player
 - [x] Dub support
+- [X] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Sync with anilist, mal etc etc
-- [ ] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Picture in picture
 - [ ] Download Episodes
 - [ ] Manga support
