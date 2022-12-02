@@ -79,7 +79,7 @@ export const InfoTopPoster = styled.Image`
 `;
 
 export const InfoTopWrapper = styled.View`
-  margin-top: 100px;
+  margin-top: 53px;
   padding: 0 15px;
   width: 70%;
 `;
@@ -89,6 +89,7 @@ export const InfoTopTitle = styled.Text`
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
   font-size: 20px;
+  margin-bottom: 5px;
 `;
 
 export const InfoTopEpisode = styled.Text`
@@ -96,7 +97,7 @@ export const InfoTopEpisode = styled.Text`
   color: ${({ theme }) => theme.text.offWhite};
   text-transform: uppercase;
   font-size: 13px;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
 `;
 
 export const InfoTopButtons = styled.View`

@@ -23,7 +23,7 @@ const Info = (props) => {
         <MetaInformation {...props} />
         <Description desc={props.description} />
         <PillMenu setCurrent={setCurrent} current={current} />
-        <Switcher data={props} current={current} />
+        <Switcher {...props} data={props} current={current} />
       </Container>
     </View>
   );

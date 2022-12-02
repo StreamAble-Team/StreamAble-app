@@ -29,33 +29,40 @@ import {
 } from "../../../database";
 
 const InfoTop = (props) => {
-  const { setDub, dub, id, totalEpisodes, setShowModal } = props;
+  const {
+    setDub,
+    dub,
+    id,
+    totalEpisodes,
+    setShowEpisodeModal,
+    setQualities,
+    setShowQualityModal,
+    setDataToSend,
+  } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
 
   const gotoPlayer = async () => {
     const whatEpisodeToGet = !nextEpisode ? props.episodes[0] : nextEpisode;
     const { headers, sources } = await api.getSource(whatEpisodeToGet.id);
-    const source = sources.find(
-      (source) =>
-        source.quality.includes("1080") ||
-        source.quality.includes("720") ||
-        source.quality.includes("default")
-    );
-    navigation.navigate("Player", {
+
+    setQualities(sources);
+
+    setDataToSend({
       ...whatEpisodeToGet,
       animeId: id,
       totalEpisodes: totalEpisodes,
       id: whatEpisodeToGet.id,
       title: whatEpisodeToGet.title,
       episode: whatEpisodeToGet.number,
-      source: source.url,
       referer: headers.Referer,
       nextEpisodeId: `${whatEpisodeToGet.id
         .split("-")
         .splice(0, 3)
         .join("-")}-${whatEpisodeToGet.number + 1}`,
     });
+
+    return setShowQualityModal(true);
   };
 
   const getHighestWatched = async () => {
@@ -98,7 +105,9 @@ const InfoTop = (props) => {
         </InfoTopImage>
       </InfoTopImageContainer>
       <InfoTopPosterContainer>
-        <InfoTopPosterImageWrapper onLongPress={() => setShowModal(true)}>
+        <InfoTopPosterImageWrapper
+          onLongPress={() => setShowEpisodeModal(true)}
+        >
           {({ pressed }) => (
             <InfoTopPoster source={{ uri: props.image }} pressed={pressed} />
           )}

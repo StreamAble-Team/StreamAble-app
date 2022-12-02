@@ -21,30 +21,28 @@ import {
 } from "../../../../database";
 
 const Episode = (props) => {
+  const { setQualities, setDataToSend, setShowQualityModal } = props;
   const navigation = useNavigation();
   const [watched, setWatched] = useState(false);
 
   const handlePress = async () => {
     const { headers, sources } = await api.getSource(props.id);
-    const source = sources.find(
-      (source) =>
-        source.quality.includes("1080") ||
-        source.quality.includes("720") ||
-        source.quality.includes("default")
-    );
 
-    navigation.navigate("Player", {
+    setQualities(sources);
+
+    setDataToSend({
       ...props,
       id: props.id,
       title: props.title,
       episode: props.number,
-      source: source.url,
       referer: headers.Referer,
       nextEpisodeId:
         props.number !== props.totalEpisodes
           ? `${props.id.split("-").splice(0, 3).join("-")}-${props.number + 1}`
           : props.id,
     });
+
+    return setShowQualityModal(true);
   };
 
   const checkIfWatched = async () => {

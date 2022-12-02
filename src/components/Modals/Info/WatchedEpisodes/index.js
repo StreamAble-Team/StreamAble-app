@@ -20,6 +20,7 @@ import {
   Wrapper,
 } from "./styles";
 import { addZero } from "../../../../utils/utils";
+import NextEpisodeInfo from "../NextEpisodeInfo";
 
 const WatchedEpisodes = ({ data }) => {
   const [watchedEpisodes, setWatchedEpisodes] = useState(null);
@@ -62,13 +63,7 @@ const WatchedEpisodes = ({ data }) => {
         </WatchedAmount>
         <WatchedAmount>{addZero(data?.totalEpisodes) || "??"}</WatchedAmount>
       </WatchedContainer>
-      <InfoContainer>
-        <Title>Next episode info</Title>
-        <NextEpisodeTitleContainer>
-          <NextEpisodeTitle>{currentEpisode?.title}</NextEpisodeTitle>
-        </NextEpisodeTitleContainer>
-        <Description>{currentEpisode?.description}</Description>
-      </InfoContainer>
+      <NextEpisodeInfo currentEpisode={currentEpisode} />
     </Wrapper>
   );
 };

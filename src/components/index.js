@@ -13,7 +13,7 @@ import {
   Characters,
   ActionBar,
 } from "./Info";
-import { InfoModal } from "./Modals";
+import { InfoModal, SelectQualitiesModal } from "./Modals";
 import Settings from "./settings";
 
 export {
@@ -31,5 +31,6 @@ export {
   Characters,
   ActionBar,
   InfoModal,
+  SelectQualitiesModal,
   Settings,
 };

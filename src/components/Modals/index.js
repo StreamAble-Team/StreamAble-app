@@ -1,3 +1,4 @@
 import InfoModal from "./Info";
+import SelectQualitiesModal from "./SelectQualities";
 
-export { InfoModal };
+export { InfoModal, SelectQualitiesModal };

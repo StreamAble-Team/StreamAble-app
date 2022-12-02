@@ -2,12 +2,12 @@ import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/FontAwesome5";
 import { rgba } from "polished";
 
-export const Container = styled.View`
+export const Container = styled.TouchableOpacity`
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 10px 25px;
+  padding: 15px 25px;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -25,8 +25,8 @@ export const RemoveIcon = styled(Icon)`
 `;
 
 export const RemoveText = styled.Text`
-  font-size: 15px;
-  font-family: ${({ theme }) => theme.text.font.primary};
+  font-size: 17px;
+  font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
   text-transform: uppercase;
 `;

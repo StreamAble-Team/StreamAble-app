@@ -5,7 +5,13 @@ import Episode from "./Episode";
 import { Text } from "./Episodes.styles";
 
 const Episodes = (props) => {
-  const { episodes, totalEpisodes } = props;
+  const {
+    episodes,
+    totalEpisodes,
+    setQualities,
+    setShowQualityModal,
+    setDataToSend,
+  } = props;
   const [selectedPage, setSelectedPage] = useState(1);
 
   const pageSize = 50;
@@ -30,6 +36,9 @@ const Episodes = (props) => {
               {...episode}
               animeId={props.id}
               totalEpisodes={totalEpisodes}
+              setQualities={setQualities}
+              setShowQualityModal={setShowQualityModal}
+              setDataToSend={setDataToSend}
             />
           ))}
       </Wrapper>

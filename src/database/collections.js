@@ -90,7 +90,7 @@ export const createInsertData = (data) => {
     dropped: !data?.dropped ? false : true,
     planToWatch: !data?.planToWatch ? false : true,
     score: !data?.score ? 0 : data.score,
-    currentEpisode: !data?.progress ? 0 : data.progress,
+    currentEpisode: !data?.progress ? 1 : data.progress,
     totalEpisodes: data.totalEpisodes,
     nextEpisodeId: data?.nextAiringEpisode?.id || data?.nextEpisodeId,
   };
@@ -131,16 +131,16 @@ export const update = async (db, data) => {
   return promise;
 };
 
-export const select = async (db) => {
+export const select = async (db, animeId) => {
   //SELECT ALL DATA AND RETURN IT AS AN PROMISE
-  const query = `SELECT * FROM anime ORDER BY title ASC`;
+  const query = `SELECT * FROM anime WHERE id = ? ORDER BY title ASC `;
 
   // CREATE PROMISE
   const promise = new Promise((resolve, reject) => {
     db.transaction((tx) => {
       tx.executeSql(
         query,
-        [],
+        [animeId],
         (txObj, { rows: { _array } }) => {
           resolve(_array);
         },

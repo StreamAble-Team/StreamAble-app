@@ -3,13 +3,18 @@ import { useFocusEffect } from "@react-navigation/native";
 import React, { useCallback, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useQuery } from "react-query";
-import { InfoModal } from "../../components";
+import { InfoModal, SelectQualitiesModal } from "../../components";
 import InfoSkeleton from "../../components/Skeletons/Info/InfoSkeleton";
 import { Info } from "../../containers";
 import { api } from "../../utils";
 
 const InfoScreen = ({ route }) => {
-  const [showModal, setShowModal] = useState(false);
+  const [showEpisodeModal, setShowEpisodeModal] = useState(false);
+
+  const [showQualityModal, setShowQualityModal] = useState(false);
+  const [qualities, setQualities] = useState([]);
+  const [dataToSend, setDataToSend] = useState([]);
+
   const [dub, setDub] = useState(null);
   const { id } = route.params;
 
@@ -40,8 +45,27 @@ const InfoScreen = ({ route }) => {
   if (!data) return <InfoSkeleton />;
   return (
     <SafeAreaView>
-      <Info {...data} dub={dub} setDub={setDub} setShowModal={setShowModal} />
-      <InfoModal visible={showModal} data={data} setShowModal={setShowModal} />
+      <Info
+        {...data}
+        dub={dub}
+        setDub={setDub}
+        setShowEpisodeModal={setShowEpisodeModal}
+        setShowQualityModal={setShowQualityModal}
+        setQualities={setQualities}
+        setDataToSend={setDataToSend}
+      />
+      <InfoModal
+        visible={showEpisodeModal}
+        data={data}
+        setShowModal={setShowEpisodeModal}
+      />
+      <SelectQualitiesModal
+        visible={showQualityModal}
+        qualities={qualities}
+        data={data}
+        setShowModal={setShowQualityModal}
+        dataToSend={dataToSend}
+      />
     </SafeAreaView>
   );
 };
