@@ -23,6 +23,7 @@
     "expo-av": "~13.0.2",
     "expo-font": "~11.0.1",
     "expo-keep-awake": "~11.0.1",
+    "expo-navigation-bar": "~2.0.1",
     "expo-screen-orientation": "~5.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-sqlite": "~11.0.0",

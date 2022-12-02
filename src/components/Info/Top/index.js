@@ -15,17 +15,14 @@ import {
   InfoTopPosterImageWrapper,
   InfoTopTitle,
   InfoTopWrapper,
-  MetaContainer,
-  MetaItem,
 } from "./InfoTop.styles";
 import { api } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import SubOrDub from "./SubOrDub";
 import {
   createEpisodeTable,
   openEpisodeDatabase,
-  selectEpisode,
+  selectAllWatchedEpisodes,
 } from "../../../database";
 
 const InfoTop = (props) => {
@@ -71,15 +68,19 @@ const InfoTop = (props) => {
       const db = await openEpisodeDatabase();
       await createEpisodeTable(db, id);
 
-      const select = await selectEpisode(db, id);
+      const select = await selectAllWatchedEpisodes(db, id);
 
       const highestWatched = select
         .filter((item) => item.watched)
-        .sort((a, b) => b.number - a.number)[0];
+        .sort((a, b) => b.number < a.number)[0];
 
       // find the highest watched episode in props.episodes
       const find = props.episodes.find(
-        (item) => item.id === highestWatched.nextEpisodeId
+        (item) =>
+          item.id ===
+          `${highestWatched.id.split("-").splice(0, 4).join("-")}-${
+            highestWatched.episode + 1
+          }`
       );
 
       setNextEpisode(find);

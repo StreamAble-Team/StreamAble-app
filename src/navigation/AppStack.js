@@ -14,6 +14,8 @@ import {
 import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
+import * as NavigationBar from "expo-navigation-bar";
+
 const Stack = createNativeStackNavigator();
 
 const AppStack = ({ setHiddenStatusBar }) => {
@@ -28,6 +30,9 @@ const AppStack = ({ setHiddenStatusBar }) => {
       ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
       setHiddenStatusBar(false);
     }
+
+    NavigationBar.setVisibilityAsync("hidden");
+    NavigationBar.setBehaviorAsync("overlay-swipe");
   }, [routeNameRef]);
 
   return (

@@ -4,10 +4,15 @@ import { ResizeMode } from "expo-av";
 import { VideoPlayer } from "./styles";
 import Controls from "./Controls";
 import {
+  createCollectionTable,
   createEpisodeTable,
+  createInsertCollectionData,
+  insertCollection,
   insertEpisode,
   openEpisodeDatabase,
+  selectCollection,
   selectEpisode,
+  updateCollection,
 } from "../../database";
 
 const USER_AGENT =
@@ -29,9 +34,26 @@ const Player = (props) => {
     //Get data from db
     const db = await openEpisodeDatabase();
     await createEpisodeTable(db, animeId);
+    await createCollectionTable(db);
 
     //select all data
     const select = await selectEpisode(db, animeId);
+    const selectCol = await selectCollection(
+      db,
+      id.split("-").includes("dub") === "sub" ? animeId : `${animeId}-dub`
+    );
+
+    const dataForCol = createInsertCollectionData({
+      ...selectCol[0],
+      currentEpisode: episode,
+      nextEpisodeId,
+      id: id.split("-").includes("dub") === "sub" ? animeId : `${animeId}-dub`,
+      dropped: selectCol[0]?.dropped || false,
+      completed: selectCol[0]?.completed || false,
+      onHold: selectCol[0]?.onHold || false,
+      planToWatch: selectCol[0]?.planToWatch || false,
+      watching: selectCol[0]?.watching || true,
+    });
 
     // Find the episode that was just watched
     const find = select.find((item) => item.id === id) || props;
@@ -49,6 +71,11 @@ const Player = (props) => {
         nextEpisodeId,
         watched: true,
       });
+      if (selectCol.length < 1) {
+        await insertCollection(db, dataForCol);
+      } else if (selectCol.length > 0) {
+        await updateCollection(db, dataForCol);
+      }
     }
   };
 

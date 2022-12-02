@@ -16,7 +16,7 @@ export const WrapperWithBg = styled.View`
   width: 100%;
   height: 110px;
   padding: 25px;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.35);
   z-index: 11;
 `;
 
