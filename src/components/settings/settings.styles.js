@@ -11,15 +11,15 @@ export const Wrapper = styled.View`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 10px 0;
+  padding: 15px 0;
 `;
 
 export const SettingsCard = styled.TouchableOpacity`
   width: 100%;
-  padding: 15px 25px;
+  padding: 5px 0;
   margin-bottom: 25px;
   border-radius: 8px;
-  background-color: ${({ theme }) => rgba(theme.base.mainColor, 0.8)};
+  // background-color: ${({ theme }) => rgba(theme.base.mainColor, 0.8)};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -29,7 +29,7 @@ export const SettingsCard = styled.TouchableOpacity`
 export const SettingsCardTitle = styled.Text`
   font-size: 15px;
   font-family: ${({ theme }) => theme.text.font.secondary}
-  color: ${({ theme }) => theme.text.primary};
+  color: ${({ theme }) => theme.base.mainColor};
   text-transform: uppercase;
 `;
 

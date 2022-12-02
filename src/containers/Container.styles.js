@@ -18,12 +18,12 @@ export const Title = styled.Text`
 
 export const Heading = styled.Text`
   width: 100%;
-  padding-bottom: 5px;
-  border-bottom-width: 1.5px;
+  padding-bottom: 20px;
+  border-bottom-width: 2px;
   border-bottom-color: ${({ theme }) => theme.text.primary};
   font-size: 23px;
   font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   text-transform: uppercase;
 `;

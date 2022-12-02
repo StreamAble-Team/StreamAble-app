@@ -7,6 +7,7 @@ import {
   SettingsCardIcon,
   SettingsCardTitle,
 } from "./settings.styles";
+import Disclaimer from "./disclaimer";
 
 const Settings = () => {
   return (
@@ -32,6 +33,7 @@ const Settings = () => {
           <SettingsCardIcon />
         </SettingsCard>
       </Wrapper>
+      <Disclaimer />
     </Container>
   );
 };

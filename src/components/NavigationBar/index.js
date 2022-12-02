@@ -32,8 +32,8 @@ const NavBar = ({ currentRoute }) => {
         </NavBarIconItem>
         <NavBarIconItem onPress={() => handleStackChange("Settings")}>
           <NavBarIcon
-            name="list-ul"
-            isFocused={currentRoute === "List" ? true : false}
+            name="cog"
+            isFocused={currentRoute === "Settings" ? true : false}
           />
         </NavBarIconItem>
       </NavBarWrapper>
