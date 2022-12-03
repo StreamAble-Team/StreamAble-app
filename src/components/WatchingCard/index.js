@@ -42,15 +42,24 @@ const WatchingCard = (props) => {
           <DeleteIcon name={"times"} />
         </Delete>
         <WatchingCardContent>
-          <WatchingCardTitle numberOfLines={1}>{props.title}</WatchingCardTitle>
+          {/* <WatchingCardTitle numberOfLines={1}>{props.title}</WatchingCardTitle> */}
           <WatchingCardEpisode numberOfLines={1}>
-            Episode {props.episode + 1}
+            Episode{" "}
+            {props.watched
+              ? props.nextEpisodeId.split("-").pop()
+              : props.episode}
           </WatchingCardEpisode>
         </WatchingCardContent>
       </WatchingCardBackground>
-      <WatchingBarHolder>
-        <WatchingBar />
-      </WatchingBarHolder>
+      {props?.watched ? null : (
+        <WatchingBarHolder>
+          <WatchingBar
+            watchedAmount={
+              !props?.watched ? props?.watchedAmount.toFixed(2) : 0
+            }
+          />
+        </WatchingBarHolder>
+      )}
     </WatchingCardContainer>
   );
 };

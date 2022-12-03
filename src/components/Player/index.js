@@ -1,5 +1,5 @@
 import { View } from "react-native";
-import React, { useRef, useState } from "react";
+import React, { useCallback, useRef, useState } from "react";
 import { ResizeMode } from "expo-av";
 import { VideoPlayer } from "./styles";
 import Controls from "./Controls";
@@ -14,6 +14,7 @@ import {
   selectEpisode,
   updateCollection,
 } from "../../database";
+import { useFocusEffect } from "@react-navigation/native";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
@@ -79,6 +80,28 @@ const Player = (props) => {
     }
   };
 
+  const continueWatching = async () => {
+    const db = await openEpisodeDatabase();
+    await createEpisodeTable(db, animeId);
+    const select = await selectEpisode(db, animeId);
+    const find = (await select.find((item) => item.id === id)) || undefined;
+
+    // console.log(
+    //   find.watchedAmount * 100 - status.positionMillis,
+    //   status.durationMillis
+    // );
+
+    if (find?.watchedAmount) {
+      videoRef.current.setPositionAsync(find.watchedAmount.toFixed(3) * 15250);
+    }
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      continueWatching();
+    }, [])
+  );
+
   return (
     <View>
       <VideoPlayer
@@ -98,6 +121,9 @@ const Player = (props) => {
         onError={(err) => console.log(err)}
       />
       <Controls
+        data={props}
+        id={id}
+        animeId={animeId}
         videoRef={videoRef}
         status={status}
         playing={playing}
@@ -108,6 +134,18 @@ const Player = (props) => {
       />
     </View>
   );
+};
+
+Number.prototype.countDecimals = function () {
+  if (Math.floor(this.valueOf()) === this.valueOf()) return 0;
+
+  var str = this.toString();
+  if (str.indexOf(".") !== -1 && str.indexOf("-") !== -1) {
+    return str.split("-")[1] || 0;
+  } else if (str.indexOf(".") !== -1) {
+    return str.split(".")[1].length || 0;
+  }
+  return str.split("-")[1] || 0;
 };
 
 export default Player;

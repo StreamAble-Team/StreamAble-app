@@ -56,7 +56,7 @@ export const WatchingBar = styled.View`
   position: absolute;
   bottom: 0;
   left: 0;
-  width: 15%;
+  width: ${({ watchedAmount }) => watchedAmount}%;
   height: 3px;
   background-color: ${({ theme }) => theme.base.mainColor};
 `;

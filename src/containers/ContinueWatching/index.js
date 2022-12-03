@@ -33,7 +33,7 @@ const ContinueWatching = () => {
   useFocusEffect(
     useCallback(() => {
       getContinueWatching();
-    }, [data])
+    }, [])
   );
 
   if (!data || data.length === 0) return null;

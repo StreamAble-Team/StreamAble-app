@@ -17,6 +17,7 @@ import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import {
   createEpisodeTable,
   openEpisodeDatabase,
+  selectAllEpisodes,
   selectAllWatchedEpisodes,
 } from "../../../../database";
 
@@ -24,6 +25,7 @@ const Episode = (props) => {
   const { setQualities, setDataToSend, setShowQualityModal } = props;
   const navigation = useNavigation();
   const [watched, setWatched] = useState(false);
+  const [watchedAmount, setWatchedAmount] = useState(0);
 
   const handlePress = async () => {
     const { headers, sources } = await api.getSource(props.id);
@@ -50,9 +52,11 @@ const Episode = (props) => {
     const db = await openEpisodeDatabase();
     await createEpisodeTable(db);
 
-    const select = await selectAllWatchedEpisodes(db, props.animeId);
+    const select = await selectAllEpisodes(db, props.animeId);
     const find = select.find((item) => item.id === props.id) || props;
-    setWatched(find?.watched);
+    setWatched(find?.watched === 1 ? true : false);
+    if (find?.watchedAmount) setWatchedAmount(find.watchedAmount);
+    else if (find?.watched === 1) setWatchedAmount(100);
   };
 
   useFocusEffect(
@@ -61,7 +65,6 @@ const Episode = (props) => {
     }, [props])
   );
 
-  const amount = Math.random() * 100;
   return (
     <Container onPress={handlePress}>
       <CardImage source={{ uri: props.image }}>
@@ -76,11 +79,9 @@ const Episode = (props) => {
             Episode {props.number}
           </EpisodeNumber>
         </CardContent>
-        {watched ? (
-          <WatchedContainer>
-            <WatchedAmount amount={100} />
-          </WatchedContainer>
-        ) : null}
+        <WatchedContainer>
+          <WatchedAmount amount={watchedAmount} />
+        </WatchedContainer>
       </CardImage>
     </Container>
   );

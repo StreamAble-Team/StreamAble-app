@@ -13,6 +13,7 @@ import {
   update as updateEpisode,
   deleteData as deleteEpisodeData,
   deleteAllFromSameAnime as deleteAllEpisodesFromSameAnime,
+  alterTable as alterEpisodeTable,
 } from "./episode-data";
 
 /*
@@ -44,7 +45,7 @@ export {
   updateEpisode,
   deleteEpisodeData,
   deleteAllEpisodesFromSameAnime,
-
+  alterEpisodeTable,
   /*
    * COLLECTIONS
    */

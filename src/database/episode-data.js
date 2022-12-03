@@ -8,7 +8,7 @@ export const createTable = async (db) => {
   // //Delete table
   // await db.transaction((tx) => {
   //   tx.executeSql(
-  //     `DROP TABLE IF EXISTS anime`,
+  //     `DROP TABLE IF EXISTS episodes`,
   //     [],
   //     (txObj, resultSet) => {
   //       console.log("Table deleted");
@@ -28,6 +28,7 @@ export const createTable = async (db) => {
     episode INTEGER NOT NULL,
     nextEpisodeId TEXT NOT NULL,
     watched BOOLEAN DEFAULT(FALSE),
+    watchedAmount FLOAT DEFAULT(0),
     watchedAt DATETIME DEFAULT CURRENT_TIMESTAMP
 );`;
 
@@ -42,9 +43,23 @@ export const createTable = async (db) => {
   }
 };
 
+export const alterTable = async (db) => {
+  //Alter table
+  const query = `ALTER TABLE episodes ADD COLUMN watchedAmount FLOAT;`;
+
+  //Execute query
+  try {
+    await db.transaction((tx) => {
+      tx.executeSql(query, []);
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const insert = async (db, data) => {
   // Update the episode data
-  const query = `INSERT INTO episodes (id, title, animeId, image, episode, nextEpisodeId, watched) VALUES (?, ?, ?, ?, ?, ?, ?)`;
+  const query = `INSERT INTO episodes (id, title, animeId, image, episode, nextEpisodeId, watched, watchedAmount) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
 
   // Execute query
   return await db.transaction((tx) => {
@@ -56,6 +71,7 @@ export const insert = async (db, data) => {
       parseInt(data.episode),
       String(data.nextEpisodeId),
       Boolean(data.watched),
+      parseFloat(data.watchedAmount),
     ]);
   });
 };
@@ -110,7 +126,7 @@ export const selectAllWatched = async (db, animeId) => {
 
 export const selectAll = async (db) => {
   //SELECT ALL DATA AND RETURN IT AS AN PROMISE
-  const query = `SELECT * FROM episodes WHERE watched = 1`;
+  const query = `SELECT * FROM episodes`;
 
   // CREATE PROMISE
   const promise = new Promise((resolve, reject) => {
@@ -134,11 +150,15 @@ export const selectAll = async (db) => {
 
 export const update = async (db, data) => {
   // Update the episode data
-  const query = `UPDATE episodes SET watched = ?, watchedAt = CURRENT_TIMESTAMP WHERE id = ?`;
+  const query = `UPDATE episodes SET watched = ?, watchedAmount = ?, watchedAt = CURRENT_TIMESTAMP WHERE id = ?`;
 
   // Execute query
   return await db.transaction((tx) => {
-    return tx.executeSql(query, [Boolean(data.watched), String(data.id)]);
+    return tx.executeSql(query, [
+      Boolean(data.watched),
+      parseFloat(data.watchedAmount),
+      String(data.id),
+    ]);
   });
 };
 
