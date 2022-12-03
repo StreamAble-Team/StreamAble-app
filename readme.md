@@ -16,6 +16,9 @@
         <img src="https://img.shields.io/badge/Download-App-blueviolet?style=for-the-badge"/>
     </a>
     <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
+    <a href="https://github.com/TDanks2000/StreamAble-app/releases">
+        <img src="https://img.shields.io/github/v/release/tdanks2000/streamable-app?color=blueviolet&include_prereleases&style=for-the-badge" />
+    </a>
   </p>
 </div>
 
