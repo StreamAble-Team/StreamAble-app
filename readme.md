@@ -1,6 +1,6 @@
 <div align="center">
 <a href="#">
-    <img src="./assets/icon.png"/>
+    <img src="./misc/images/logo.png"/ style="width: 550px" >
 </a>
 </div>
 
@@ -16,6 +16,9 @@
         <img src="https://img.shields.io/badge/Download-App-blueviolet?style=for-the-badge"/>
     </a>
     <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
+    <a href="https://github.com/TDanks2000/StreamAble-app/releases/latest">
+        <img src="https://img.shields.io/github/v/release/tdanks2000/streamable-app?color=blueviolet&include_prereleases&style=for-the-badge" />
+    </a>
   </p>
 </div>
 
@@ -32,8 +35,8 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 - [x] Responsive
 - [x] Custom video player
 - [x] Dub support
+- [X] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Sync with anilist, mal etc etc
-- [ ] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [ ] Picture in picture
 - [ ] Download Episodes
 - [ ] Manga support
