@@ -97,8 +97,10 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
     </a>
 </p>
 
-<strong>Thank you to aidan for being there when I need his help, be sure to check this legend out</strong>
+<strong>Thank you to aidan for being there when I need his help, be sure to check this legend out</strong
 <strong>Thank you to the consumet team and discord for making the amazing api and helping with the design</strong>
+
+<strong>And a big big big thank you to all that have downloaded the app so far, and gave feedback. You all warm my heart</strong>
 
 <br />
 
