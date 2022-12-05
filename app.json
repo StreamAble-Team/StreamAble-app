@@ -34,7 +34,7 @@
         "backgroundColor": "#0f0f0f"
       },
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 3
+      "versionCode": 7
     },
     "web": {
       "favicon": "./assets/favicon.png"

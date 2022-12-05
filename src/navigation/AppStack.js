@@ -15,6 +15,7 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
 import * as NavigationBar from "expo-navigation-bar";
+import linking from "./DeepLink";
 
 const Stack = createNativeStackNavigator();
 
@@ -41,6 +42,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
       onReady={() => {
         setRouteNameRef(navigationRef.getCurrentRoute().name);
       }}
+      linking={linking}
       onStateChange={async () => {
         const previousRouteName = routeNameRef.current;
         const currentRouteName = navigationRef.getCurrentRoute().name;
