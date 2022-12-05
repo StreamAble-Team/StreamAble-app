@@ -15,6 +15,7 @@ import {
 } from "./Info";
 import { InfoModal, SelectQualitiesModal } from "./Modals";
 import Settings from "./settings";
+import User from "./User";
 
 export {
   Banner,
@@ -33,4 +34,5 @@ export {
   InfoModal,
   SelectQualitiesModal,
   Settings,
+  User,
 };

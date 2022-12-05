@@ -3,6 +3,7 @@
     "name": "StreamAble",
     "slug": "StreamAble",
     "version": "0.0.6",
+    "scheme": "streamable",
     "plugins": [
       [
         "expo-screen-orientation",
@@ -34,7 +35,7 @@
         "backgroundColor": "#0f0f0f"
       },
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 7
+      "versionCode": 8
     },
     "web": {
       "favicon": "./assets/favicon.png"

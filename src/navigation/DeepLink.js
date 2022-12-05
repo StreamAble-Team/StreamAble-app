@@ -1,3 +1,7 @@
+import * as Linking from "expo-linking";
+
+const prefix = Linking.createURL("/app");
+
 const config = {
   screens: {
     Home: {
@@ -10,7 +14,7 @@ const config = {
 };
 
 const linking = {
-  prefixes: ["streamable://app"],
+  prefixes: [prefix],
   config,
 };
 

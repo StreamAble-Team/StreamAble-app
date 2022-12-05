@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 export const GoBack = styled.TouchableOpacity`
   width: 100%;
   padding: 10px 0;
-  margin-bottom: 25px;
+  margin: 25px 0;
   flex-direction: row;
   align-items: center;
 `;

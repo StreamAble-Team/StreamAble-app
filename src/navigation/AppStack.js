@@ -10,6 +10,7 @@ import {
   InfoScreen,
   PlayerScreen,
   SettingsScreen,
+  AuthScreen,
 } from "../screens";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
@@ -42,7 +43,6 @@ const AppStack = ({ setHiddenStatusBar }) => {
       onReady={() => {
         setRouteNameRef(navigationRef.getCurrentRoute().name);
       }}
-      linking={linking}
       onStateChange={async () => {
         const previousRouteName = routeNameRef.current;
         const currentRouteName = navigationRef.getCurrentRoute().name;
@@ -68,6 +68,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Player" component={PlayerScreen} />
+        <Stack.Screen name="Auth" component={AuthScreen} />
       </Stack.Navigator>
       <NavBar
         currentRoute={routeNameRef === undefined ? "loading" : routeNameRef}
