@@ -89,12 +89,16 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 ## Shoutouts 
 
 <p float="left">
-    <a href="https://github.com/aidanjuma">
-        <img src="https://avatars.githubusercontent.com/u/53954981?v=4" alt="aidan" style="width: 50px; border-radius: 50%">
+    <a href="https://github.com/aidanjuma" style="margin-right: 20px">
+        <img src="https://avatars.githubusercontent.com/u/53954981" alt="aidan" style="width: 50px; border-radius: 50%">
+    </a>
+    <a href="https://github.com/consumet/">
+        <img src="https://avatars.githubusercontent.com/u/105397082" alt="aidan" style="width: 50px; border-radius: 50%">
     </a>
 </p>
 
 <strong>Thank you to aidan for being there when I need his help, be sure to check this legend out</strong>
+<strong>Thank you to the consumet team and discord for making the amazing api and helping with the design</strong>
 
 <br />
 
