@@ -1,10 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
 import { Settings } from "../../components";
-import { Wrapper, Heading } from "../Container.styles";
+import { useAccessToken } from "../../contexts";
+import { Wrapper, Heading, Top } from "../Container.styles";
+import Profile from "./Profile";
 import { GoBack, GoBackIcon } from "./settings.styles";
 
 const SettingsContainer = () => {
+  const { accessToken } = useAccessToken();
   const navigation = useNavigation();
 
   const goBack = () => {
@@ -13,11 +16,15 @@ const SettingsContainer = () => {
 
   return (
     <Wrapper>
-      <GoBack onPress={goBack}>
-        <GoBackIcon />
-      </GoBack>
+      <Top>
+        <GoBack onPress={goBack}>
+          <GoBackIcon />
+        </GoBack>
 
-      <Heading>Settings</Heading>
+        <Heading>Settings</Heading>
+
+        <Profile accessToken={accessToken} />
+      </Top>
       <Settings />
     </Wrapper>
   );

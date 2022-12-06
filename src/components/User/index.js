@@ -19,7 +19,7 @@ const User = () => {
     loading: loadingProfile,
     data: profileData,
     refetch,
-  } = useGetViewerQuery({ notifyOnNetworkStatusChange: true });
+  } = useGetViewerQuery({ notifyOnNetworkStatusChange: false });
 
   if (loadingProfile) return null;
   if (!profileData) return null;

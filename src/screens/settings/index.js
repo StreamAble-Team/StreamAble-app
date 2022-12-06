@@ -1,12 +1,12 @@
-import { View, Text } from "react-native";
 import React from "react";
 import SettingsContainer from "../../containers/settings";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const SettingsScreen = () => {
   return (
-    <View>
+    <SafeAreaView>
       <SettingsContainer />
-    </View>
+    </SafeAreaView>
   );
 };
 

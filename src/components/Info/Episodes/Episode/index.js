@@ -25,7 +25,7 @@ const Episode = (props) => {
   const { setQualities, setDataToSend, setShowQualityModal } = props;
   const navigation = useNavigation();
   const [watched, setWatched] = useState(false);
-  const [watchedAmount, setWatchedAmount] = useState(0);
+  const [watchedAmount, setWatchedAmount] = useState(props?.watchedAmount || 0);
 
   const handlePress = async () => {
     const { headers, sources } = await api.getSource(props.id);
@@ -48,6 +48,7 @@ const Episode = (props) => {
   };
 
   const checkIfWatched = async () => {
+    if (props?.watchedAmount) return false;
     // Get data from sqlite and check if the episode is watched
     const db = await openEpisodeDatabase();
     await createEpisodeTable(db);

@@ -41,7 +41,7 @@ const ContinueWatching = () => {
     },
     // TODO: figure out how to maintain the list position while also updating the cache
     fetchPolicy: "no-cache",
-    notifyOnNetworkStatusChange: true,
+    notifyOnNetworkStatusChange: false,
   });
 
   const list = useMemo(
@@ -87,7 +87,7 @@ const ContinueWatching = () => {
     }, [])
   );
 
-  if (!data || data.length === 0) return null;
+  if (!uniqueList || uniqueList.length === 0) return null;
   return (
     <Container>
       <Title>Continue Watching</Title>
@@ -97,7 +97,7 @@ const ContinueWatching = () => {
             <WatchingCard
               key={i}
               {...item}
-              watchedAmount={item.watchedAmount ? item.watchedAmount : 0}
+              watchedAmount={item?.watchedAmount ? item.watchedAmount : 0}
             />
           );
         })}

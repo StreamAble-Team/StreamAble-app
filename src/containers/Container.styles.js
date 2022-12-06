@@ -5,6 +5,17 @@ export const Container = styled.View`
   margin-bottom: 15px;
 `;
 
+export const Top = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 25px;
+  padding-bottom: 10px;
+  border-bottom-width: 2px;
+  border-bottom-color: ${({ theme }) => theme.text.primary};
+`;
+
 export const Wrapper = styled.View`
   padding: 15px 25px;
 `;
@@ -17,13 +28,9 @@ export const Title = styled.Text`
 `;
 
 export const Heading = styled.Text`
-  width: 100%;
-  padding-bottom: 20px;
-  border-bottom-width: 2px;
-  border-bottom-color: ${({ theme }) => theme.text.primary};
   font-size: 23px;
   font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
-  margin-bottom: 20px;
   text-transform: uppercase;
+  flex: 1;
 `;

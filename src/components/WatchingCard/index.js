@@ -39,7 +39,7 @@ const WatchingCard = (props) => {
     <WatchingCardContainer onPress={handlePress}>
       <WatchingCardBackground
         source={{
-          uri: props.image ? props.image : props.media.coverImage.large,
+          uri: props?.image ? props.image : props?.media?.coverImage?.large,
         }}
       >
         <Delete onPress={handleDelete}>
@@ -54,7 +54,7 @@ const WatchingCard = (props) => {
             {props.watched
               ? props.nextEpisodeId.split("-").pop()
               : props.episode ||
-                `${props?.media.mediaListEntry.progress}/${props?.media.episodes}`}
+                `${props?.media?.mediaListEntry?.progress}/${props?.media?.episodes}`}
           </WatchingCardEpisode>
         </WatchingCardContent>
       </WatchingCardBackground>
