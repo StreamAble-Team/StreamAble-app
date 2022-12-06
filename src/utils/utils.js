@@ -19,4 +19,18 @@ const addZero = (num) => {
   return num < 10 ? `0${num}` : num;
 };
 
-export { textSanitizer, groupBy, addZero };
+const getTitle = (title) => {
+  if (!title) return undefined;
+
+  return title.english ?? title.romaji ?? title.native ?? undefined;
+};
+
+const getProgress = (media, progress) => {
+  return media.episodes ? `${progress}/${media.episodes} EP` : `${progress} EP`;
+};
+
+const notEmpty = (value) => {
+  return value !== null && value !== undefined;
+};
+
+export { textSanitizer, groupBy, addZero, getTitle, getProgress, notEmpty };

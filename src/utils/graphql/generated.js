@@ -1,6 +1,68 @@
 import { gql } from "@apollo/client";
 import * as Apollo from "@apollo/client";
 
+export const MediaListStatus = {
+  /** Finished watching/reading */
+  Completed: "COMPLETED",
+  /** Currently watching/reading */
+  Current: "CURRENT",
+  /** Stopped watching/reading before completing */
+  Dropped: "DROPPED",
+  /** Paused watching/reading */
+  Paused: "PAUSED",
+  /** Planning to watch/read */
+  Planning: "PLANNING",
+  /** Re-watching/reading */
+  Repeating: "REPEATING",
+};
+
+export const MediaListSort = {
+  AddedTime: "ADDED_TIME",
+  AddedTimeDesc: "ADDED_TIME_DESC",
+  FinishedOn: "FINISHED_ON",
+  FinishedOnDesc: "FINISHED_ON_DESC",
+  MediaId: "MEDIA_ID",
+  MediaIdDesc: "MEDIA_ID_DESC",
+  MediaPopularity: "MEDIA_POPULARITY",
+  MediaPopularityDesc: "MEDIA_POPULARITY_DESC",
+  MediaTitleEnglish: "MEDIA_TITLE_ENGLISH",
+  MediaTitleEnglishDesc: "MEDIA_TITLE_ENGLISH_DESC",
+  MediaTitleNative: "MEDIA_TITLE_NATIVE",
+  MediaTitleNativeDesc: "MEDIA_TITLE_NATIVE_DESC",
+  MediaTitleRomaji: "MEDIA_TITLE_ROMAJI",
+  MediaTitleRomajiDesc: "MEDIA_TITLE_ROMAJI_DESC",
+  Priority: "PRIORITY",
+  PriorityDesc: "PRIORITY_DESC",
+  Progress: "PROGRESS",
+  ProgressDesc: "PROGRESS_DESC",
+  ProgressVolumes: "PROGRESS_VOLUMES",
+  ProgressVolumesDesc: "PROGRESS_VOLUMES_DESC",
+  Repeat: "REPEAT",
+  RepeatDesc: "REPEAT_DESC",
+  Score: "SCORE",
+  ScoreDesc: "SCORE_DESC",
+  StartedOn: "STARTED_ON",
+  StartedOnDesc: "STARTED_ON_DESC",
+  Status: "STATUS",
+  StatusDesc: "STATUS_DESC",
+  UpdatedTime: "UPDATED_TIME",
+  UpdatedTimeDesc: "UPDATED_TIME_DESC",
+};
+
+/** The current releasing status of the media */
+export const MediaStatus = {
+  /** Ended before the work could be finished */
+  Cancelled: "CANCELLED",
+  /** Has completed and is no longer being released */
+  Finished: "FINISHED",
+  /** Version 2 only. Is currently paused from releasing and will resume at a later date */
+  Hiatus: "HIATUS",
+  /** To be released at a later date */
+  NotYetReleased: "NOT_YET_RELEASED",
+  /** Currently releasing */
+  Releasing: "RELEASING",
+};
+
 export const MediaTrailerDataFragmentDoc = gql`
   fragment MediaTrailerData on MediaTrailer {
     id
