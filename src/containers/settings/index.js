@@ -7,7 +7,7 @@ import Profile from "./Profile";
 import { GoBack, GoBackIcon } from "./settings.styles";
 
 const SettingsContainer = () => {
-  const { accessToken } = useAccessToken();
+  const { setAccessToken, accessToken } = useAccessToken();
   const navigation = useNavigation();
 
   const goBack = () => {
@@ -23,7 +23,7 @@ const SettingsContainer = () => {
 
         <Heading>Settings</Heading>
 
-        <Profile accessToken={accessToken} />
+        <Profile accessToken={accessToken} setAccessToken={setAccessToken} />
       </Top>
       <Settings />
     </Wrapper>

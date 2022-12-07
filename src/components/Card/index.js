@@ -11,15 +11,10 @@ import { useNavigation } from "@react-navigation/native";
 
 const Card = (props) => {
   const navigation = useNavigation();
-  const {
-    title: {
-      romaji: title_romaji,
-      userPreferred: title_userPreferred,
-      english: title_english,
-    },
-    image,
-    cover,
-  } = props;
+  const { title, image, cover } = props;
+
+  const title_english = title?.english;
+  const title_romaji = title?.romaji;
 
   const handlePress = (event) => {
     navigation.navigate("Info", { id: props.id });
@@ -27,10 +22,15 @@ const Card = (props) => {
 
   return (
     <CardContainer index={props.index} onPress={handlePress}>
-      <CardBackground source={{ uri: image }}>
+      <CardBackground
+        source={{ uri: props?.media?.coverImage?.large || image }}
+      >
         <CardContent>
           <CardTitle numberOfLines={2}>
-            {title_english || title_userPreferred || title_romaji}
+            {props?.media?.title?.english ||
+              props?.media?.title?.romaji ||
+              title_english ||
+              title_romaji}
           </CardTitle>
         </CardContent>
       </CardBackground>

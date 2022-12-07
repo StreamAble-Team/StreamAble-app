@@ -4,6 +4,7 @@ import { Banner } from "../../components";
 import User from "../../components/User";
 
 import { Popular, ContinueWatching, Trending } from "../../containers";
+import PlanToWatch from "../../containers/PlanToWatch";
 import { ScrollView } from "./home.styles";
 
 const HomeScreen = () => {
@@ -13,6 +14,7 @@ const HomeScreen = () => {
         <Banner />
         <User />
         <ContinueWatching />
+        <PlanToWatch />
         <Trending />
         <Popular />
       </ScrollView>

@@ -27,7 +27,7 @@ export const PosterImageWrapper = styled.View`
 `;
 
 export const TopWrapper = styled.View`
-  margin-top: 100px;
+  margin-top: 66px;
   padding: 0 15px;
   width: 70%;
 `;

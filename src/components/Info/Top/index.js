@@ -35,6 +35,7 @@ const InfoTop = (props) => {
     setQualities,
     setShowQualityModal,
     setDataToSend,
+    anilistData,
   } = props;
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
@@ -78,13 +79,23 @@ const InfoTop = (props) => {
       const find = props.episodes.find(
         (item) =>
           item.id ===
-          `${highestWatched.id.split("-").splice(0, 4).join("-")}-${
-            highestWatched.episode + 1
+          `${highestWatched?.id?.split("-")?.splice(0, 4)?.join("-")}-${
+            highestWatched?.episode + 1
           }`
       );
 
-      setNextEpisode(find);
+      const progress =
+        anilistData?.Media?.mediaListEntry?.progress <= totalEpisodes
+          ? anilistData?.Media?.mediaListEntry?.progress
+          : totalEpisodes;
+
+      if (progress < totalEpisodes)
+        setNextEpisode(
+          props.episodes[anilistData?.Media?.mediaListEntry?.progress]
+        );
+      else setNextEpisode(find);
     } catch (error) {
+      console.log(error);
       setNextEpisode(null);
     }
   };
@@ -92,7 +103,7 @@ const InfoTop = (props) => {
   useFocusEffect(
     useCallback(() => {
       getHighestWatched();
-    }, [props])
+    }, [])
   );
 
   return (
