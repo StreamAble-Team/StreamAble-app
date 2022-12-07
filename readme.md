@@ -36,7 +36,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 - [x] Custom video player
 - [x] Dub support
 - [X] Collections support (Plant to watch, watching, watched, backlog, etc)
-- [ ] Sync with anilist, mal etc etc
+- [X] Sync with anilist
 - [ ] Picture in picture
 - [ ] Download Episodes
 - [ ] Manga support
@@ -89,10 +89,10 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 ## Shoutouts 
 
 <p float="left">
-    <a href="https://github.com/aidanjuma" style="margin-right: 20px">
+    <a href="https://github.com/aidanjuma" style="margin-right: 20px; width: 50px">
         <img src="https://avatars.githubusercontent.com/u/53954981" alt="aidan" style="width: 50px; border-radius: 50%">
     </a>
-    <a href="https://github.com/consumet/">
+    <a href="https://github.com/consumet/" style="width: 50px;">
         <img src="https://avatars.githubusercontent.com/u/105397082" alt="aidan" style="width: 50px; border-radius: 50%">
     </a>
 </p>
