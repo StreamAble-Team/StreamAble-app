@@ -2,6 +2,7 @@ import { useMutation } from "@apollo/client";
 import { debounce } from "lodash";
 import { useRef } from "react";
 
+// convert useDebouncedMutation from typescript to javascript
 export function useDebouncedMutation({
   mutationDocument,
   makeUpdateFunction,
@@ -12,7 +13,7 @@ export function useDebouncedMutation({
 
   const abortController = useRef();
   const debouncedMutation = useRef(
-    debounce(async (mutationFunc) => {
+    debounce(async (mutationFunc, variables) => {
       // eslint-disable-next-line
       const controller = new AbortController();
       abortController.current = controller;

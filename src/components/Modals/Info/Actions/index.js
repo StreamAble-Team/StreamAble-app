@@ -10,12 +10,66 @@ import {
   updateCollection,
 } from "../../../../database";
 import { useFocusEffect } from "@react-navigation/native";
+import { MediaListStatusWithLabel } from "../../../../utils/constants";
+import {
+  GetAnimeDocument,
+  refetchGetAnimeQuery,
+  UpdateStatusDocument,
+} from "../../../../utils/graphql/generated";
+import { useDebouncedMutation } from "../../../../hooks";
 
 const Actions = ({ data, activeIndex, setActiveIndex, found }) => {
+  const { id } = data;
   const subOrDub = data.subOrDub;
   const handlePress = (index, collection, addToCol) => {
-    setActiveIndex(index);
     addToCollection(collection, addToCol);
+    addToAnilist(index);
+    setActiveIndex(index);
+  };
+
+  const updateStatus = useDebouncedMutation({
+    mutationDocument: UpdateStatusDocument,
+    makeUpdateFunction: (variables) => (proxy) => {
+      const proxyData = proxy.readQuery({
+        query: GetAnimeDocument,
+        variables: { id: id },
+      });
+
+      if (proxyData?.Media?.mediaListEntry) {
+        proxy.writeQuery({
+          query: GetAnimeDocument,
+          variables: { id: id },
+          data: {
+            ...proxyData,
+            Media: {
+              ...proxyData?.Media,
+              id: proxyData?.Media?.id,
+              mediaListEntry: {
+                ...proxyData?.Media?.mediaListEntry,
+                status: variables?.status,
+              },
+            },
+          },
+        });
+      }
+    },
+    wait: 0,
+    refetchQueries: [refetchGetAnimeQuery({ id: id })],
+  });
+
+  const addToAnilist = async (index) => {
+    const value = MediaListStatusWithLabel[index].value;
+    const id = data.id;
+
+    // await updateStatus
+    try {
+      await updateStatus({
+        mediaId: id,
+        status: value,
+      });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const addToCollection = async (collection, addToCol) => {
@@ -68,10 +122,10 @@ const Actions = ({ data, activeIndex, setActiveIndex, found }) => {
       const dropped = found ? found?.label === "Dropped" : select[0].dropped;
 
       if (watching) setActiveIndex(0);
-      else if (completed) setActiveIndex(1);
+      else if (completed) setActiveIndex(4);
       else if (planToWatch) setActiveIndex(2);
-      else if (onHold) setActiveIndex(3);
-      else if (dropped) setActiveIndex(4);
+      else if (onHold) setActiveIndex(1);
+      else if (dropped) setActiveIndex(3);
     }
   };
 
@@ -96,8 +150,8 @@ const Actions = ({ data, activeIndex, setActiveIndex, found }) => {
           <ActionText>Watching</ActionText>
         </Action>
         <Action
-          active={activeIndex === 1}
-          onPress={() => handlePress(1, "completed", true)}
+          active={activeIndex === 4}
+          onPress={() => handlePress(4, "completed", true)}
         >
           <ActionText>Completed</ActionText>
         </Action>
@@ -108,15 +162,15 @@ const Actions = ({ data, activeIndex, setActiveIndex, found }) => {
           <ActionText>Plan to Watch</ActionText>
         </Action>
         <Action
-          active={activeIndex === 3}
-          onPress={() => handlePress(3, "onHold", true)}
+          active={activeIndex === 1}
+          onPress={() => handlePress(1, "onHold", true)}
         >
           <ActionText>On Hold</ActionText>
         </Action>
         <Action
           style={{ marginRight: 0 }}
-          active={activeIndex === 4}
-          onPress={() => handlePress(4, "dropped", true)}
+          active={activeIndex === 3}
+          onPress={() => handlePress(3, "dropped", true)}
         >
           <ActionText>Dropped</ActionText>
         </Action>

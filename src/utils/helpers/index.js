@@ -5,6 +5,7 @@ import {
   RemoveFromListDocument,
   UpdateProgressDocument,
   UpdateScoreDocument,
+  UpdateStatusDocument,
 } from "../graphql/generated";
 
 export const removeFromList = (id) =>
