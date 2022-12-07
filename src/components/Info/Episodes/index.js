@@ -19,43 +19,18 @@ const Episodes = (props) => {
   });
 
   const {
-    loading: loadingAnimeList,
-    data: animeListData,
-    refetch,
-  } = useGetAnimeListQuery({
-    skip: !viewerData?.Viewer?.id || !accessToken,
-    variables: {
-      userId: viewerData?.Viewer?.id,
-      status,
-    },
-    // TODO: figure out how to maintain the list position while also updating the cache
-    fetchPolicy: "no-cache",
-    notifyOnNetworkStatusChange: false,
-  });
-
-  const {
     episodes,
     totalEpisodes,
     setQualities,
     setShowQualityModal,
     setDataToSend,
+    anilistData,
   } = props;
   const [selectedPage, setSelectedPage] = useState(1);
 
   const pageSize = 50;
 
-  if (loadingAnimeList) return null;
-
-  const entries = animeListData?.MediaListCollection?.lists[0]?.entries;
-  const findThisAnime = entries
-    ? entries.find(
-        (entry) => parseFloat(entry.media.id) === parseFloat(props.id)
-      )
-    : props;
-
-  const progress = findThisAnime
-    ? findThisAnime.media?.mediaListEntry?.progress
-    : 0;
+  const progress = anilistData.Media?.mediaListEntry?.progress || 0;
 
   return (
     <Container>

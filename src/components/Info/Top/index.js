@@ -114,7 +114,9 @@ const InfoTop = (props) => {
           )}
         </InfoTopPosterImageWrapper>
         <InfoTopWrapper>
-          <InfoTopTitle numberOfLines={1}>{props.title.romaji}</InfoTopTitle>
+          <InfoTopTitle numberOfLines={1}>
+            {props.title.english || props.title.romaji}
+          </InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>
             Episode {nextEpisode?.number || 1}
           </InfoTopEpisode>

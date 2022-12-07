@@ -9,6 +9,7 @@ const Switcher = ({
   setQualities,
   setShowQualityModal,
   setDataToSend,
+  anilistData,
 }) => {
   if (current === 1)
     return (
@@ -17,6 +18,7 @@ const Switcher = ({
         setQualities={setQualities}
         setShowQualityModal={setShowQualityModal}
         setDataToSend={setDataToSend}
+        anilistData={anilistData}
       />
     );
   if (current === 2) return <Characters {...data} />;

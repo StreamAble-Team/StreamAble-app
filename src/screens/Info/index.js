@@ -7,6 +7,7 @@ import { InfoModal, SelectQualitiesModal } from "../../components";
 import InfoSkeleton from "../../components/Skeletons/Info/InfoSkeleton";
 import { Info } from "../../containers";
 import { api } from "../../utils";
+import { useGetAnimeQuery } from "../../utils/graphql/generated";
 
 const InfoScreen = ({ route }) => {
   const [showEpisodeModal, setShowEpisodeModal] = useState(false);
@@ -17,6 +18,16 @@ const InfoScreen = ({ route }) => {
 
   const [dub, setDub] = useState(null);
   const { id } = route.params;
+
+  const {
+    loading,
+    data: animeData,
+    refetch,
+    error,
+  } = useGetAnimeQuery({
+    variables: { id: id },
+    notifyOnNetworkStatusChange: true,
+  });
 
   const getDub = async () => {
     try {
@@ -47,6 +58,7 @@ const InfoScreen = ({ route }) => {
     <SafeAreaView>
       <Info
         {...data}
+        anilistData={animeData}
         dub={dub}
         setDub={setDub}
         setShowEpisodeModal={setShowEpisodeModal}
@@ -58,6 +70,7 @@ const InfoScreen = ({ route }) => {
         visible={showEpisodeModal}
         data={data}
         setShowModal={setShowEpisodeModal}
+        anilistData={animeData}
       />
       <SelectQualitiesModal
         visible={showQualityModal}

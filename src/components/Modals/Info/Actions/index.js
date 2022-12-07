@@ -11,7 +11,7 @@ import {
 } from "../../../../database";
 import { useFocusEffect } from "@react-navigation/native";
 
-const Actions = ({ data, activeIndex, setActiveIndex }) => {
+const Actions = ({ data, activeIndex, setActiveIndex, found }) => {
   const subOrDub = data.subOrDub;
   const handlePress = (index, collection, addToCol) => {
     setActiveIndex(index);
@@ -56,12 +56,16 @@ const Actions = ({ data, activeIndex, setActiveIndex }) => {
       subOrDub.toLowerCase() === "sub" ? data.id : `${data.id}-dub`
     );
 
-    if (select.length > 0) {
-      const watching = select[0].watching;
-      const completed = select[0].completed;
-      const planToWatch = select[0].planToWatch;
-      const onHold = select[0].onHold;
-      const dropped = select[0].dropped;
+    if (found || select.length > 0) {
+      const watching = found ? found?.label === "Watching" : select[0].watching;
+      const completed = found
+        ? found?.label === "Completed"
+        : select[0].completed;
+      const planToWatch = found
+        ? found?.label === "Plan to Watch"
+        : select[0].planToWatch;
+      const onHold = found ? found?.label === "On Hold" : select[0].onHold;
+      const dropped = found ? found?.label === "Dropped" : select[0].dropped;
 
       if (watching) setActiveIndex(0);
       else if (completed) setActiveIndex(1);
