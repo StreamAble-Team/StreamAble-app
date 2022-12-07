@@ -15,6 +15,13 @@ import {
   updateCollection,
 } from "../../database";
 import { useFocusEffect } from "@react-navigation/native";
+import { useDebouncedMutation } from "../../hooks";
+import {
+  GetAnimeDocument,
+  refetchGetAnimeQuery,
+  UpdateProgressDocument,
+  useGetAnimeQuery,
+} from "../../utils/graphql/generated";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
@@ -26,6 +33,49 @@ const Player = (props) => {
   const [status, setStatus] = useState({});
   const [playing, setPlaying] = useState(false);
   const [watched, setWatched] = useState(false);
+
+  const {
+    loading,
+    data: anilistData,
+    refetch,
+    error,
+  } = useGetAnimeQuery({
+    variables: { id: animeId },
+    notifyOnNetworkStatusChange: true,
+  });
+
+  const updateProgress = useDebouncedMutation({
+    mutationDocument: UpdateProgressDocument,
+    makeUpdateFunction: (variables) => (proxy) => {
+      const proxyData = proxy.readQuery({
+        query: GetAnimeDocument,
+        variables: { id: animeId },
+      });
+
+      if (proxyData?.Media?.mediaListEntry) {
+        proxy.writeQuery({
+          query: GetAnimeDocument,
+          variables: { id: animeId },
+          data: {
+            ...proxyData,
+            Media: {
+              ...proxyData?.Media,
+              id: proxyData?.Media?.id,
+              mediaListEntry: {
+                ...proxyData?.Media?.mediaListEntry,
+                progress: variables?.progress,
+              },
+            },
+          },
+        });
+      }
+
+      if (variables?.progress === proxyData?.Media?.episodes) {
+        // TODO: show dropdown alert to notify that this anime was moved to "completed" list
+      }
+    },
+    refetchQueries: [refetchGetAnimeQuery({ id: animeId })],
+  });
 
   const HandleUpdateWatched = async () => {
     if (watched === true) return false;
@@ -58,6 +108,17 @@ const Player = (props) => {
 
     // Find the episode that was just watched
     const find = select.find((item) => item.id === id) || props;
+
+    if (
+      watched > 85 &&
+      anilistData?.Media?.mediaListEntry?.progress < episode &&
+      watched !== true
+    ) {
+      updateProgress({
+        mediaId: anilistData?.Media?.mediaListEntry?.id,
+        progress: episode,
+      });
+    }
 
     // Check if watched is greater than 85%
     if (watched > 85 && find?.watched !== 1 && watched !== true) {

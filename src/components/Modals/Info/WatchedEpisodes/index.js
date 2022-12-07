@@ -22,7 +22,7 @@ import {
 import { addZero } from "../../../../utils/utils";
 import NextEpisodeInfo from "../NextEpisodeInfo";
 
-const WatchedEpisodes = ({ data }) => {
+const WatchedEpisodes = ({ data, watchedAmount }) => {
   const [watchedEpisodes, setWatchedEpisodes] = useState(null);
   const [currentEpisode, setCurrentEpisode] = useState(null);
   const { id } = data;
@@ -39,7 +39,10 @@ const WatchedEpisodes = ({ data }) => {
             prev.episode > current.episode ? prev : current
           );
 
-    setWatchedEpisodes(highest ? highest.episode : 0);
+    if (watchedAmount) setWatchedEpisodes(watchedAmount);
+    else {
+      setWatchedEpisodes(highest ? highest.episode : 0);
+    }
 
     const currentEpisode = data.episodes[highest?.episode || 0];
     setCurrentEpisode(currentEpisode);

@@ -87,6 +87,20 @@ const Controls = (props) => {
     navigation.goBack();
   };
 
+  let duration = 5000;
+  let timeout;
+  const handleInactive = () => {
+    setHideControls(false);
+    clearTimeout(timeout);
+    timeout = setTimeout(() => {
+      setHideControls(true);
+    }, duration);
+  };
+
+  const handleDismissPress = () => {
+    handleInactive();
+  };
+
   return (
     <Container hideControls={hideControls}>
       <GoBackWrapper>
@@ -105,7 +119,7 @@ const Controls = (props) => {
         title={title}
         episode={episode}
       />
-      <ClickToDismiss onPress={() => setHideControls((prev) => !prev)} />
+      <ClickToDismiss onPress={handleDismissPress} />
       <WrapperWithBg>
         <SeekBar videoRef={videoRef} status={status} />
         <WrapperFlex>
@@ -115,7 +129,7 @@ const Controls = (props) => {
           <PlayPause
             status={status}
             videoRef={videoRef}
-            setHideControls={setHideControls}
+            handleInactive={handleDismissPress}
           />
           <PressableIcon onPress={() => handleTimeSkip(10)}>
             <IconItem name="step-forward" />

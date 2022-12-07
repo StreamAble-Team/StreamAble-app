@@ -13,16 +13,18 @@ import {
   Top,
   UserName,
 } from "./User.styles";
+import { useAccessToken } from "../../contexts";
 
 const User = () => {
+  const { accessToken, setAccessToken } = useAccessToken();
   const {
     loading: loadingProfile,
     data: profileData,
     refetch,
-  } = useGetViewerQuery({ notifyOnNetworkStatusChange: true });
+  } = useGetViewerQuery({ notifyOnNetworkStatusChange: false });
 
   if (loadingProfile) return null;
-  if (!profileData) return null;
+  if (!accessToken) return null;
 
   const { Viewer } = profileData;
   const { avatar, name, statistics } = Viewer;

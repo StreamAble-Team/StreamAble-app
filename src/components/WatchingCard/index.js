@@ -21,7 +21,7 @@ const WatchingCard = (props) => {
 
   const handlePress = () => {
     navigation.navigate("Info", {
-      id: props.animeId,
+      id: props.animeId ? props.animeId : props?.media?.id,
     });
   };
 
@@ -37,21 +37,28 @@ const WatchingCard = (props) => {
 
   return (
     <WatchingCardContainer onPress={handlePress}>
-      <WatchingCardBackground source={{ uri: props.image }}>
+      <WatchingCardBackground
+        source={{
+          uri: props?.image ? props.image : props?.media?.coverImage?.large,
+        }}
+      >
         <Delete onPress={handleDelete}>
           <DeleteIcon name={"times"} />
         </Delete>
         <WatchingCardContent>
-          {/* <WatchingCardTitle numberOfLines={1}>{props.title}</WatchingCardTitle> */}
+          <WatchingCardTitle numberOfLines={1}>
+            {props?.title || props?.media?.title?.english}
+          </WatchingCardTitle>
           <WatchingCardEpisode numberOfLines={1}>
             Episode{" "}
             {props.watched
               ? props.nextEpisodeId.split("-").pop()
-              : props.episode}
+              : props.episode ||
+                `${props?.media?.mediaListEntry?.progress}/${props?.media?.episodes}`}
           </WatchingCardEpisode>
         </WatchingCardContent>
       </WatchingCardBackground>
-      {props?.watched ? null : (
+      {props?.watched && !props.animeId ? null : (
         <WatchingBarHolder>
           <WatchingBar
             watchedAmount={
