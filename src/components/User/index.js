@@ -29,9 +29,13 @@ const User = () => {
   if (loadingProfile) return null;
   if (!accessToken) return null;
 
-  const { Viewer } = profileData;
-  const { avatar, name, statistics } = Viewer;
-  const { anime, manga } = statistics;
+  const Viewer = profileData?.Viewer || {};
+  const avatar = Viewer.avatar || {};
+  const name = Viewer.name || {};
+  const statistics = Viewer.statistics || {};
+
+  const anime = statistics?.anime || {};
+  const manga = statistics?.manga || {};
 
   //convert minutes to hours minutes or days
   const convertMinutes = (minutes) => {
@@ -59,7 +63,7 @@ const User = () => {
       <Bottom>
         <Texts>
           <LeftText>
-            Anime: <Bold>{anime.count}</Bold>
+            Anime: <Bold>{anime?.count || 0}</Bold>
           </LeftText>
           <RightText>
             <Bold> {spentWatchingAnime}</Bold>
@@ -67,7 +71,7 @@ const User = () => {
         </Texts>
         <Texts style={{ marginTop: 8 }}>
           <LeftText>
-            Manga: <Bold>{manga.count}</Bold>
+            Manga: <Bold>{manga?.count || 0}</Bold>
           </LeftText>
         </Texts>
       </Bottom>

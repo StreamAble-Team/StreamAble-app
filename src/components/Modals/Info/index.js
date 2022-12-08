@@ -9,9 +9,8 @@ import { MediaListStatusWithLabel } from "../../../utils/constants";
 const InfoModal = ({ visible, setShowModal, data, anilistData }) => {
   const [activeIndex, setActiveIndex] = useState(null);
 
-  const {
-    Media: { mediaListEntry },
-  } = anilistData;
+  const Media = anilistData?.Media || {};
+  const mediaListEntry = Media?.mediaListEntry || {};
 
   const status = mediaListEntry?.status || undefined;
   const progress = mediaListEntry?.progress || 0;

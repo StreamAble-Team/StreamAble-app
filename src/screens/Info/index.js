@@ -1,12 +1,11 @@
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useFocusEffect } from "@react-navigation/native";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { useQuery } from "react-query";
 import { InfoModal, SelectQualitiesModal } from "../../components";
 import InfoSkeleton from "../../components/Skeletons/Info/InfoSkeleton";
 import { Info } from "../../containers";
-import { api } from "../../utils";
+import { api, helpers } from "../../utils";
 import { useGetAnimeQuery } from "../../utils/graphql/generated";
 
 const InfoScreen = ({ route }) => {
@@ -31,7 +30,7 @@ const InfoScreen = ({ route }) => {
 
   const getDub = async () => {
     try {
-      const getStorage = await AsyncStorage.getItem("dub");
+      const getStorage = await helpers.getSetting("dub");
       const getStorageJSON = JSON.parse(getStorage);
       setDub(getStorageJSON);
     } catch (error) {

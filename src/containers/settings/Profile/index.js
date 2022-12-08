@@ -29,8 +29,8 @@ const Profile = ({ accessToken, setAccessToken }) => {
       </Container>
     );
 
-  const { Viewer } = profileData;
-  const { avatar } = Viewer;
+  const Viewer = profileData?.Viewer || {};
+  const avatar = Viewer.avatar || {};
 
   const Alerted = () => {
     Alert.alert("Logout", "Are you sure you wanna logout", [

@@ -1,3 +1,4 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDebouncedMutation } from "../../hooks";
 import {
   GetAnimeDocument,
@@ -99,3 +100,27 @@ export const updateProgress = (id) =>
     },
     refetchQueries: [refetchGetAnimeQuery({ id: id })],
   });
+
+export const getSetting = async (setting) => {
+  return await new Promise((resolve, reject) => {
+    AsyncStorage.getItem(`@setting:${setting}`)
+      .then((value) => {
+        resolve(value);
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
+
+export const setSetting = async (setting, value) => {
+  return await new Promise((resolve, reject) => {
+    AsyncStorage.setItem(`@setting:${setting}`, JSON.stringify(value))
+      .then(() => {
+        resolve();
+      })
+      .catch((error) => {
+        reject(error);
+      });
+  });
+};
