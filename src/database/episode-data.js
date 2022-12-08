@@ -27,7 +27,7 @@ export const createTable = async (db) => {
     image TEXT NOT NULL,
     episode INTEGER NOT NULL,
     nextEpisodeId TEXT NOT NULL,
-    watched BOOLEAN DEFAULT(FALSE),
+    watched BOOLEAN DEFAULT(${Number(false)}),
     watchedAmount FLOAT DEFAULT(0),
     watchedAt DATETIME DEFAULT CURRENT_TIMESTAMP
 );`;

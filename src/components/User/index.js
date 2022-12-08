@@ -21,7 +21,10 @@ const User = () => {
     loading: loadingProfile,
     data: profileData,
     refetch,
-  } = useGetViewerQuery({ notifyOnNetworkStatusChange: false });
+  } = useGetViewerQuery({
+    notifyOnNetworkStatusChange: false,
+    skip: !accessToken,
+  });
 
   if (loadingProfile) return null;
   if (!accessToken) return null;

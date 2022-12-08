@@ -58,12 +58,14 @@ const ContinueWatching = () => {
   );
 
   // get Watching data
-  const newList = list.concat(data);
-  const uniqueList = Array.from(
-    new Set(newList.map((a) => a?.animeId || a?.media?.id))
-  ).map((id) => {
-    return newList.find((a) => a?.animeId || a?.media?.id === id);
-  });
+  const newList = !list.length ? data : list.concat(data);
+  const uniqueList = !list.length
+    ? newList
+    : Array.from(new Set(newList.map((a) => a?.animeId || a?.media?.id))).map(
+        (id) => {
+          return newList.find((a) => a?.animeId || a?.media?.id === id);
+        }
+      );
 
   const getContinueWatching = async () => {
     const db = await openEpisodeDatabase();
@@ -87,7 +89,12 @@ const ContinueWatching = () => {
     }, [])
   );
 
-  if (!uniqueList || uniqueList.length === 0) return null;
+  if (
+    !uniqueList ||
+    uniqueList.length === 0 ||
+    (uniqueList.length === 1 && uniqueList.includes(null))
+  )
+    return null;
   return (
     <Container>
       <Title>Continue Watching</Title>

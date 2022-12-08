@@ -10,14 +10,15 @@
         {
           "initialOrientation": "PORTRAIT"
         }
-      ]
+      ],
+      "sentry-expo"
     ],
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "dark",
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#0f0f0f"
+      "backgroundColor": "#141414"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -35,7 +36,7 @@
         "backgroundColor": "#0f0f0f"
       },
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 12
+      "versionCode": 13
     },
     "web": {
       "favicon": "./assets/favicon.png"

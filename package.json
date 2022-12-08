@@ -20,6 +20,7 @@
     "@react-native-community/slider": "4.2.4",
     "@react-navigation/native": "^6.0.14",
     "@react-navigation/native-stack": "^6.9.2",
+    "@sentry/react-native": "4.9.0",
     "apollo3-cache-persist": "^0.14.1",
     "axios": "^1.2.0",
     "dayjs": "^1.11.6",
@@ -29,6 +30,7 @@
     "expo-av": "~13.0.2",
     "expo-constants": "~14.0.2",
     "expo-dev-client": "~2.0.1",
+    "expo-device": "~5.0.0",
     "expo-font": "~11.0.1",
     "expo-keep-awake": "~11.0.1",
     "expo-linking": "~3.2.3",
@@ -38,6 +40,7 @@
     "expo-splash-screen": "~0.17.5",
     "expo-sqlite": "~11.0.0",
     "expo-status-bar": "~1.4.2",
+    "expo-updates": "~0.15.6",
     "expo-video-player": "^2.2.0",
     "expo-web-browser": "~12.0.0",
     "graphql-tag": "^2.12.6",
@@ -51,6 +54,7 @@
     "react-native-vector-image": "^0.3.3",
     "react-query": "^3.39.2",
     "sanitize-html": "^2.7.3",
+    "sentry-expo": "~6.0.0",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import { View } from "react-native";
 import React, { useCallback, useRef, useState } from "react";
 import { ResizeMode } from "expo-av";
-import { VideoPlayer } from "./styles";
+import { Container, VideoPlayer } from "./styles";
 import Controls from "./Controls";
 import {
   createCollectionTable,
@@ -164,7 +164,7 @@ const Player = (props) => {
   );
 
   return (
-    <View>
+    <Container>
       <VideoPlayer
         ref={videoRef}
         source={{
@@ -174,6 +174,11 @@ const Player = (props) => {
             Referrer: referer,
           },
         }}
+        volume={1.0}
+        isMuted={false}
+        shouldPlay={true}
+        isLooping={false}
+        useNativeControls={false}
         resizeMode={ResizeMode.CONTAIN}
         onPlaybackStatusUpdate={(status) => {
           HandleUpdateWatched(status);
@@ -193,7 +198,7 @@ const Player = (props) => {
         episode={episode}
         nextEpisodeId={nextEpisodeId}
       />
-    </View>
+    </Container>
   );
 };
 
