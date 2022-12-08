@@ -17,7 +17,7 @@ const Card = (props) => {
   const title_romaji = title?.romaji;
 
   const handlePress = (event) => {
-    navigation.navigate("Info", { id: props.id });
+    navigation.navigate("Info", { id: props?.media?.id || props?.id });
   };
 
   return (

@@ -18,16 +18,22 @@ const NavBar = ({ currentRoute }) => {
   return (
     <NavBarContainer>
       <NavBarWrapper>
+        <NavBarIconItem onPress={() => handleStackChange("Home")}>
+          <NavBarIcon
+            name="home"
+            isFocused={currentRoute === "Home" ? true : false}
+          />
+        </NavBarIconItem>
         <NavBarIconItem onPress={() => handleStackChange("Search")}>
           <NavBarIcon
             name="search"
             isFocused={currentRoute === "Search" ? true : false}
           />
         </NavBarIconItem>
-        <NavBarIconItem onPress={() => handleStackChange("Home")}>
+        <NavBarIconItem onPress={() => handleStackChange("Lists")}>
           <NavBarIcon
-            name="home"
-            isFocused={currentRoute === "Home" ? true : false}
+            name="list-ul"
+            isFocused={currentRoute === "Lists" ? true : false}
           />
         </NavBarIconItem>
         <NavBarIconItem onPress={() => handleStackChange("Settings")}>

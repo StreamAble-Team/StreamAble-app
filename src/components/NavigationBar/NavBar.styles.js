@@ -14,7 +14,7 @@ export const NavBarContainer = styled.View`
 
 export const NavBarWrapper = styled.View`
   background: ${({ theme }) => theme.base.offDarkBg};
-  width: 180px;
+  width: 230px;
   height: 100%;
   border-radius: 20px;
   overflow: hidden;

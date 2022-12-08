@@ -9,9 +9,9 @@ export const Container = styled.TouchableOpacity`
 
 export const NotLoggedIn = styled.Text`
   font-size: 23px;
-  font-family: ${({ theme }) => theme.text.font.primary};
+  font-family: ${({ theme }) => theme.text.font.secondary};
   color: ${({ theme }) => theme.text.primary};
-  margin-bottom: 15px;
+  text-transform: uppercase;
 `;
 
 export const ProfileImage = styled.Image`

@@ -12,8 +12,8 @@ import { sortBy } from "lodash";
 import { utils } from "../../utils";
 import { useFocusEffect } from "@react-navigation/native";
 
-const PlanToWatch = () => {
-  const [status, setStatus] = useState(MediaListStatusWithLabel[2].value);
+const OnHold = () => {
+  const [status, setStatus] = useState(MediaListStatusWithLabel[1].value);
 
   const { accessToken, setAccessToken } = useAccessToken();
 
@@ -58,14 +58,14 @@ const PlanToWatch = () => {
   if (!list.length) return null;
   return (
     <Container>
-      <Title>Watch List</Title>
+      <Title>On Hold</Title>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {list.map((item, i) => (
-          <Card key={`planToWatch-${item.id}`} {...item} index={i} />
+          <Card key={`onHold-${item.id}`} {...item} index={i} />
         ))}
       </ScrollView>
     </Container>
   );
 };
 
-export default PlanToWatch;
+export default OnHold;

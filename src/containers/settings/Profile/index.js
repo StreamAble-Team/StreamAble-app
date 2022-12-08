@@ -7,12 +7,11 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ANILIST_ACCESS_TOKEN_STORAGE } from "../../../utils/constants";
 
 const Profile = ({ accessToken, setAccessToken }) => {
-  console.log(accessToken);
   const {
     loading: loadingProfile,
     data: profileData,
     refetch,
-  } = useGetViewerQuery();
+  } = useGetViewerQuery({ skip: !accessToken });
 
   if (loadingProfile) return null;
 

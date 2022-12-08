@@ -89,6 +89,12 @@ const ContinueWatching = () => {
     }, [])
   );
 
+  useFocusEffect(
+    useCallback(() => {
+      if (!loadingAnimeList) refetch();
+    }, [])
+  );
+
   if (
     !uniqueList ||
     uniqueList.length === 0 ||
@@ -102,7 +108,7 @@ const ContinueWatching = () => {
         {uniqueList?.map((item, i) => {
           return (
             <WatchingCard
-              key={i}
+              key={`cw-${i}-${item.id}`}
               {...item}
               watchedAmount={item?.watchedAmount ? item.watchedAmount : 0}
             />

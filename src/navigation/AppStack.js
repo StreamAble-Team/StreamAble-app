@@ -11,6 +11,7 @@ import {
   PlayerScreen,
   SettingsScreen,
   AuthScreen,
+  ListScreen,
 } from "../screens";
 import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
@@ -67,6 +68,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
+        <Stack.Screen name="Lists" component={ListScreen} />
         <Stack.Screen name="Player" component={PlayerScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
       </Stack.Navigator>
