@@ -2,8 +2,10 @@ import { View, Text, ScrollView } from "react-native";
 import React from "react";
 import { MenuContainer, MenuWrapper } from "./PillMenu.styles";
 import Pill from "../../Pill";
+import { useBreakpoints } from "../../../hooks";
 
 const PillMenu = ({ setCurrent, current }) => {
+  const { isMobile } = useBreakpoints();
   const handlePress = (number) => {
     setCurrent(number);
   };
@@ -13,7 +15,10 @@ const PillMenu = ({ setCurrent, current }) => {
         <ScrollView
           horizontal={true}
           showsHorizontalScrollIndicator={false}
-          contentContainerStyle={{ flexGrow: 1, justifyContent: "flex-start" }}
+          contentContainerStyle={{
+            flexGrow: 1,
+            justifyContent: isMobile ? "flex-start" : "center",
+          }}
         >
           <Pill
             title={`EPISODES`}

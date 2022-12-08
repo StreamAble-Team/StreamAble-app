@@ -7,8 +7,15 @@ export const Container = styled.View`
 export const Wrapper = styled.View`
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   justify-content: flex-start;
   margin-bottom: 10px;
   padding-bottom: 40px;
   padding-top: 5px;
+  ${({ isMobile }) =>
+    !isMobile &&
+    `
+    justify-content: space-between;
+  flex-direction: row;
+  `}
 `;

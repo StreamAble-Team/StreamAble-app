@@ -22,7 +22,7 @@ import {
 } from "../../../../database";
 
 const Episode = (props) => {
-  const { setQualities, setDataToSend, setShowQualityModal } = props;
+  const { setQualities, setDataToSend, setShowQualityModal, isMobile } = props;
   const navigation = useNavigation();
   const [watched, setWatched] = useState(false);
   const [watchedAmount, setWatchedAmount] = useState(props?.watchedAmount || 0);
@@ -67,7 +67,7 @@ const Episode = (props) => {
   );
 
   return (
-    <Container onPress={handlePress}>
+    <Container onPress={handlePress} isMobile={isMobile}>
       <CardImage source={{ uri: props.image }}>
         <CardContent>
           {props.isFiller ? (

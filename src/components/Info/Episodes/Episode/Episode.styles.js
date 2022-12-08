@@ -9,6 +9,11 @@ export const Container = styled.TouchableOpacity`
   margin-bottom: 30px;
   border-radius: 8px;
   overflow: hidden;
+  ${({ isMobile }) =>
+    !isMobile &&
+    `
+    width: 45%;
+    `}
 `;
 
 export const Text = styled.Text`

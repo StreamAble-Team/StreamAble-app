@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useAccessToken } from "../../../contexts";
+import { useBreakpoints } from "../../../hooks";
 import { MediaListStatusWithLabel } from "../../../utils/constants";
 import {
   useGetAnimeListQuery,
@@ -13,6 +14,7 @@ import { Text } from "./Episodes.styles";
 const Episodes = (props) => {
   const { accessToken, setAccessToken } = useAccessToken();
   const [status, setStatus] = useState(MediaListStatusWithLabel[0].value);
+  const { isMobile } = useBreakpoints();
 
   const { loading: loadingViewer, data: viewerData } = useGetViewerQuery({
     skip: !accessToken,
@@ -40,7 +42,7 @@ const Episodes = (props) => {
         selectedPage={selectedPage}
         setSelectedPage={setSelectedPage}
       />
-      <Wrapper>
+      <Wrapper isMobile={isMobile}>
         {episodes
           .slice(
             selectedPage === 1 ? 0 : (selectedPage - 1) * pageSize,
@@ -48,6 +50,7 @@ const Episodes = (props) => {
           )
           .map((episode, i) => (
             <Episode
+              isMobile={isMobile}
               key={`episode-${i}`}
               {...episode}
               animeId={props.id}

@@ -23,9 +23,7 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.tdanks2000.StreamAble"
@@ -36,7 +34,7 @@
         "backgroundColor": "#0f0f0f"
       },
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 13
+      "versionCode": 20
     },
     "web": {
       "favicon": "./assets/favicon.png"
