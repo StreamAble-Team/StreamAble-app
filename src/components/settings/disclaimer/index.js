@@ -11,7 +11,7 @@ import {
 import Constants from "expo-constants";
 
 const Disclaimer = () => {
-  const version = Constants.manifest.version;
+  const version = Constants?.manifest?.version || "BETA";
 
   const onPress = (url) => {
     Linking.openURL(url);

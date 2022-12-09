@@ -10,7 +10,7 @@ export const Container = styled.View`
   margin: 0 25px;
   padding-bottom: 25px;
   margin-bottom: 25px;
-  margin-top: 10px;
+  // margin-top: 10px;
   border-bottom-width: 1px;
   border-bottom-color: ${({ theme }) => theme.text.secondary};
 `;

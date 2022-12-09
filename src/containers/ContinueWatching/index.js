@@ -1,5 +1,5 @@
 import { ScrollView } from "react-native";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Container, Title } from "../Container.styles";
 import WatchingCard from "../../components/WatchingCard";
@@ -19,7 +19,7 @@ import { useAccessToken } from "../../contexts";
 import { MediaListStatusWithLabel } from "../../utils/constants";
 import { utils } from "../../utils";
 
-const ContinueWatching = () => {
+const ContinueWatching = ({ refreshing, setRefreshing }) => {
   const [data, setData] = useState(null);
   const [status, setStatus] = useState(MediaListStatusWithLabel[0].value);
 
@@ -34,7 +34,7 @@ const ContinueWatching = () => {
     data: animeListData,
     refetch,
   } = useGetAnimeListQuery({
-    skip: !viewerData?.Viewer?.id || !accessToken,
+    skip: !accessToken || !viewerData?.Viewer?.id,
     variables: {
       userId: viewerData?.Viewer?.id,
       status,
@@ -89,11 +89,13 @@ const ContinueWatching = () => {
     }, [])
   );
 
-  useFocusEffect(
-    useCallback(() => {
-      if (!loadingAnimeList) refetch();
-    }, [])
-  );
+  useEffect(() => {
+    if (refreshing) {
+      getContinueWatching();
+      refetch();
+      setRefreshing(loadingAnimeList);
+    }
+  }, [refreshing]);
 
   if (
     !uniqueList ||

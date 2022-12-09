@@ -1,6 +1,6 @@
 import { View } from "react-native";
-import React, { useCallback, useRef, useState } from "react";
-import { ResizeMode } from "expo-av";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { Audio, ResizeMode, VideoProps } from "expo-av";
 import { Container, VideoPlayer } from "./styles";
 import Controls from "./Controls";
 import {
@@ -31,7 +31,7 @@ const Player = (props) => {
   const { source, referer, title, episode, nextEpisodeId, animeId, id } = props;
   const videoRef = useRef(null);
   const [status, setStatus] = useState({});
-  const [playing, setPlaying] = useState(false);
+  const [playing, setPlaying] = useState(true);
   const [watched, setWatched] = useState(false);
 
   const {
@@ -157,6 +157,27 @@ const Player = (props) => {
     }
   };
 
+  const setAudio = async () => {
+    try {
+      await Audio.setAudioModeAsync({
+        playsInSilentModeIOS: true,
+        staysActiveInBackground: false,
+        shouldDuckAndroid: false,
+      });
+      await Audio.setIsEnabledAsync(true);
+    } catch (e) {
+      console.log({
+        type: "NoneFatal",
+        message: "Audio.setAudioModeAsync",
+        obj: e,
+      });
+    }
+  };
+
+  useEffect(() => {
+    setAudio();
+  }, []);
+
   useFocusEffect(
     useCallback(() => {
       continueWatching();
@@ -167,6 +188,7 @@ const Player = (props) => {
     <Container>
       <VideoPlayer
         ref={videoRef}
+        {...VideoProps}
         source={{
           uri: source,
           headers: {
@@ -174,9 +196,9 @@ const Player = (props) => {
             Referrer: referer,
           },
         }}
-        volume={1.0}
+        volume={1}
         isMuted={false}
-        shouldPlay={true}
+        shouldPlay={playing}
         isLooping={false}
         useNativeControls={false}
         resizeMode={ResizeMode.CONTAIN}

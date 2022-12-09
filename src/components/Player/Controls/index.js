@@ -90,7 +90,7 @@ const Controls = (props) => {
   let duration = 5000;
   let timeout;
   const handleInactive = () => {
-    setHideControls(false);
+    setHideControls((prev) => !prev);
     clearTimeout(timeout);
     timeout = setTimeout(() => {
       setHideControls(true);

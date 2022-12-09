@@ -21,9 +21,12 @@
       "backgroundColor": "#141414"
     },
     "updates": {
-      "fallbackToCacheTimeout": 0
+      "fallbackToCacheTimeout": 0,
+      "url": "https://u.expo.dev/9993d8be-e845-45b5-9a2f-4e65a8877e0f"
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.tdanks2000.StreamAble"
@@ -34,7 +37,7 @@
         "backgroundColor": "#0f0f0f"
       },
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 20
+      "versionCode": 21
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -43,6 +46,9 @@
       "eas": {
         "projectId": "9993d8be-e845-45b5-9a2f-4e65a8877e0f"
       }
+    },
+    "runtimeVersion": {
+      "policy": "sdkVersion"
     }
   }
 }

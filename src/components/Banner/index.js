@@ -7,7 +7,7 @@ import { ScrollView } from "react-native";
 import BannerItem from "./BannerItem";
 
 const Banner = () => {
-  const { data } = useQuery("BannerData", () => api.getTopRated(1));
+  const { data } = useQuery(["BannerData"], () => api.getTopRated(5));
 
   return (
     <ScrollView
@@ -16,7 +16,7 @@ const Banner = () => {
       pagingEnabled={true}
       snapToAlignment={"center"}
     >
-      {data?.results.splice(0, 5).map((item) => {
+      {data?.results.map((item) => {
         return <BannerItem key={`banner-${item.id}`} {...item} />;
       })}
     </ScrollView>

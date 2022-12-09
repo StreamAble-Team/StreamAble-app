@@ -1,5 +1,5 @@
 import { ScrollView } from "react-native";
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Card } from "../../components";
 import { Container, Title } from "../Container.styles";
 import { useAccessToken } from "../../contexts";
@@ -12,7 +12,7 @@ import { sortBy } from "lodash";
 import { utils } from "../../utils";
 import { useFocusEffect } from "@react-navigation/native";
 
-const Completed = () => {
+const Completed = ({ refreshing, setRefreshing }) => {
   const [status, setStatus] = useState(MediaListStatusWithLabel[4].value);
 
   const { accessToken, setAccessToken } = useAccessToken();
@@ -26,7 +26,7 @@ const Completed = () => {
     data: animeListData,
     refetch,
   } = useGetAnimeListQuery({
-    skip: !viewerData?.Viewer?.id || !accessToken,
+    skip: !accessToken || !viewerData?.Viewer?.id,
     variables: {
       userId: viewerData?.Viewer?.id,
       status,
@@ -49,11 +49,12 @@ const Completed = () => {
     [animeListData]
   );
 
-  useFocusEffect(
-    useCallback(() => {
-      if (!loadingAnimeList) refetch();
-    }, [])
-  );
+  useEffect(() => {
+    if (refreshing) {
+      refetch();
+      setRefreshing(loadingAnimeList);
+    }
+  }, [refreshing]);
 
   if (!list.length) return null;
   return (
@@ -61,7 +62,7 @@ const Completed = () => {
       <Title>Completed</Title>
       <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
         {list.map((item, i) => (
-          <Card key={`completed-${item.id}`} {...item} index={i} />
+          <Card key={`completed-${item?.id}`} {...item} index={i} />
         ))}
       </ScrollView>
     </Container>

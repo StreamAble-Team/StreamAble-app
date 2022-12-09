@@ -45,9 +45,9 @@ export const getTrending = async (page = 1, perPage = 20) => {
   return sortedData;
 };
 
-export const getTopRated = async (limit = 10, offset = 0) => {
+export const getTopRated = async (limit = 10) => {
   const { data } = await api.get(
-    `/anilist/advanced-search?sort=["SCORE_DESC"]`
+    `/anilist/advanced-search?sort=["SCORE_DESC"]&perPage=${limit}`
   );
 
   if (!data)

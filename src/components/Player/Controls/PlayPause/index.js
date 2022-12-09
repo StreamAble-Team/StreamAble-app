@@ -4,6 +4,7 @@ import { CanPressIcon, PauseIcon, PlayIcon } from "./PlayPause.styles";
 
 const PlayPause = ({ status, videoRef, handleInactive }) => {
   const handlePlayPause = () => {
+    if (!status.isLoaded) return false;
     status.isPlaying
       ? videoRef.current.pauseAsync()
       : videoRef.current.playAsync();

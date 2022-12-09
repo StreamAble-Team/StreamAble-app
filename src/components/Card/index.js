@@ -26,7 +26,7 @@ const Card = (props) => {
         source={{ uri: props?.media?.coverImage?.large || image }}
       >
         <CardContent>
-          <CardTitle numberOfLines={2}>
+          <CardTitle numberOfLines={2} ellipsizeMode={"tail"}>
             {props?.media?.title?.english ||
               props?.media?.title?.romaji ||
               title_english ||

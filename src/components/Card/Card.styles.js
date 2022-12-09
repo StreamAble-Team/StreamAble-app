@@ -21,7 +21,7 @@ export const CardContent = styled.View`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  padding: 10px 5px;
+  padding: 10px 7px;
   overflow: hidden;
 `;
 
