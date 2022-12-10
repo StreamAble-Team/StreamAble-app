@@ -1,6 +1,6 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
-import { textSanitizer } from "../../utils";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import React, { useCallback, useState } from "react";
+import { helpers, textSanitizer } from "../../utils";
 import {
   SearchCardContainer,
   SearchCardDescription,
@@ -13,6 +13,7 @@ import {
 } from "./SearchCard.styles";
 
 const SearchCard = (props) => {
+  const [settingTitle, setSettingTitle] = useState("EN");
   const navigation = useNavigation();
 
   const handlePress = (event) => {
@@ -20,6 +21,17 @@ const SearchCard = (props) => {
   };
 
   const description = textSanitizer(props.description);
+
+  const getTitle = async () => {
+    const preferredTitle = await helpers.getSetting("preferredLanguage");
+    setSettingTitle(helpers.removeNonAlphaNumeric(preferredTitle));
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getTitle();
+    }, [])
+  );
 
   return (
     <SearchCardContainer onPress={handlePress}>
@@ -39,11 +51,8 @@ const SearchCard = (props) => {
           <SearchCardMetaItem>{props.status}</SearchCardMetaItem>
           <SearchCardMetaItem>{props.type}</SearchCardMetaItem>
         </SearchCardMeta>
-
         <SearchCardTitle numberOfLines={1}>
-          {props?.title?.english ||
-            props?.title?.userPreferred ||
-            props?.title?.romaji}
+          {settingTitle === "EN" ? props?.title?.english : props?.title?.romaji}
         </SearchCardTitle>
       </SearchCardInfo>
     </SearchCardContainer>

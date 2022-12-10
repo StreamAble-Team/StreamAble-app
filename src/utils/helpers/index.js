@@ -124,3 +124,7 @@ export const setSetting = async (setting, value) => {
       });
   });
 };
+
+export const removeNonAlphaNumeric = (str) => {
+  return str.replace(/[\W_]/g, "");
+};

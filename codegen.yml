@@ -1,0 +1,13 @@
+overwrite: true
+schema: "https://graphql.anilist.co"
+documents: "graphql/**/*.js"
+generates:
+  graphql/generated.tsx:
+    plugins:
+      - "fragment-matcher"
+    config:
+      reactApolloVersion: 3
+      withRefetchFn: true
+  ./graphql.schema.json:
+    plugins:
+      - "introspection"

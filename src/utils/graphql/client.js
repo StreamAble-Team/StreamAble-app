@@ -21,9 +21,7 @@ const authLink = setContext(async (_, { headers }) => {
           Authorization,
         },
       }
-    : // for some reason, the request gets messed up when Authorization is undefined, so just don't
-      // specify the key at all
-      {};
+    : {};
 });
 
 const httpLink = new HttpLink({
@@ -36,6 +34,8 @@ export const client = new ApolloClient({
       if (graphQLErrors)
         graphQLErrors.forEach(async (e) => {
           Sentry.Browser.captureMessage(e.message);
+
+          console.log(e.message);
           if (e.message.toLowerCase().includes("invalid token")) {
             await AsyncStorage.removeItem(ANILIST_ACCESS_TOKEN_STORAGE);
           }

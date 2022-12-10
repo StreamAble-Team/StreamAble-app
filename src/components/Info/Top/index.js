@@ -16,7 +16,7 @@ import {
   InfoTopTitle,
   InfoTopWrapper,
 } from "./InfoTop.styles";
-import { api } from "../../../utils";
+import { api, helpers } from "../../../utils";
 import { useFocusEffect, useNavigation } from "@react-navigation/native";
 import SubOrDub from "./SubOrDub";
 import {
@@ -37,6 +37,7 @@ const InfoTop = (props) => {
     setDataToSend,
     anilistData,
   } = props;
+  const [settingTitle, setSettingTitle] = useState("EN");
   const [nextEpisode, setNextEpisode] = useState(null);
   const navigation = useNavigation();
 
@@ -100,9 +101,15 @@ const InfoTop = (props) => {
     }
   };
 
+  const getTitle = async () => {
+    const preferredTitle = await helpers.getSetting("preferredLanguage");
+    setSettingTitle(helpers.removeNonAlphaNumeric(preferredTitle));
+  };
+
   useFocusEffect(
     useCallback(() => {
       getHighestWatched();
+      getTitle();
     }, [])
   );
 
@@ -126,7 +133,9 @@ const InfoTop = (props) => {
         </InfoTopPosterImageWrapper>
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>
-            {props.title.english || props.title.romaji}
+            {settingTitle === "EN"
+              ? props?.title?.english
+              : props?.title?.romaji}
           </InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>
             Episode {nextEpisode?.number || 1}

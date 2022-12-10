@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import {
   CardBackground,
@@ -7,9 +7,11 @@ import {
   CardContent,
   CardTitle,
 } from "./Card.styles";
-import { useNavigation } from "@react-navigation/native";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import { helpers } from "../../utils";
 
 const Card = (props) => {
+  const [settingTItle, setSettingTitle] = useState("EN");
   const navigation = useNavigation();
   const { title, image, cover } = props;
 
@@ -20,13 +22,16 @@ const Card = (props) => {
     navigation.navigate("Info", { id: props?.media?.id || props?.id });
   };
 
-  //check if focused or not
-  const onFocus = useCallback(() => {
-    console.log("Focused item ", title_english);
-  }, [title_english]);
-  const onBlur = useCallback(() => {
-    console.log("Lost item ", title_english);
-  }, [title_english]);
+  const getTitle = async () => {
+    const preferredTitle = await helpers.getSetting("preferredLanguage");
+    setSettingTitle(helpers.removeNonAlphaNumeric(preferredTitle));
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getTitle();
+    }, [])
+  );
 
   return (
     <CardContainer index={props.index} onPress={handlePress}>
@@ -35,10 +40,9 @@ const Card = (props) => {
       >
         <CardContent>
           <CardTitle numberOfLines={2} ellipsizeMode={"tail"}>
-            {props?.media?.title?.english ||
-              props?.media?.title?.romaji ||
-              title_english ||
-              title_romaji}
+            {settingTItle === "EN"
+              ? props?.media?.title?.english || title_english
+              : props?.media?.title?.romaji || title_romaji}
           </CardTitle>
         </CardContent>
       </CardBackground>

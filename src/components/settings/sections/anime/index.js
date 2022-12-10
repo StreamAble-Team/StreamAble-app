@@ -10,6 +10,7 @@ import {
   SectionItemsWrapper,
   SectionItemText,
 } from "../sections.styles";
+import PreferredTitle from "./settings/PreferredTitle";
 
 const AnimeSettings = ({ openSettings, openIndex }) => {
   return (
@@ -20,9 +21,7 @@ const AnimeSettings = ({ openSettings, openIndex }) => {
       </SettingsCard>
       {openIndex === 1 && (
         <SectionItemsWrapper>
-          <SectionItem>
-            <SectionItemText>Preferred Title</SectionItemText>
-          </SectionItem>
+          <PreferredTitle />
         </SectionItemsWrapper>
       )}
     </>

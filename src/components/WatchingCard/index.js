@@ -1,9 +1,10 @@
-import { useNavigation } from "@react-navigation/native";
-import React from "react";
+import { useFocusEffect, useNavigation } from "@react-navigation/native";
+import React, { useCallback, useState } from "react";
 import {
   deleteAllEpisodesFromSameAnime,
   openEpisodeDatabase,
 } from "../../database";
+import { helpers } from "../../utils";
 import {
   Delete,
   DeleteIcon,
@@ -17,6 +18,7 @@ import {
 } from "./WatchingCard.styles";
 
 const WatchingCard = (props) => {
+  const [settingTitle, setSettingTitle] = useState("EN");
   const navigation = useNavigation();
 
   const handlePress = () => {
@@ -35,6 +37,17 @@ const WatchingCard = (props) => {
     }
   };
 
+  const getTitle = async () => {
+    const preferredTitle = await helpers.getSetting("preferredLanguage");
+    setSettingTitle(helpers.removeNonAlphaNumeric(preferredTitle));
+  };
+
+  useFocusEffect(
+    useCallback(() => {
+      getTitle();
+    }, [])
+  );
+
   return (
     <WatchingCardContainer onPress={handlePress}>
       <WatchingCardBackground
@@ -47,7 +60,9 @@ const WatchingCard = (props) => {
         </Delete>
         <WatchingCardContent>
           <WatchingCardTitle numberOfLines={1}>
-            {props?.title || props?.media?.title?.english}
+            {settingTitle === "EN"
+              ? props?.media?.title?.english || props?.title
+              : props?.media?.title?.romaji || props?.title}
           </WatchingCardTitle>
           <WatchingCardEpisode numberOfLines={1}>
             Episode{" "}
