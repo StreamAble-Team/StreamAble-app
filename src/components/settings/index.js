@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import {
   Container,
   Wrapper,
@@ -8,29 +8,33 @@ import {
   SettingsCardTitle,
 } from "./settings.styles";
 import Disclaimer from "./disclaimer";
+import { AnimeSettings, MiscellaneousSettings } from "./sections";
 
 const Settings = () => {
+  const [openIndex, setOpenIndex] = useState(false);
+
+  const openSettings = ({ index }) => {
+    setOpenIndex(index);
+  };
+
   return (
     <Container>
       <Wrapper>
-        <SettingsCard>
-          <SettingsCardTitle numberOfLines={1}>Miscellaneous</SettingsCardTitle>
-          <SettingsCardIcon />
-        </SettingsCard>
+        <MiscellaneousSettings
+          openSettings={openSettings}
+          openIndex={openIndex}
+        />
 
-        <SettingsCard>
-          <SettingsCardTitle numberOfLines={1}>Anime</SettingsCardTitle>
-          <SettingsCardIcon />
-        </SettingsCard>
+        <AnimeSettings openSettings={openSettings} openIndex={openIndex} />
 
-        <SettingsCard>
+        {/* <SettingsCard onPress={() => openSettings({ index: 2 })}>
           <SettingsCardTitle numberOfLines={1}>Manga</SettingsCardTitle>
           <SettingsCardIcon />
-        </SettingsCard>
+        </SettingsCard> */}
 
-        <SettingsCard>
+        <SettingsCard onPress={() => openSettings({ index: 3 })}>
           <SettingsCardTitle numberOfLines={1}>About</SettingsCardTitle>
-          <SettingsCardIcon />
+          <SettingsCardIcon open={openIndex === 3} />
         </SettingsCard>
       </Wrapper>
       <Disclaimer />

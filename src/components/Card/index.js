@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React from "react";
+import React, { useCallback } from "react";
 
 import {
   CardBackground,
@@ -19,6 +19,14 @@ const Card = (props) => {
   const handlePress = (event) => {
     navigation.navigate("Info", { id: props?.media?.id || props?.id });
   };
+
+  //check if focused or not
+  const onFocus = useCallback(() => {
+    console.log("Focused item ", title_english);
+  }, [title_english]);
+  const onBlur = useCallback(() => {
+    console.log("Lost item ", title_english);
+  }, [title_english]);
 
   return (
     <CardContainer index={props.index} onPress={handlePress}>

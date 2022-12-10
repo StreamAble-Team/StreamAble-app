@@ -33,9 +33,9 @@ export const SettingsCardTitle = styled.Text`
   text-transform: uppercase;
 `;
 
-export const SettingsCardIcon = styled(Icon).attrs({
-  name: "arrow-down",
-})`
+export const SettingsCardIcon = styled(Icon).attrs(({ open }) => ({
+  name: open ? "arrow-up" : "arrow-down",
+}))`
   font-size: 25px;
   color: ${({ theme }) => theme.text.primary};
 `;
