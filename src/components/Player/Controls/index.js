@@ -10,6 +10,7 @@ import {
   EpisodeTitle,
   EpisodeNumber,
   FlexBox,
+  WrapperWithBgTop,
 } from "./Controls.styles";
 import { IconItem, PressableIcon } from "../styles";
 import { useNavigation } from "@react-navigation/native";

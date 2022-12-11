@@ -1,3 +1,4 @@
+import { LinearGradient } from "expo-linear-gradient";
 import styled from "styled-components/native";
 
 export const Container = styled.View`
@@ -9,7 +10,11 @@ export const Container = styled.View`
   opacity: ${({ hideControls }) => (!hideControls ? 1 : 0)};
 `;
 
-export const WrapperWithBg = styled.View`
+export const WrapperWithBg = styled(LinearGradient).attrs(() => ({
+  colors: ["rgba(0, 0, 0, 0.05)", "rgba(0, 0, 0, 0.45)"],
+  start: { x: 0, y: 0 },
+  end: { x: 0, y: 1 },
+}))`
   position: absolute;
   bottom: 0;
   left: 0;
@@ -28,12 +33,17 @@ export const WrapperFlex = styled.View`
   margin-top: 10px;
 `;
 
-export const GoBackWrapper = styled.View`
+export const GoBackWrapper = styled(LinearGradient).attrs(() => ({
+  colors: ["rgba(0, 0, 0, 0.05)", "rgba(0, 0, 0, 0.45)"],
+  start: { x: 0, y: 1 },
+  end: { x: 0, y: 0 },
+}))`
   position: absolute;
   top: 0;
   left: 0;
-  margin: 15px;
+  padding: 15px;
   z-index: 10;
+  width: 100%;
 `;
 
 export const FlexBox = styled.View`

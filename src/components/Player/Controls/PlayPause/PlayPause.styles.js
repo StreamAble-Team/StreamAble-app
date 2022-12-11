@@ -6,7 +6,7 @@ export const CanPressIcon = styled.TouchableOpacity``;
 export const PlayIcon = styled(IconItem).attrs({
   name: "play",
 })`
-  margin: 0 130px;
+  margin: 0 75px;
 `;
 
 export const PauseIcon = styled(IconItem).attrs({
