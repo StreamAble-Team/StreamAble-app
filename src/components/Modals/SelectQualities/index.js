@@ -31,7 +31,7 @@ const SelectQualitiesModal = ({
           <Title>Please select your desired quality</Title>
           <WrapperFlex>
             {qualities.map(({ quality, url }) => {
-              if (isNaN(quality.replace("p", ""))) return false;
+              if (isNaN(quality?.replace("p", ""))) return false;
               return (
                 <Item key={quality} onPress={() => handlePress(url)}>
                   <ItemText>{quality}</ItemText>

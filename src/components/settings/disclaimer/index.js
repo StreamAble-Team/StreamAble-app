@@ -6,12 +6,11 @@ import {
   Social,
   SocialIconWrapper,
   SocialWrapper,
-  Text,
 } from "./disclaimer.styles";
 import Constants from "expo-constants";
 
 const Disclaimer = () => {
-  const version = Constants?.manifest?.version || "BETA";
+  const version = Constants?.manifest2?.extra?.expoClient?.version || "BETA";
 
   const onPress = (url) => {
     Linking.openURL(url);

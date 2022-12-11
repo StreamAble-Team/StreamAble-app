@@ -9,13 +9,13 @@ const Relations = (props) => {
 
   const filterOutNoneAnime = relations.filter((relation) => {
     return (
-      relation.type.toLowerCase() === "tv" ||
-      relation.type.toLowerCase() === "manga"
+      relation?.type.toLowerCase() === "tv" ||
+      relation?.type.toLowerCase() === "manga"
     );
   });
 
   filterOutNoneAnime.sort((a, b) => {
-    return b.type > a.type;
+    return b?.type > a?.type;
   });
 
   return (
