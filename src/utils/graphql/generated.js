@@ -295,8 +295,8 @@ export function useToggleFavoriteMutation(baseOptions) {
 }
 
 export const UpdateProgressDocument = gql`
-  mutation UpdateProgress($id: Int, $progress: Int) {
-    SaveMediaListEntry(id: $id, progress: $progress) {
+  mutation UpdateProgress($mediaId: Int, $progress: Int) {
+    SaveMediaListEntry(mediaId: $mediaId, progress: $progress) {
       id
     }
   }

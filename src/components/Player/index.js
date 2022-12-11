@@ -33,6 +33,7 @@ const Player = (props) => {
   const [playing, setPlaying] = useState(true);
   const [watched, setWatched] = useState(false);
   const [watchedAnilist, setWatchedAnilist] = useState(false);
+  const watchTimeBeforeSync = 80;
 
   const {
     loading,
@@ -47,7 +48,6 @@ const Player = (props) => {
   const updateProgress = useDebouncedMutation({
     mutationDocument: UpdateProgressDocument,
     makeUpdateFunction: (variables) => (proxy) => {
-      return console.log(animeId);
       const proxyData = proxy.readQuery({
         query: GetAnimeDocument,
         variables: { id: animeId },
@@ -112,7 +112,11 @@ const Player = (props) => {
     const find = select.find((item) => item.id === id) || props;
 
     // Check if watched is greater than 85%
-    if (watchedAmount > 85 && find?.watched !== 1 && watched !== true) {
+    if (
+      watchedAmount > watchTimeBeforeSync &&
+      find?.watched !== 1 &&
+      watched !== true
+    ) {
       // Update the watched status to true
       setWatched(true);
       await insertEpisode(db, {
@@ -139,9 +143,13 @@ const Player = (props) => {
     const progress = anilistData?.Media?.mediaListEntry
       ? anilistData?.Media?.mediaListEntry?.progress
       : 0;
-    if (watchedAmount > 85 && progress < episode && watchedAnilist !== true) {
+    if (
+      watchedAmount > watchTimeBeforeSync &&
+      progress < episode &&
+      watchedAnilist !== true
+    ) {
       updateProgress({
-        mediaId: anilistData?.Media?.mediaListEntry?.id,
+        mediaId: animeId,
         progress: episode,
       });
     }
