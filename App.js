@@ -17,10 +17,14 @@ import {
 import * as SplashScreen from "expo-splash-screen";
 import { client } from "./src/utils/graphql/client";
 import * as Sentry from "sentry-expo";
+import { BrowserTracing } from "@sentry/tracing";
 
 Sentry.init({
   dsn: "https://078f841d39de45eeb0bd6a0f202ea78d@o4504287377162240.ingest.sentry.io/4504287379324928",
   enableInExpoDevelopment: true,
+  // To set a uniform sample rate
+  integrations: [new BrowserTracing()],
+  tracesSampleRate: 0.2,
   debug: __DEV__, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
 

@@ -35,7 +35,8 @@ export const client = new ApolloClient({
         graphQLErrors.forEach(async (e) => {
           Sentry.Browser.captureMessage(e.message);
 
-          console.log(e.message);
+          console.error("[GraphQL error]:", e);
+
           if (e.message.toLowerCase().includes("invalid token")) {
             await AsyncStorage.removeItem(ANILIST_ACCESS_TOKEN_STORAGE);
           }

@@ -1,7 +1,6 @@
-import { View } from "react-native";
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { Audio, ResizeMode, VideoProps } from "expo-av";
-import { Container, VideoPlayer } from "./styles";
+import { Audio, ResizeMode } from "expo-av";
+import { Container, VideoPlayer, VideoProps } from "./styles";
 import Controls from "./Controls";
 import {
   createCollectionTable,
@@ -33,6 +32,7 @@ const Player = (props) => {
   const [status, setStatus] = useState({});
   const [playing, setPlaying] = useState(true);
   const [watched, setWatched] = useState(false);
+  const [watchedAnilist, setWatchedAnilist] = useState(false);
 
   const {
     loading,
@@ -47,6 +47,7 @@ const Player = (props) => {
   const updateProgress = useDebouncedMutation({
     mutationDocument: UpdateProgressDocument,
     makeUpdateFunction: (variables) => (proxy) => {
+      return console.log(animeId);
       const proxyData = proxy.readQuery({
         query: GetAnimeDocument,
         variables: { id: animeId },
@@ -69,6 +70,7 @@ const Player = (props) => {
           },
         });
       }
+      setWatchedAnilist(true);
 
       if (variables?.progress === proxyData?.Media?.episodes) {
         // TODO: show dropdown alert to notify that this anime was moved to "completed" list
@@ -80,7 +82,7 @@ const Player = (props) => {
   const HandleUpdateWatched = async () => {
     if (watched === true) return false;
     const { positionMillis, durationMillis } = status;
-    const watched = (positionMillis / durationMillis) * 100;
+    const watchedAmount = (positionMillis / durationMillis) * 100;
 
     //Get data from db
     const db = await openEpisodeDatabase();
@@ -109,19 +111,8 @@ const Player = (props) => {
     // Find the episode that was just watched
     const find = select.find((item) => item.id === id) || props;
 
-    if (
-      watched > 85 &&
-      anilistData?.Media?.mediaListEntry?.progress < episode &&
-      watched !== true
-    ) {
-      updateProgress({
-        mediaId: anilistData?.Media?.mediaListEntry?.id,
-        progress: episode,
-      });
-    }
-
     // Check if watched is greater than 85%
-    if (watched > 85 && find?.watched !== 1 && watched !== true) {
+    if (watchedAmount > 85 && find?.watched !== 1 && watched !== true) {
       // Update the watched status to true
       setWatched(true);
       await insertEpisode(db, {
@@ -138,6 +129,21 @@ const Player = (props) => {
       } else if (selectCol.length > 0) {
         await updateCollection(db, dataForCol);
       }
+    }
+  };
+
+  const handleAnilistWatched = async () => {
+    const { positionMillis, durationMillis } = status;
+    const watchedAmount = (positionMillis / durationMillis) * 100;
+
+    const progress = anilistData?.Media?.mediaListEntry
+      ? anilistData?.Media?.mediaListEntry?.progress
+      : 0;
+    if (watchedAmount > 85 && progress < episode && watchedAnilist !== true) {
+      updateProgress({
+        mediaId: anilistData?.Media?.mediaListEntry?.id,
+        progress: episode,
+      });
     }
   };
 
@@ -203,6 +209,7 @@ const Player = (props) => {
         useNativeControls={false}
         resizeMode={ResizeMode.CONTAIN}
         onPlaybackStatusUpdate={(status) => {
+          handleAnilistWatched(status);
           HandleUpdateWatched(status);
           return setStatus(() => status);
         }}
