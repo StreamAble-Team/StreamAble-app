@@ -12,7 +12,7 @@ export const Container = styled.View`
   margin-bottom: 25px;
   // margin-top: 10px;
   border-bottom-width: 1px;
-  border-bottom-color: ${({ theme }) => theme.text.secondary};
+  border-bottom-color: ${({ theme }) => theme.text.primary};
 `;
 
 export const Top = styled.TouchableOpacity`

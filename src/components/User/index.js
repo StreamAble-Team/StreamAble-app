@@ -37,15 +37,19 @@ const User = () => {
   const anime = statistics?.anime || {};
   const manga = statistics?.manga || {};
 
-  //convert minutes to hours minutes or days
+  //convert minutes to days hours and minutes
   const convertMinutes = (minutes) => {
+    const days = Math.floor(minutes / 1440);
     const hours = Math.floor((minutes % 1440) / 60);
-    const mins = Math.floor(minutes % 60);
-    if (hours === 0) {
-      return `${mins}m`;
-    } else {
-      return `${hours}h ${mins}m`;
-    }
+    const mins = Math.floor((minutes % 1440) % 60);
+
+    if (days === 0 && hours === 0 && mins === 0) return "0";
+    if (days === 0 && hours === 0) return `${mins}m`;
+    if (days === 0) return `${hours}h ${mins}m`;
+
+    return `${days < 10 ? `0${days}` : days}d ${
+      hours < 10 ? `0${hours}` : hours
+    }h ${mins < 10 ? `0${mins}` : mins}m`;
   };
 
   const spentWatchingAnime = convertMinutes(anime.minutesWatched);

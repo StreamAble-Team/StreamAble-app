@@ -41,8 +41,8 @@ const Card = (props) => {
         <CardContent>
           <CardTitle numberOfLines={2} ellipsizeMode={"tail"}>
             {settingTItle === "EN"
-              ? props?.media?.title?.english || title_english
-              : props?.media?.title?.romaji || title_romaji}
+              ? props?.media?.title?.english || title_english || title_romaji
+              : props?.media?.title?.romaji || title_romaji || title_english}
           </CardTitle>
         </CardContent>
       </CardBackground>
