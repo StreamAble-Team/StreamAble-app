@@ -11,12 +11,6 @@ import { Title, Container, Wrapper, ScrollView } from "./styles";
 const ListsContainer = () => {
   const [refreshing, setRefreshing] = useState(false);
 
-  const wait = (timeout) => {
-    return new Promise((resolve) => {
-      setTimeout(resolve, timeout);
-    });
-  };
-
   const onRefresh = () => {
     setRefreshing(true);
   };

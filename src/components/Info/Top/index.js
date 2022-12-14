@@ -134,8 +134,10 @@ const InfoTop = (props) => {
         <InfoTopWrapper>
           <InfoTopTitle numberOfLines={1}>
             {settingTitle === "EN"
-              ? props?.title?.english
-              : props?.title?.romaji}
+              ? props?.title?.english ||
+                props?.title?.romaji ||
+                props?.title?.native
+              : props?.title?.romaji || props?.title?.english}
           </InfoTopTitle>
           <InfoTopEpisode numberOfLines={1}>
             Episode {nextEpisode?.number || 1}

@@ -14,19 +14,16 @@ import {
 } from "./StandardCard.styles";
 
 const StandardCard = (props) => {
+  const type = props?.type?.toLowerCase();
   const navigation = useNavigation();
   const description = textSanitizer(props.description);
 
   const handlePress = (event) => {
-    if (props.type.toLowerCase() !== "tv") return false;
-    navigation.navigate("Info", { id: props.id });
+    navigation.navigate(type === "tv" ? "Info" : "Manga", { id: props.id });
   };
 
   return (
-    <Container
-      disabled={props.type.toLowerCase() !== "tv"}
-      onPress={handlePress}
-    >
+    <Container onPress={handlePress}>
       <ImageContainer>
         <CardImage source={{ uri: props.image }} />
       </ImageContainer>

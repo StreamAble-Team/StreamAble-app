@@ -91,6 +91,19 @@ export const getInfo = async (id, dub) => {
   return data;
 };
 
+export const getMangaInfo = async (id) => {
+  const { data } = await axios.get(
+    `https://api.consumet.org/meta/anilist-manga/info/${id}`
+  );
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
+
 export const getSource = async (episodeId, server) => {
   let { data } = await api.get(`/anilist/watch?episodeId=${episodeId}`);
 

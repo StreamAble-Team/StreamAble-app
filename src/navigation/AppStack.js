@@ -17,7 +17,7 @@ import * as ScreenOrientation from "expo-screen-orientation";
 import { NavBar } from "../components";
 
 import * as NavigationBar from "expo-navigation-bar";
-import linking from "./DeepLink";
+import MangaScreen from "../screens/Manga";
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +69,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
         <Stack.Screen name="Lists" component={ListScreen} />
+        <Stack.Screen name="Manga" component={MangaScreen} />
         <Stack.Screen name="Player" component={PlayerScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
       </Stack.Navigator>

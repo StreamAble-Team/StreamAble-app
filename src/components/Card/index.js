@@ -15,8 +15,16 @@ const Card = (props) => {
   const navigation = useNavigation();
   const { title, image, cover } = props;
 
-  const title_english = title?.english;
-  const title_romaji = title?.romaji;
+  const title_native = props?.media?.title?.native || title?.native;
+
+  const title_romaji =
+    props?.media?.title?.romaji || title?.romaji || title_native;
+
+  const title_english =
+    props?.media?.title?.english ||
+    title?.english ||
+    title_romaji ||
+    title_native;
 
   const handlePress = (event) => {
     navigation.navigate("Info", { id: props?.media?.id || props?.id });
@@ -40,9 +48,7 @@ const Card = (props) => {
       >
         <CardContent>
           <CardTitle numberOfLines={2} ellipsizeMode={"tail"}>
-            {settingTItle === "EN"
-              ? props?.media?.title?.english || title_english || title_romaji
-              : props?.media?.title?.romaji || title_romaji || title_english}
+            {settingTItle === "EN" ? title_english : title_romaji}
           </CardTitle>
         </CardContent>
       </CardBackground>
