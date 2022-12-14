@@ -9,6 +9,7 @@ const Chapters = (props) => {
 
   const pageSize = 50;
 
+  if (!chapters) return null;
   return (
     <Container>
       <Paginate

@@ -2,12 +2,11 @@ import styled from "styled-components/native";
 
 import Icon from "react-native-vector-icons/FontAwesome";
 
-export const MetaContainer = styled.View`
+export const MetaContainer = styled.ScrollView.attrs(() => ({
+  horizontal: true,
+  showsHorizontalScrollIndicator: false,
+}))`
   margin-top: 15px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
 `;
 
 export const MetaItemContainer = styled.View`

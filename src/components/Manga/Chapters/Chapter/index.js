@@ -1,23 +1,24 @@
 import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import {
-  CardContent,
-  CardImage,
-  Container,
   EpisodeNumber,
   Title,
 } from "../../../Info/Episodes/Episode/Episode.styles";
-import { CardBg } from "./Chapters.styles";
+import { CardBg, Container, CardContent } from "./Chapter.styles";
 
 const Chapter = (props) => {
   const navigation = useNavigation();
 
+  const title = props?.title?.toLowerCase();
+  const id = props?.id?.toLowerCase();
+  const chapter = title.split("chapter ")[1] || id?.split("-chapter-")[1];
+
   return (
-    <Container isMobile={true}>
+    <Container>
       <CardBg>
         <CardContent>
-          <Title numberOfLines={1}>{props.title}</Title>
-          <EpisodeNumber numberOfLines={1}>Chapter {props.title}</EpisodeNumber>
+          <Title numberOfLines={1}>{props.title || `Chapter ${chapter}`}</Title>
+          <EpisodeNumber numberOfLines={1}>Chapter {chapter}</EpisodeNumber>
         </CardContent>
       </CardBg>
     </Container>
