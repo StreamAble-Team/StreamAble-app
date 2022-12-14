@@ -28,6 +28,14 @@ const InfoScreen = ({ route }) => {
     notifyOnNetworkStatusChange: true,
   });
 
+  useFocusEffect(
+    useCallback(() => {
+      if (error || loading) return null;
+      if (error) return null;
+      refetch();
+    }, [id])
+  );
+
   const getDub = async () => {
     try {
       const getStorage = await helpers.getSetting("dub");
