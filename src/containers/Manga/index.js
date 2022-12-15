@@ -1,8 +1,13 @@
 import { View, ScrollView } from "react-native";
 import React, { useState } from "react";
-import { MangaTop, MetaInformation, PillMenu } from "../../components/Manga";
+
 import { Description } from "../../components/Info";
-import Switcher from "../../components/Manga/Switcher";
+import {
+  MangaPillMenu,
+  MangaTop,
+  MetaInformation,
+  Switcher,
+} from "../../components";
 
 const MangaContainer = (props) => {
   const [current, setCurrent] = useState(1);
@@ -12,7 +17,7 @@ const MangaContainer = (props) => {
         <MangaTop {...props.data} />
         <MetaInformation {...props.data} />
         <Description desc={props?.data?.description} />
-        <PillMenu setCurrent={setCurrent} current={current} />
+        <MangaPillMenu setCurrent={setCurrent} current={current} />
         <Switcher current={current} data={props.data} />
       </ScrollView>
     </View>

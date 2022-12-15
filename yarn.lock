@@ -2030,6 +2030,13 @@
     mkdirp "^1.0.4"
     rimraf "^3.0.2"
 
+"@openspacelabs/react-native-zoomable-view@^2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@openspacelabs/react-native-zoomable-view/-/react-native-zoomable-view-2.1.1.tgz#db7106212f6d81682f3038e30981213dd21985ba"
+  integrity sha512-rh3V+d/iQSS4ff3bmkky5gL83t7pRe+lkfshnhmX1Af0WqHNRUVT7swISmwDwnIFV+drlqv9DyNRx3gkcz9gZw==
+  dependencies:
+    prop-types "^15.7.2"
+
 "@peculiar/asn1-schema@^2.1.6", "@peculiar/asn1-schema@^2.3.0":
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/@peculiar/asn1-schema/-/asn1-schema-2.3.3.tgz#21418e1f3819e0b353ceff0c2dad8ccb61acd777"

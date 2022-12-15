@@ -30,9 +30,7 @@ const InfoScreen = ({ route }) => {
 
   useFocusEffect(
     useCallback(() => {
-      if (error || loading) return null;
-      if (error) return null;
-      refetch();
+      if (!error || !loading) refetch();
     }, [id])
   );
 

@@ -13,6 +13,14 @@ import {
   Characters,
   ActionBar,
 } from "./Info";
+import {
+  MangaTop,
+  MetaInformation,
+  Switcher,
+  Characters as MangaCharacters,
+  Chapters,
+  PillMenu as MangaPillMenu,
+} from "./Manga";
 import { InfoModal, SelectQualitiesModal } from "./Modals";
 import Settings from "./settings";
 import User from "./User";
@@ -35,4 +43,10 @@ export {
   SelectQualitiesModal,
   Settings,
   User,
+  MangaTop,
+  MetaInformation,
+  Switcher,
+  MangaCharacters,
+  Chapters,
+  MangaPillMenu,
 };

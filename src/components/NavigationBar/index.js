@@ -14,7 +14,12 @@ const NavBar = ({ currentRoute }) => {
     navigation.navigate(stackName);
   };
 
-  if (currentRoute === "Player" || currentRoute === "Settings") return null;
+  if (
+    currentRoute === "Player" ||
+    currentRoute === "Settings" ||
+    currentRoute === "Reader"
+  )
+    return null;
   return (
     <NavBarContainer>
       <NavBarWrapper>

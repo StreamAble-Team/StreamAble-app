@@ -5,6 +5,7 @@ import {
   Title,
 } from "../../../Info/Episodes/Episode/Episode.styles";
 import { CardBg, Container, CardContent } from "./Chapter.styles";
+import { api } from "../../../../utils";
 
 const Chapter = (props) => {
   const navigation = useNavigation();
@@ -13,8 +14,16 @@ const Chapter = (props) => {
   const id = props?.id?.toLowerCase();
   const chapter = title.split("chapter ")[1] || id?.split("-chapter-")[1];
 
+  const handlePress = async () => {
+    const data = await api.getMangaPages(props?.id);
+
+    navigation.navigate("Reader", {
+      pages: data,
+    });
+  };
+
   return (
-    <Container>
+    <Container onPress={handlePress}>
       <CardBg>
         <CardContent>
           <Title numberOfLines={1}>{props.title || `Chapter ${chapter}`}</Title>
