@@ -12,5 +12,5 @@ export const PlayIcon = styled(IconItem).attrs({
 export const PauseIcon = styled(IconItem).attrs({
   name: "pause",
 })`
-  margin: 0 130px;
+  margin: 0 75px;
 `;
