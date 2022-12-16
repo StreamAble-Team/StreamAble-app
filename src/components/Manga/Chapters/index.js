@@ -25,7 +25,11 @@ const Chapters = (props) => {
             selectedPage === 1 ? pageSize : pageSize * selectedPage + 1
           )
           .map((chapter, i) => (
-            <Chapter key={`chapter-${i}`} {...chapter} />
+            <Chapter
+              key={`chapter-${i}`}
+              {...chapter}
+              mangaTitle={props.title}
+            />
           ))}
       </Wrapper>
     </Container>

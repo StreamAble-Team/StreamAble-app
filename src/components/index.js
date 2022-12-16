@@ -24,6 +24,7 @@ import {
 import { InfoModal, SelectQualitiesModal } from "./Modals";
 import Settings from "./settings";
 import User from "./User";
+import { ReaderNavBar, ReaderPages } from "./Reader";
 
 export {
   Banner,
@@ -49,4 +50,6 @@ export {
   MangaCharacters,
   Chapters,
   MangaPillMenu,
+  ReaderNavBar,
+  ReaderPages,
 };

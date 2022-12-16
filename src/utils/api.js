@@ -105,7 +105,6 @@ export const getMangaInfo = async (id) => {
 };
 
 export const getMangaPages = async (id) => {
-  console.log(id);
   const { data } = await axios.get(
     `https://api.consumet.org/meta/anilist-manga/read?chapterId=${id}`
   );

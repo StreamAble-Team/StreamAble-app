@@ -3,12 +3,17 @@ import React, { useState } from "react";
 import Page from "./Page";
 import { FLatList, PagesContainer } from "./pages.styles";
 
-const ReaderPages = ({ pages }) => {
+const ReaderPages = (props) => {
+  const { pages, mangaTitle } = props;
   const [currentPage, setCurrentPage] = useState(1);
-  const [isHorizontal, setIsHorizontal] = useState(true);
+  const [isHorizontal, setIsHorizontal] = useState(false);
+  const [inverted, setInverted] = useState(false);
+  const [scrollEnabled, setScrollEnabled] = useState(true);
 
   const renderPage = (page) => {
-    return <Page key={page?.item.img} page={page?.item} />;
+    return (
+      <Page key={page?.item.img} page={page?.item} onZoom={setScrollEnabled} />
+    );
   };
 
   const getContentOffset = () => {
@@ -30,12 +35,11 @@ const ReaderPages = ({ pages }) => {
         data={pages}
         renderItem={renderPage}
         keyExtractor={(item) => item.img}
-        refreshing={pages.length === 0}
-        onRefresh={() => null}
         horizontal={isHorizontal}
-        inverted={!isHorizontal}
+        inverted={inverted}
         directionalLockEnabled
         contentOffset={getContentOffset()}
+        scrollEnabled={scrollEnabled}
       />
     </PagesContainer>
   );

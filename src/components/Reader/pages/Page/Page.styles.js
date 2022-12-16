@@ -4,8 +4,8 @@ import ReactNativeZoomableView from "@openspacelabs/react-native-zoomable-view/s
 
 export const ImageContainer = styled.View`#
 position: relative;
-  width: 340px;
-  height: 505px;
+  width: 280px;
+  height: 420px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;

@@ -5,6 +5,7 @@ import ReaderContainer from "../../containers/Reader";
 
 const ReaderScreen = ({ navigation, route }) => {
   useKeepAwake();
+
   return (
     <SafeAreaView>
       <ReaderContainer {...route.params} />
