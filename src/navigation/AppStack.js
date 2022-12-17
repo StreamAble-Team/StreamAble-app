@@ -35,6 +35,12 @@ const AppStack = ({ setHiddenStatusBar }) => {
       setHiddenStatusBar(false);
     }
 
+    if (routeNameRef === "Reader") {
+      setHiddenStatusBar(true);
+    } else {
+      setHiddenStatusBar(false);
+    }
+
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe");
   }, [routeNameRef]);

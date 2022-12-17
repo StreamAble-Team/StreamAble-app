@@ -20,6 +20,7 @@ const Chapter = (props) => {
     navigation.navigate("Reader", {
       pages: data,
       mangaTitle: props.mangaTitle,
+      chapter: chapter,
     });
   };
 
