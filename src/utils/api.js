@@ -1,5 +1,4 @@
 import axios from "axios";
-import { ANIME, META } from "@consumet/extensions";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
@@ -12,18 +11,17 @@ const api = axios.create({
   },
 });
 
-const anilist = new META.Anilist();
-let anilistManga = new META.Anilist.Manga();
-
 export const getPopular = async (page = 1, perPage = 20) => {
-  const results = await anilist.fetchPopularAnime(page, perPage);
+  const {
+    data: { results },
+  } = await api.get(`/anilist/popular?page=${page}&perPage=${perPage}`);
 
-  if (!results.results)
+  if (!results)
     return {
       error: "No data",
     };
 
-  const sortedData = results.results.sort((a, b) => {
+  const sortedData = results.sort((a, b) => {
     return b.rating - a.rating;
   });
 
@@ -31,14 +29,16 @@ export const getPopular = async (page = 1, perPage = 20) => {
 };
 
 export const getTrending = async (page = 1, perPage = 20) => {
-  const results = await anilist.fetchTrendingAnime(page, perPage);
+  const {
+    data: { results },
+  } = await api.get(`/anilist/trending?page=${page}&perPage=${perPage}`);
 
-  if (!results?.results)
+  if (!results)
     return {
       error: "No data",
     };
 
-  const sortedData = results?.results.sort((a, b) => {
+  const sortedData = results.sort((a, b) => {
     return b.rating - a.rating;
   });
 
@@ -64,14 +64,18 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
       error: "No search",
     };
 
-  const results = await anilist.search(search, page, perPage);
+  const {
+    data: { results },
+  } = await api.get(
+    `/anilist/search/${search}?page=${page}&perPage=${perPage}`
+  );
 
-  if (!results?.results)
+  if (!results)
     return {
       error: "No data",
     };
 
-  return results.results;
+  return results;
 };
 
 export const getInfo = async (id, dub) => {
@@ -88,7 +92,9 @@ export const getInfo = async (id, dub) => {
 };
 
 export const getMangaInfo = async (id) => {
-  const data = anilistManga.fetchMangaInfo(id);
+  const { data } = await axios.get(
+    `https://api.consumet.org/meta/anilist-manga/info/${id}`
+  );
 
   if (!data)
     return {
@@ -99,7 +105,9 @@ export const getMangaInfo = async (id) => {
 };
 
 export const getMangaPages = async (id) => {
-  const data = anilistManga.fetchChapterPages(id);
+  const { data } = await axios.get(
+    `https://api.consumet.org/meta/anilist-manga/read?chapterId=${id}`
+  );
 
   if (!data)
     return {
@@ -109,8 +117,8 @@ export const getMangaPages = async (id) => {
   return data;
 };
 
-export const getSource = async (episodeId) => {
-  const data = await anilist.fetchEpisodeSources(episodeId);
+export const getSource = async (episodeId, server) => {
+  let { data } = await api.get(`/anilist/watch?episodeId=${episodeId}`);
 
   if (!data)
     return {

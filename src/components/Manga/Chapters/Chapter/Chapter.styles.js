@@ -10,7 +10,7 @@ export const Container = styled.TouchableOpacity`
   overflow: hidden;
 `;
 
-export const CardBg = styled.ImageBackground`
+export const CardBg = styled.View`
   background-color: ${({ theme }) => theme.base.mainColor};
   width: 100%;
   height: 100%;

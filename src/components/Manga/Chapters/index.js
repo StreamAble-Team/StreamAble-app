@@ -28,7 +28,6 @@ const Chapters = (props) => {
             <Chapter
               key={`chapter-${i}`}
               {...chapter}
-              cover={props?.cover}
               mangaTitle={props.title}
             />
           ))}
