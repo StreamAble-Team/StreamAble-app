@@ -1,8 +1,8 @@
 import styled from "styled-components/native";
 
 export const PagesContainer = styled.View`
-  margin-top: 25px;
-  margin-bottom: 10px;
+  margin-top: 50px;
+  margin-bottom: 50px;
   // background-color: red;
   display: flex;
   flex-direction: row;

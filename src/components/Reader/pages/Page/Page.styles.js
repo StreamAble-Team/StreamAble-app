@@ -2,10 +2,10 @@ import { rgba } from "polished";
 import styled from "styled-components/native";
 import ReactNativeZoomableView from "@openspacelabs/react-native-zoomable-view/src/ReactNativeZoomableView";
 
-export const ImageContainer = styled.View`#
-position: relative;
-  width: 280px;
-  height: 420px;
+export const ImageContainer = styled.View`
+  position: relative;
+  width: 350px;
+  height: 500px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -25,7 +25,6 @@ export const Image = styled.Image`
   width: 100%;
   height: 100%;
   resize-mode: contain;
-  // height: 100px;
 `;
 
 export const PageContainer = styled.View`
@@ -33,7 +32,7 @@ export const PageContainer = styled.View`
   z-index: 2;
   top: 0;
   right: 0;
-  margin: 10px;
+  margin: 10px 20px;
   display: flex;
   flex-direction: row;
   justify-content: flex-end;

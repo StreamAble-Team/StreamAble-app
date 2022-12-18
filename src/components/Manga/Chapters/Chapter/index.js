@@ -20,12 +20,13 @@ const Chapter = (props) => {
     navigation.navigate("Reader", {
       pages: data,
       mangaTitle: props.mangaTitle,
+      chapter: chapter,
     });
   };
 
   return (
     <Container onPress={handlePress}>
-      <CardBg>
+      <CardBg source={{ uri: props?.cover }}>
         <CardContent>
           <Title numberOfLines={1}>{props.title || `Chapter ${chapter}`}</Title>
           <EpisodeNumber numberOfLines={1}>Chapter {chapter}</EpisodeNumber>
