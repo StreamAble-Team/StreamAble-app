@@ -1,23 +1,55 @@
 import styled from "styled-components/native";
+import { LinearGradient } from "expo-linear-gradient";
+import Icon from "react-native-vector-icons/FontAwesome5";
 
 const borderRadius = 8;
 
-export const Container = styled.View`
+export const Container = styled(LinearGradient).attrs(() => ({
+  colors: ["rgba(0, 0, 0, 0.1)", "rgba(0, 0, 0, 0.45)"],
+  start: { x: 0, y: 1 },
+  end: { x: 0, y: 0 },
+}))`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   padding: 10px 25px;
-  background: ${({ theme }) => theme.base.mainColor};
   z-index: 10;
-  border-bottom-left-radius: ${borderRadius}px;
-  border-bottom-right-radius: ${borderRadius}px;
 `;
 
-export const Title = styled.Text`
-  font-size: 20px;
-  font-weight: bold;
-  font-family: ${({ theme }) => theme.text.font.primary};
+export const FlexBox = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+export const GoBackWrapperPressable = styled.Pressable``;
+
+export const IconItem = styled(Icon)`
+  font-size: 30px;
   color: ${({ theme }) => theme.text.primary};
-  text-align: center;
+`;
+
+export const TitleWrapper = styled.View`
+  width: 100%;
+  flex: 1;
+  margin-left: 15px;
+`;
+
+export const MangaTitle = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+}))`
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 11px;
+  font-family: ${({ theme }) => theme.text.font.secondary};
+`;
+
+export const MangaSubTitle = styled.Text.attrs(() => ({
+  numberOfLines: 1,
+}))`
+  color: ${({ theme }) => theme.text.offWhite};
+  font-size: 13px;
+  font-family: ${({ theme }) => theme.text.font.primary};
 `;

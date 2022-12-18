@@ -4,10 +4,10 @@ import { Container } from "../Container.styles";
 import ReaderPages from "../../components/Reader/pages";
 import { ReaderNavBar } from "../../components";
 
-const ReaderContainer = ({ pages, mangaTitle }) => {
+const ReaderContainer = ({ pages, mangaTitle, chapter }) => {
   return (
     <>
-      <ReaderNavBar mangaTitle={mangaTitle} />
+      <ReaderNavBar mangaTitle={mangaTitle} chapter={chapter} />
       <Container>
         <ReaderPages pages={pages} mangaTitle={mangaTitle} />
       </Container>
