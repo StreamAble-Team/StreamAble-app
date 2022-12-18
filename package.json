@@ -15,6 +15,7 @@
   "dependencies": {
     "@apollo/client": "^3.7.2",
     "@expo-google-fonts/inter": "^0.2.2",
+    "@consumet/extensions": "https://github.com/tdanks2000/consumet.ts.git",
     "@expo-google-fonts/open-sans": "^0.2.2",
     "@openspacelabs/react-native-zoomable-view": "^2.1.1",
     "@react-native-async-storage/async-storage": "~1.17.3",
