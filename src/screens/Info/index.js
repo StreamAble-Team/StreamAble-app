@@ -52,7 +52,7 @@ const InfoScreen = ({ route }) => {
 
   const { data } = useQuery(
     ["Info-Data", dub, id],
-    () => api.getInfo(id, dub),
+    () => api.getInfo(id, Boolean(dub)),
     {
       cacheTime: 0,
     }

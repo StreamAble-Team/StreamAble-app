@@ -6,7 +6,7 @@ import { helpers } from "../../../../utils";
 const SubOrDub = ({ subOrDub, setDub, dub }) => {
   const handleDub = async () => {
     try {
-      await helpers.setSetting("dub", JSON.stringify(!dub));
+      await helpers.setSetting("dub", Boolean(!dub));
       setDub((prev) => !prev);
     } catch (error) {
       console.log({
