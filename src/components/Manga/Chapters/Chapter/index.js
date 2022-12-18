@@ -26,7 +26,7 @@ const Chapter = (props) => {
 
   return (
     <Container onPress={handlePress}>
-      <CardBg source={{ uri: props?.cover }}>
+      <CardBg>
         <CardContent>
           <Title numberOfLines={1}>{props.title || `Chapter ${chapter}`}</Title>
           <EpisodeNumber numberOfLines={1}>Chapter {chapter}</EpisodeNumber>
