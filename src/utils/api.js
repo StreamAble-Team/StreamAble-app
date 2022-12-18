@@ -109,8 +109,8 @@ export const getMangaPages = async (id) => {
   return data;
 };
 
-export const getSource = async (episodeId, server) => {
-  let { data } = await api.get(`/anilist/watch?episodeId=${episodeId}`);
+export const getSource = async (episodeId) => {
+  const data = await anilist.fetchEpisodeSources(episodeId);
 
   if (!data)
     return {
