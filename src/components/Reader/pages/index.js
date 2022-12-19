@@ -4,7 +4,7 @@ import Page from "./Page";
 import { FLatList, PagesContainer } from "./pages.styles";
 
 const ReaderPages = (props) => {
-  const { pages, mangaTitle } = props;
+  const { pages, mangaTitle, toggleNavBar } = props;
   const [currentPage, setCurrentPage] = useState(1);
   const [isHorizontal, setIsHorizontal] = useState(false);
   const [inverted, setInverted] = useState(false);
@@ -30,7 +30,7 @@ const ReaderPages = (props) => {
   };
 
   return (
-    <PagesContainer>
+    <PagesContainer toggleNavBar={toggleNavBar}>
       <FLatList
         data={pages}
         renderItem={renderPage}

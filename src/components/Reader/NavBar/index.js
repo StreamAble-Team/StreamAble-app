@@ -13,7 +13,7 @@ import {
   TitleWrapper,
 } from "./NavBar.styles";
 
-const ReaderNavBar = ({ mangaTitle, chapter }) => {
+const ReaderNavBar = ({ mangaTitle, chapter, toggleNavBar }) => {
   const navigation = useNavigation();
   const [preferredLanguage, setPreferredLanguage] = useState("EN");
   const title_english = mangaTitle?.english || mangaTitle?.romaji;
@@ -34,6 +34,7 @@ const ReaderNavBar = ({ mangaTitle, chapter }) => {
     }, [])
   );
 
+  if (!toggleNavBar) return null;
   return (
     <Container>
       <FlexBox>

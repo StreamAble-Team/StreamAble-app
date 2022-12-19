@@ -1,7 +1,7 @@
 import styled from "styled-components/native";
 
 export const PagesContainer = styled.View`
-  margin-top: 50px;
+  margin-top: ${({ toggleNavBar }) => (!toggleNavBar ? 25 : 50)}px;
   margin-bottom: 50px;
   // background-color: red;
   display: flex;

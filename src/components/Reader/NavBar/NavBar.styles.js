@@ -4,20 +4,20 @@ import Icon from "react-native-vector-icons/FontAwesome5";
 
 const borderRadius = 8;
 
-export const Container = styled(LinearGradient).attrs(() => ({
-  colors: ["rgba(0, 0, 0, 0.1)", "rgba(0, 0, 0, 0.45)"],
-  start: { x: 0, y: 1 },
-  end: { x: 0, y: 0 },
-}))`
+export const Container = styled.View`
   position: absolute;
-  top: 0;
   left: 0;
   width: 100%;
   padding: 10px 25px;
   z-index: 10;
 `;
 
-export const FlexBox = styled.View`
+export const FlexBox = styled(LinearGradient).attrs(() => ({
+  colors: ["rgba(0, 0, 0, 0.1)", "rgba(0, 0, 0, 0.45)"],
+  start: { x: 0, y: 1 },
+  end: { x: 0, y: 0 },
+}))`
+  width: 100%;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
