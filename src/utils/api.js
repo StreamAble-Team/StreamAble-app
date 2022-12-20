@@ -112,7 +112,7 @@ export const getMangaPages = async (id) => {
 };
 
 export const getSource = async (episodeId, server) => {
-  let { data } = await api.get(`/meta/anilist/watch?episodeId=${episodeId}`);
+  let { data } = await api.get(`/meta/anilist/watch/${episodeId}`);
 
   if (!data)
     return {
