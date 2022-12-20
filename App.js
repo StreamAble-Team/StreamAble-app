@@ -10,11 +10,11 @@ import {
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
 import { useState } from "react";
+import * as SplashScreen from "expo-splash-screen";
 import {
   AccessTokenProvider,
   useAccessToken,
 } from "./src/contexts/useAccessToken";
-import * as SplashScreen from "expo-splash-screen";
 import { client } from "./src/utils/graphql/client";
 import * as Sentry from "sentry-expo";
 import { BrowserTracing } from "@sentry/tracing";
@@ -27,9 +27,6 @@ Sentry.init({
   tracesSampleRate: 0.2,
   debug: __DEV__, // If `true`, Sentry will try to print out useful debugging information if something goes wrong with sending the event. Set it to `false` in production
 });
-
-// Keep the splash screen visible while we fetch resources
-SplashScreen.preventAutoHideAsync();
 
 const queryClient = new QueryClient({
   defaultOptions: { queries: { retry: 2 } },

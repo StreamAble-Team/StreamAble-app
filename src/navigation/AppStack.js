@@ -27,19 +27,16 @@ const AppStack = ({ setHiddenStatusBar }) => {
   const [routeNameRef, setRouteNameRef] = useState();
 
   useEffect(() => {
-    if (routeNameRef === "Player") {
-      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.LANDSCAPE);
-      setHiddenStatusBar(true);
-    } else {
-      ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
-      setHiddenStatusBar(false);
+    if (routeNameRef === "Player" || routeNameRef === "Reader") {
+      if (routeNameRef === "Player")
+        ScreenOrientation.lockAsync(
+          ScreenOrientation.OrientationLock.LANDSCAPE
+        );
+      return setHiddenStatusBar(true);
     }
 
-    if (routeNameRef === "Reader") {
-      setHiddenStatusBar(true);
-    } else {
-      setHiddenStatusBar(false);
-    }
+    ScreenOrientation.lockAsync(ScreenOrientation.OrientationLock.PORTRAIT);
+    setHiddenStatusBar(false);
 
     NavigationBar.setVisibilityAsync("hidden");
     NavigationBar.setBehaviorAsync("overlay-swipe");
