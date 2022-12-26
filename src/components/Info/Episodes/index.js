@@ -32,7 +32,7 @@ const Episodes = (props) => {
 
   const pageSize = 50;
 
-  const progress = anilistData.Media?.mediaListEntry?.progress || 0;
+  const progress = anilistData?.Media?.mediaListEntry?.progress || 0;
 
   return (
     <Container>

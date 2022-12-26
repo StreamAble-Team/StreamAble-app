@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { FlatList, ScrollView } from "react-native";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { Card } from "../../components";
 import { Container, Title } from "../Container.styles";
@@ -57,14 +57,21 @@ const Dropped = ({ refreshing, setRefreshing }) => {
   }, [refreshing]);
 
   if (!list.length) return null;
+
+  const renderItem = ({ item, index }) => (
+    <Card key={`Dropped-${item.id}`} {...item} index={index} />
+  );
+
   return (
     <Container>
       <Title>Dropped</Title>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {list.map((item, i) => (
-          <Card key={`Dropped-${item.id}`} {...item} index={i} />
-        ))}
-      </ScrollView>
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={list}
+        renderItem={renderItem}
+        keyExtractor={(item) => `Dropped-${item.id}`}
+      />
     </Container>
   );
 };

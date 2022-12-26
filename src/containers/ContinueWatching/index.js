@@ -1,4 +1,4 @@
-import { ScrollView } from "react-native";
+import { FlatList, ScrollView } from "react-native";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 
 import { Container, Title } from "../Container.styles";
@@ -103,20 +103,26 @@ const ContinueWatching = ({ refreshing, setRefreshing }) => {
     (uniqueList.length === 1 && uniqueList.includes(null))
   )
     return null;
+
+  const renderItem = ({ item, index }) => (
+    <WatchingCard
+      key={`continue-watching-${item?.id}`}
+      {...item}
+      index={index}
+      watchedAmount={item?.watchedAmount ? item.watchedAmount : 0}
+    />
+  );
+
   return (
     <Container>
       <Title>Continue Watching</Title>
-      <ScrollView horizontal={true} showsHorizontalScrollIndicator={false}>
-        {uniqueList?.map((item, i) => {
-          return (
-            <WatchingCard
-              key={`cw-${i}-${item.id}`}
-              {...item}
-              watchedAmount={item?.watchedAmount ? item.watchedAmount : 0}
-            />
-          );
-        })}
-      </ScrollView>
+      <FlatList
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        data={uniqueList}
+        renderItem={renderItem}
+        keyExtractor={(item) => `continue-watching-${item?.id}`}
+      />
     </Container>
   );
 };

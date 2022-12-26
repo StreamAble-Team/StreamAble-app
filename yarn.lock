@@ -4294,14 +4294,14 @@ expo-asset@~8.6.2:
     path-browserify "^1.0.0"
     url-parse "^1.5.9"
 
-expo-auth-session@~3.7.3:
-  version "3.7.3"
-  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.7.3.tgz#ded1afbbf88e0c6e4098e59920b4f13927fc1f3d"
-  integrity sha512-0mX47j6WdpEoaFVxU36VBRkEjJKwAkqnRyNdd5g+Ab1fHXQJJK3nzjOjxuBzgE8mKSS9NGHr/At9IGY6MLrg2g==
+expo-auth-session@~3.8.0:
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/expo-auth-session/-/expo-auth-session-3.8.0.tgz#ad929f1bcc2e1dc9d0b265f9555d3f967bda6bcc"
+  integrity sha512-pQ8GryTTZL/JKHvifUGD4GGlZWo7RrcoQlvQ0O5m5edYfoa7fMHCg20MBX4Da4P3eVgJlqWZWCHfBC2fZxcRfA==
   dependencies:
     expo-constants "~14.0.0"
     expo-crypto "~12.0.0"
-    expo-linking "~3.2.0"
+    expo-linking "~3.3.0"
     expo-web-browser "~12.0.0"
     invariant "^2.2.4"
     qs "6.9.1"
@@ -4403,10 +4403,10 @@ expo-linear-gradient@~12.0.1:
   resolved "https://registry.yarnpkg.com/expo-linear-gradient/-/expo-linear-gradient-12.0.1.tgz#452f793b0463ddf313aad431552f23acc85f5d64"
   integrity sha512-TMl/wBTVQOliL4S3DS5Aa3UFfVySr0mdJEHLG6kfBdMCLkr+tfLI2rGyJ+scS7xgMsvhTIaurhf1+Z0sL3aLCg==
 
-expo-linking@~3.2.0, expo-linking@~3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-3.2.3.tgz#7b493a7fea2aadafc88a42e2fc6a5a4ba6d47df9"
-  integrity sha512-PgiWCao9TecLOPdtWyiNSY+UQGAwdjFx4KbHd1YsF0KnM1CJ2idcaHpDRlQPWSNmDebUZYN461/dVtJi9b2krg==
+expo-linking@~3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/expo-linking/-/expo-linking-3.3.0.tgz#3860af9da374f0187db75036f353ca6fe9231a15"
+  integrity sha512-wXPzI2kijnql2L2F6i8zP1zINTkYlcRXyh1iV3P6Bt57v6yZiiniZBnb6grJVj19LOmluNs0PYrbX1ZsHBChCg==
   dependencies:
     "@types/qs" "^6.5.3"
     expo-constants "~14.0.0"
