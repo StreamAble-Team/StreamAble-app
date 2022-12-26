@@ -90,18 +90,24 @@ export const getInfo = async (id, dub) => {
 };
 
 export const getMangaInfo = async (id) => {
-  const { data } = await axios.get(`/meta/anilist-manga/info/${id}`);
+  try {
+    const { data } = await api.get(`/meta/anilist-manga/info/${id}`);
 
-  if (!data)
-    return {
-      error: "No data",
-    };
+    if (!data)
+      return {
+        error: "No data",
+      };
 
-  return data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getMangaPages = async (id) => {
-  const { data } = await axios.get(`/meta/anilist-manga/read?chapterId=${id}`);
+  const { data } = await api.get(`/meta/anilist-manga/read?chapterId=${id}`);
+
+  console.log({ data });
 
   if (!data)
     return {

@@ -10,6 +10,7 @@ import {
 } from "../../components";
 
 const MangaContainer = (props) => {
+  console.log(props.data);
   const [current, setCurrent] = useState(1);
   return (
     <View>

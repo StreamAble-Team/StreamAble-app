@@ -80,9 +80,11 @@ const Episode = (props) => {
             Episode {props.number}
           </EpisodeNumber>
         </CardContent>
-        <WatchedContainer>
-          <WatchedAmount amount={watchedAmount} />
-        </WatchedContainer>
+        {watchedAmount < 1 ? null : (
+          <WatchedContainer>
+            <WatchedAmount amount={watchedAmount} />
+          </WatchedContainer>
+        )}
       </CardImage>
     </Container>
   );
