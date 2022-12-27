@@ -47,7 +47,7 @@
         }
       ],
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 29
+      "versionCode": 30
     },
     "web": {
       "favicon": "./assets/favicon.png"

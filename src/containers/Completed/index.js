@@ -58,6 +58,10 @@ const Completed = ({ refreshing, setRefreshing }) => {
 
   if (!list.length) return null;
 
+  animeListData.MediaListCollection.lists[0].entries.forEach((item) => {
+    console.log(item?.media?.title?.english || item?.media?.title?.romaji);
+  });
+
   const renderItem = ({ item, index }) => (
     <Card key={`completed-${item?.id}`} {...item} index={index} />
   );

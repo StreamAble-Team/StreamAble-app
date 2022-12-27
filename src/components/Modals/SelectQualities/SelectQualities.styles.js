@@ -13,7 +13,6 @@ export const Container = styled.Pressable`
 export const Wrapper = styled.Pressable`
   position: relative;
   width: 100%;
-  height: 45%;
   background-color: ${({ theme }) => theme.base.navBg};
   overflow: hidden;
   border-top-left-radius: 20px;

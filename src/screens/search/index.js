@@ -25,7 +25,7 @@ const SearchScreen = () => {
         setSearchPhrase={setSearchPhrase}
       />
       <ScrollContainer vertical={true} showsVerticalScrollIndicator={false}>
-        {data.length > 1
+        {data.length > 0
           ? data.map((item, index) => (
               <SearchCard key={`search-${item.id}`} {...item} index={index} />
             ))

@@ -66,7 +66,11 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
 
   const {
     data: { results },
-  } = await api.get(`/meta/anilist/${search}?page=${page}&perPage=${perPage}`);
+  } = await api.get(
+    `/meta/anilist/${encodeURIComponent(
+      search
+    )}?page=${page}&perPage=${perPage}`
+  );
 
   if (!results)
     return {

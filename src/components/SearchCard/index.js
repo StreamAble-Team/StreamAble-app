@@ -13,6 +13,7 @@ import {
 } from "./SearchCard.styles";
 
 const SearchCard = (props) => {
+  const { title } = props;
   const [settingTitle, setSettingTitle] = useState("EN");
   const navigation = useNavigation();
 
@@ -33,6 +34,15 @@ const SearchCard = (props) => {
     }, [])
   );
 
+  const title_native = props?.media?.title?.native || title?.native;
+  const title_romaji =
+    props?.media?.title?.romaji || title?.romaji || title_native;
+  const title_english =
+    props?.media?.title?.english ||
+    title?.english ||
+    title_romaji ||
+    title_native;
+
   return (
     <SearchCardContainer onPress={handlePress}>
       <SearchCardImageContainer>
@@ -40,19 +50,23 @@ const SearchCard = (props) => {
       </SearchCardImageContainer>
       <SearchCardInfo>
         <SearchCardDescription numberOfLines={3}>
-          {description}
+          {description || "??"}
         </SearchCardDescription>
         <SearchCardMeta>
-          <SearchCardMetaItem>{props.releaseDate}</SearchCardMetaItem>
-          <SearchCardMetaItem>{props.totalEpisodes}</SearchCardMetaItem>
+          <SearchCardMetaItem>{props?.releaseDate || "??"}</SearchCardMetaItem>
           <SearchCardMetaItem>
-            {(props.rating / 10).toFixed(1)}
+            {props?.totalEpisodes || "??"}
           </SearchCardMetaItem>
-          <SearchCardMetaItem>{props.status}</SearchCardMetaItem>
-          <SearchCardMetaItem>{props.type}</SearchCardMetaItem>
+          <SearchCardMetaItem>
+            {parseFloat((props.rating / 10)?.toFixed(1)) === 0.0
+              ? "??"
+              : (props.rating / 10)?.toFixed(1)}
+          </SearchCardMetaItem>
+          <SearchCardMetaItem>{props?.status || "??"}</SearchCardMetaItem>
+          <SearchCardMetaItem>{props?.type || "??"}</SearchCardMetaItem>
         </SearchCardMeta>
         <SearchCardTitle numberOfLines={1}>
-          {settingTitle === "EN" ? props?.title?.english : props?.title?.romaji}
+          {settingTitle === "EN" ? title_english : title_romaji}
         </SearchCardTitle>
       </SearchCardInfo>
     </SearchCardContainer>
