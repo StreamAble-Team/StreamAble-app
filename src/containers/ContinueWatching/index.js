@@ -44,12 +44,19 @@ const ContinueWatching = ({ refreshing, setRefreshing }) => {
     notifyOnNetworkStatusChange: false,
   });
 
+  //combine all animeListData?.MediaListCollection?.lists entires into one array
+  const allAnimeList = animeListData?.MediaListCollection?.lists?.reduce(
+    (acc, list) => {
+      return acc.concat(list.entries);
+    },
+    []
+  );
+
   const list = useMemo(
     () =>
       sortBy(
         (
-          (animeListData?.MediaListCollection?.lists &&
-            animeListData?.MediaListCollection?.lists[0]?.entries) ??
+          (animeListData?.MediaListCollection?.lists && allAnimeList) ??
           []
         ).filter(utils.notEmpty),
         (m) => m.media?.title?.english
@@ -59,13 +66,15 @@ const ContinueWatching = ({ refreshing, setRefreshing }) => {
 
   // get Watching data
   const newList = !list.length ? data : list.concat(data);
-  const uniqueList = !list.length
-    ? newList
-    : Array.from(new Set(newList.map((a) => a?.animeId || a?.media?.id))).map(
-        (id) => {
-          return newList.find((a) => a?.animeId || a?.media?.id === id);
-        }
-      );
+
+  // combine all data and remove duplicates by animeId
+  const uniqueList = newList
+    ? [
+        ...new Map(
+          newList.map((item) => [item?.media?.id || item?.animeId, item])
+        ).values(),
+      ]
+    : null;
 
   const getContinueWatching = async () => {
     const db = await openEpisodeDatabase();

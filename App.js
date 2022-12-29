@@ -18,6 +18,7 @@ import {
 import { client } from "./src/utils/graphql/client";
 import * as Sentry from "sentry-expo";
 import { BrowserTracing } from "@sentry/tracing";
+import { LogBox } from "react-native";
 
 Sentry.init({
   dsn: "https://078f841d39de45eeb0bd6a0f202ea78d@o4504287377162240.ingest.sentry.io/4504287379324928",
@@ -33,6 +34,7 @@ const queryClient = new QueryClient({
 });
 
 export default function App() {
+  LogBox.ignoreAllLogs();
   return (
     <AccessTokenProvider>
       <InnerApp />

@@ -36,12 +36,19 @@ const Dropped = ({ refreshing, setRefreshing }) => {
     notifyOnNetworkStatusChange: false,
   });
 
+  //combine all animeListData?.MediaListCollection?.lists entires into one array
+  const allAnimeList = animeListData?.MediaListCollection?.lists?.reduce(
+    (acc, list) => {
+      return acc.concat(list.entries);
+    },
+    []
+  );
+
   const list = useMemo(
     () =>
       sortBy(
         (
-          (animeListData?.MediaListCollection?.lists &&
-            animeListData?.MediaListCollection?.lists[0]?.entries) ??
+          (animeListData?.MediaListCollection?.lists && allAnimeList) ??
           []
         ).filter(utils.notEmpty),
         (m) => m.media?.title?.english

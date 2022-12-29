@@ -11,9 +11,12 @@ import dayjs from "dayjs";
 const SeekBar = ({ videoRef, status }) => {
   const { durationMillis, positionMillis } = status;
 
-  const formatTime = "mm:ss";
-  const currentTime = dayjs(positionMillis).format(formatTime);
-  const durationTime = dayjs(durationMillis).format(formatTime);
+  const durationTime = dayjs(durationMillis).format(
+    durationMillis > 3600000 ? "HH:mm:ss" : "mm:ss"
+  );
+  const currentTime = dayjs(positionMillis).format(
+    positionMillis > 3600000 ? "HH:mm:ss" : "mm:ss"
+  );
 
   const handleSeekStart = () => {
     videoRef.current.pauseAsync();

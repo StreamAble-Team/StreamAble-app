@@ -21,7 +21,7 @@ const CharacterCard = (props) => {
   );
 
   return (
-    <Container>
+    <Container disabled={true}>
       <ImageContainer>
         <CardImage source={{ uri: props.image }}>
           <PlayedBy>
@@ -30,11 +30,11 @@ const CharacterCard = (props) => {
         </CardImage>
       </ImageContainer>
       <Info>
-        <SubtitleRole numberOfLines={1}>{props.role}</SubtitleRole>
+        <SubtitleRole numberOfLines={1}>{props?.role || "??"}</SubtitleRole>
         <Subtitle numberOfLines={1}>
-          {findJapaneseName.name.userPreferred}
+          {findJapaneseName?.name?.userPreferred || "??"}
         </Subtitle>
-        <Title numberOfLines={1}>{props.name.full}</Title>
+        <Title numberOfLines={1}>{props?.name?.full || "??"}</Title>
       </Info>
     </Container>
   );

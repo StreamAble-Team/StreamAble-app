@@ -36,12 +36,19 @@ const Completed = ({ refreshing, setRefreshing }) => {
     notifyOnNetworkStatusChange: false,
   });
 
+  //combine all animeListData?.MediaListCollection?.lists entires into one array
+  const allAnimeList = animeListData?.MediaListCollection?.lists?.reduce(
+    (acc, list) => {
+      return acc.concat(list.entries);
+    },
+    []
+  );
+
   const list = useMemo(
     () =>
       sortBy(
         (
-          (animeListData?.MediaListCollection?.lists &&
-            animeListData?.MediaListCollection?.lists[0]?.entries) ??
+          (animeListData?.MediaListCollection?.lists && allAnimeList) ??
           []
         ).filter(utils.notEmpty),
         (m) => m.media?.title?.english
@@ -56,11 +63,9 @@ const Completed = ({ refreshing, setRefreshing }) => {
     }
   }, [refreshing]);
 
-  if (!list.length) return null;
+  if (!list?.length) return null;
 
-  animeListData.MediaListCollection.lists[0].entries.forEach((item) => {
-    console.log(item?.media?.title?.english || item?.media?.title?.romaji);
-  });
+  // console.log("list sorted Completed: ", list.length);
 
   const renderItem = ({ item, index }) => (
     <Card key={`completed-${item?.id}`} {...item} index={index} />
