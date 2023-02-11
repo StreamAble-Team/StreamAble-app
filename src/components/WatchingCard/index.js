@@ -20,6 +20,7 @@ import {
 const WatchingCard = (props) => {
   const [settingTitle, setSettingTitle] = useState("EN");
   const navigation = useNavigation();
+  const { title } = props;
 
   const handlePress = () => {
     navigation.navigate("Info", {
@@ -48,6 +49,18 @@ const WatchingCard = (props) => {
     }, [])
   );
 
+  const title_native = props?.media?.title?.native || title?.native || title;
+
+  const title_romaji =
+    props?.media?.title?.romaji || title?.romaji || title_native || title;
+
+  const title_english =
+    props?.media?.title?.english ||
+    title?.english ||
+    title_romaji ||
+    title_native ||
+    title;
+
   return (
     <WatchingCardContainer onPress={handlePress}>
       <WatchingCardBackground
@@ -60,9 +73,7 @@ const WatchingCard = (props) => {
         </Delete>
         <WatchingCardContent>
           <WatchingCardTitle numberOfLines={1}>
-            {settingTitle === "EN"
-              ? props?.media?.title?.english || props?.title
-              : props?.media?.title?.romaji || props?.title}
+            {settingTitle === "EN" ? title_english : title_romaji}
           </WatchingCardTitle>
           <WatchingCardEpisode numberOfLines={1}>
             Episode{" "}

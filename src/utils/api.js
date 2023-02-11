@@ -2,7 +2,7 @@ import axios from "axios";
 
 const USER_AGENT =
   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/83.0.4103.116 Safari/537.36";
-const baseURL = `https://api.consumet.org`;
+const baseURL = `https://api.streamable.moe/api`;
 
 const api = axios.create({
   baseURL: baseURL,
@@ -14,7 +14,7 @@ const api = axios.create({
 export const getPopular = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/meta/anilist/popular?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/anilist/popular?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -31,7 +31,7 @@ export const getPopular = async (page = 1, perPage = 20) => {
 export const getTrending = async (page = 1, perPage = 20) => {
   const {
     data: { results },
-  } = await api.get(`/meta/anilist/trending?page=${page}&perPage=${perPage}`);
+  } = await api.get(`/anilist/trending?page=${page}&perPage=${perPage}`);
 
   if (!results)
     return {
@@ -45,9 +45,9 @@ export const getTrending = async (page = 1, perPage = 20) => {
   return sortedData;
 };
 
-export const getTopRated = async (limit = 10) => {
+export const getTopRated = async (limit, page = 1) => {
   const { data } = await api.get(
-    `/meta/anilist/advanced-search?sort=["SCORE_DESC"]&perPage=${limit}`
+    `/anilist/top-rated?page=${page}&perPage=${limit}`
   );
 
   if (!data)
@@ -67,7 +67,7 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
   const {
     data: { results },
   } = await api.get(
-    `/meta/anilist/${encodeURIComponent(
+    `/anilist/search/${encodeURIComponent(
       search
     )}?page=${page}&perPage=${perPage}`
   );
@@ -82,7 +82,7 @@ export const getSearch = async (search, page = 1, perPage = 20) => {
 
 export const getInfo = async (id, dub) => {
   const { data } = await api.get(
-    `/meta/anilist/info/${id}?dub=${dub}&fetchFiller=true`
+    `/anilist/info/${id}?dub=${dub}&fetchFiller=true`
   );
 
   if (!data)
@@ -95,7 +95,7 @@ export const getInfo = async (id, dub) => {
 
 export const getMangaInfo = async (id) => {
   try {
-    const { data } = await api.get(`/meta/anilist-manga/info/${id}`);
+    const { data } = await api.get(`/anilist-manga/info/${id}`);
 
     if (!data)
       return {
@@ -109,7 +109,7 @@ export const getMangaInfo = async (id) => {
 };
 
 export const getMangaPages = async (id) => {
-  const { data } = await api.get(`/meta/anilist-manga/read?chapterId=${id}`);
+  const { data } = await api.get(`/anilist-manga/read?chapterId=${id}`);
 
   console.log({ data });
 
@@ -122,7 +122,7 @@ export const getMangaPages = async (id) => {
 };
 
 export const getSource = async (episodeId, server) => {
-  let { data } = await api.get(`/meta/anilist/watch/${episodeId}`);
+  let { data } = await api.get(`/anilist/watch/${episodeId}`);
 
   if (!data)
     return {
@@ -134,7 +134,7 @@ export const getSource = async (episodeId, server) => {
 
 export const getEpisodes = async (id, dub = false, fetchFiller = true) => {
   const { data } = await api.get(
-    `/meta/anilist/episodes/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
+    `/anilist/episodes/${id}?dub=${dub}&fetchFiller=${fetchFiller}`
   );
 
   if (!data)
