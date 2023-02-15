@@ -17,7 +17,7 @@
     </a>
     <img src="https://img.shields.io/badge/platforms-android-blueviolet?style=for-the-badge"/>
     <a href="https://github.com/TDanks2000/StreamAble-app/releases/latest">
-        <img src="https://img.shields.io/github/v/release/tdanks2000/streamable-app?color=blueviolet&include_prereleases&style=for-the-badge" />
+        <img src="https://img.shields.io/github/v/release/StreamAble-Team/StreamAble-app?include_prereleases&style=for-the-badge&color=blueviolet" />
     </a>
   </p>
 </div>
