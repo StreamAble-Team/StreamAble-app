@@ -1,4 +1,4 @@
-import { View } from "react-native";
+import { Text, View } from "react-native";
 import * as Linking from "expo-linking";
 import React from "react";
 import {
@@ -10,7 +10,10 @@ import {
 import Constants from "expo-constants";
 
 const Disclaimer = () => {
-  const version = Constants?.manifest2?.extra?.expoClient?.version || "BETA";
+  const version =
+    Constants?.expoConfig?.version ||
+    Constants?.manifest2?.extra?.expoClient?.version ||
+    "BETA";
 
   const onPress = (url) => {
     Linking.openURL(url);
@@ -25,6 +28,12 @@ const Disclaimer = () => {
           }
         >
           <Social name="github" />
+        </SocialIconWrapper>
+        <Text>{"       "}</Text>
+        <SocialIconWrapper
+          onPress={() => onPress("https://discord.gg/jm6GArH3QE")}
+        >
+          <Social name="discord" />
         </SocialIconWrapper>
       </SocialWrapper>
       <AppVersion>Version {version}</AppVersion>

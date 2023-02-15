@@ -2,7 +2,7 @@
   "expo": {
     "name": "StreamAble",
     "slug": "StreamAble",
-    "version": "0.1.9",
+    "version": "0.1.10",
     "scheme": "streamable",
     "plugins": [
       [
@@ -24,9 +24,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/9993d8be-e845-45b5-9a2f-4e65a8877e0f"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "supportsTablet": false,
       "bundleIdentifier": "com.tdanks2000.StreamAble"
@@ -40,14 +38,11 @@
         {
           "action": "MAIN",
           "data": {},
-          "category": [
-            "LEANBACK_LAUNCHER",
-            "LAUNCHER"
-          ]
+          "category": ["LEANBACK_LAUNCHER", "LAUNCHER"]
         }
       ],
       "package": "com.tdanks2000.StreamAble",
-      "versionCode": 31
+      "versionCode": 32
     },
     "web": {
       "favicon": "./assets/favicon.png"
