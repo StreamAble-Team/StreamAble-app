@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
 import { useBreakpoints } from "../../../../hooks";
 import { Container, TextSkip, Wrapper, SkipIcon } from "./Skip85.styles";
+import { helpers } from "../../../../utils";
 
 const Skip85 = ({
   videoRef,
@@ -14,6 +16,8 @@ const Skip85 = ({
   const duration = status.durationMillis;
 
   const [changeSkip, setChangeSkip] = useState(false);
+  const [autoNextEpisodeSetting, setAutoNextEpisodeSetting] = useState(false);
+
   const handleSkip = () => {
     if (changeSkip === "op") {
       videoRef.current.setPositionAsync(opSkipTimes?.endTime * 1000);
@@ -28,28 +32,37 @@ const Skip85 = ({
   //   }
   // }, [currentTime]);
 
+  const getSettings = async () => {
+    const skipNextEpisodeSetting = await helpers.getSetting("autoNextEpisode");
+    setAutoNextEpisodeSetting(
+      helpers.removeNonAlphaNumeric(skipNextEpisodeSetting)
+    );
+  };
+
   // change button to skip intro if currentTime is greater than or equal to opSkipTimes?.startTime and less than or equal to opSkipTimes?.endTime
   useEffect(() => {
     //convert currentTime to seconds
-    const currentTimeInSeconds = Math.floor(currentTime / 1000);
+    const currentTimeInSeconds = currentTime / 1000;
 
-    console.log({
-      currentTimeInSeconds: currentTimeInSeconds,
-      opSkipTime: opSkipTimes?.startTime,
-    });
     if (
       currentTimeInSeconds >= opSkipTimes?.startTime &&
       currentTimeInSeconds <= opSkipTimes?.endTime
     ) {
+      if (autoNextEpisodeSetting) {
+        videoRef.current.setPositionAsync(opSkipTimes?.endTime * 1000);
+        return;
+      }
       if (changeSkip !== "op") setChangeSkip("op");
     } else {
       if (changeSkip === "op") setChangeSkip(false);
     }
   }, [currentTime]);
 
-  useEffect(() => {
-    console.log("changeSkip", changeSkip);
-  }, [changeSkip]);
+  useFocusEffect(
+    useCallback(() => {
+      getSettings();
+    }, [])
+  );
 
   if (changeSkip === "op")
     return (
