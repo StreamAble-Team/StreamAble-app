@@ -92,8 +92,10 @@ const Controls = (props) => {
   let timeout;
   const handleInactive = () => {
     setHideControls((prev) => !prev);
+
     clearTimeout(timeout);
     timeout = setTimeout(() => {
+      if (!status.isPlaying) return;
       setHideControls(true);
     }, duration);
   };

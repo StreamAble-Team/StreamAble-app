@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { useBreakpoints } from "../../../../hooks";
 import { Container, TextSkip, Wrapper, SkipIcon } from "./Skip85.styles";
 
 const Skip85 = ({ videoRef, status, nextEpisodeId }) => {
+  const { isMobile } = useBreakpoints();
   const currentTime = status.positionMillis;
   const duration = status.durationMillis;
   const [changeSkip, setChangeSkip] = useState(false);
@@ -19,7 +21,7 @@ const Skip85 = ({ videoRef, status, nextEpisodeId }) => {
   if (!changeSkip)
     return (
       <Container>
-        <Wrapper onPress={handleSkip}>
+        <Wrapper onPress={handleSkip} isMobile={isMobile}>
           <TextSkip>85s</TextSkip>
           <SkipIcon name="fast-forward" />
         </Wrapper>

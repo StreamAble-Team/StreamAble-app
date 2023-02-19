@@ -7,12 +7,12 @@ export const Container = styled.View`
   bottom: 0;
   right: 0;
   margin: 25px;
-  margin-bottom: 120px;
+  margin-bottom: 113px;
   z-index: 10;
 `;
 
 export const Wrapper = styled.TouchableOpacity`
-  padding: 10px 25px;
+  padding: 8px 15px;
   background: ${({ theme }) => rgba(theme.base.mainColor, 0.7)};
   border-radius: 10px;
   display: flex;
@@ -23,12 +23,12 @@ export const Wrapper = styled.TouchableOpacity`
 
 export const TextSkip = styled.Text`
   color: ${({ theme }) => theme.text.primary};
-  font-size: 18px;
+  font-size: 17px;
   font-family: ${({ theme }) => theme.text.font.secondary};
 `;
 
 export const SkipIcon = styled(Icon)`
   color: ${({ theme }) => theme.text.primary};
-  font-size: 18px;
+  font-size: 17px;
   margin-left: 10px;
 `;

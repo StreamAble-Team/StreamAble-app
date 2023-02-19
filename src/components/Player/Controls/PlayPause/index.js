@@ -8,7 +8,7 @@ const PlayPause = ({ status, videoRef, handleInactive }) => {
     status.isPlaying
       ? videoRef.current.pauseAsync()
       : videoRef.current.playAsync();
-    status.isPlaying ?? handleInactive();
+    if (!status.isPlaying) handleInactive();
   };
 
   return !status.isPlaying ? (
