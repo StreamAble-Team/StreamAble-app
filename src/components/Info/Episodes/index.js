@@ -54,6 +54,7 @@ const Episodes = (props) => {
               key={`episode-${i}`}
               {...episode}
               animeId={props.id}
+              malId={props.malId}
               totalEpisodes={totalEpisodes}
               setQualities={setQualities}
               setShowQualityModal={setShowQualityModal}

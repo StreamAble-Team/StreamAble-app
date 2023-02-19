@@ -11,6 +11,8 @@ import {
   SectionItemText,
 } from "../sections.styles";
 import PreferredTitle from "./settings/PreferredTitle";
+import AutoNextEpisode from "./settings/autoNextEpisode";
+import AutoSkipIntro from "./settings/autoSkipIntro";
 
 const AnimeSettings = ({ openSettings, openIndex }) => {
   return (
@@ -22,6 +24,8 @@ const AnimeSettings = ({ openSettings, openIndex }) => {
       {openIndex === 1 && (
         <SectionItemsWrapper>
           <PreferredTitle />
+          <AutoSkipIntro />
+          <AutoNextEpisode />
         </SectionItemsWrapper>
       )}
     </>

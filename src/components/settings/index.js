@@ -20,12 +20,12 @@ const Settings = () => {
   return (
     <Container>
       <Wrapper>
+        <AnimeSettings openSettings={openSettings} openIndex={openIndex} />
+
         <MiscellaneousSettings
           openSettings={openSettings}
           openIndex={openIndex}
         />
-
-        <AnimeSettings openSettings={openSettings} openIndex={openIndex} />
 
         {/* <SettingsCard onPress={() => openSettings({ index: 2 })}>
           <SettingsCardTitle numberOfLines={1}>Manga</SettingsCardTitle>

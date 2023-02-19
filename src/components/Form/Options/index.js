@@ -13,8 +13,9 @@ const Option = ({ options, setOption, option, onPress }) => {
     <Container>
       {options.map((o) => {
         const active =
-          String(helpers.removeNonAlphaNumeric(o.value)) ===
-          String(helpers.removeNonAlphaNumeric(option));
+          String(helpers.removeNonAlphaNumeric(o.value.toString())) ===
+          String(helpers.removeNonAlphaNumeric(option.toString()));
+
         return (
           <Item
             key={o.value}

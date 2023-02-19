@@ -36,6 +36,7 @@ const InfoTop = (props) => {
     setShowQualityModal,
     setDataToSend,
     anilistData,
+    malId,
   } = props;
   const [settingTitle, setSettingTitle] = useState("EN");
   const [nextEpisode, setNextEpisode] = useState(null);
@@ -55,6 +56,7 @@ const InfoTop = (props) => {
       title: whatEpisodeToGet.title,
       episode: whatEpisodeToGet.number,
       referer: headers.Referer,
+      malId: malId,
       nextEpisodeId: `${whatEpisodeToGet.id
         .split("-")
         .splice(0, 3)

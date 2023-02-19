@@ -144,3 +144,14 @@ export const getEpisodes = async (id, dub = false, fetchFiller = true) => {
 
   return data;
 };
+
+export const getSkipTimes = async (malId, episodeNumber) => {
+  const { data } = await api.get(`/aniskip/${malId}/${episodeNumber}`);
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};
