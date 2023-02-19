@@ -37,7 +37,7 @@ The app is still in alpha, so it may not work as expected. If you find any bugs,
 - [x] Dub support
 - [X] Collections support (Plant to watch, watching, watched, backlog, etc)
 - [X] Sync with anilist
-- [X] Manga support
+- [X] Manga support (through relations of the anime)
 - [ ] Download Episodes
 
 <br />
