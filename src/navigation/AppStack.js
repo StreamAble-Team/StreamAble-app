@@ -19,6 +19,7 @@ import { NavBar } from "../components";
 import * as NavigationBar from "expo-navigation-bar";
 import MangaScreen from "../screens/Manga";
 import ReaderScreen from "../screens/Reader";
+import TESTING from "../screens/TESTING";
 
 const Stack = createNativeStackNavigator();
 
@@ -69,6 +70,7 @@ const AppStack = ({ setHiddenStatusBar }) => {
         }}
       >
         <Stack.Screen name="Home" component={HomeScreen} />
+        {/* <Stack.Screen name="Home" component={TESTING} /> */}
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
