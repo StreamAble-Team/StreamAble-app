@@ -1,53 +1,30 @@
 import { rgba } from "polished";
 import styled from "styled-components/native";
 import Icon from "react-native-vector-icons/FontAwesome5";
+import { css } from "styled-components";
+
+const styles = css`
+  background-color: rgba(255, 255, 255, 0.1);
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+`;
 
 export const DropdownContainer = styled.View`
   position: relative;
   border-radius: 8px;
   margin: 10px;
-  background-color: rgba(255, 255, 255, 0.1);
+  border-bottom-width: 2px;
+  border-bottom-color: ${({ theme }) => theme.base.mainColor};
 `;
 
-export const Option = styled.TouchableOpacity`
-  width: 100%;
-  display: flex;
+export const DropdownWrapper = styled.TouchableOpacity`
+  position: relative;
   flex-direction: row;
   align-items: center;
-  border-bottom-width: 3px;
-  border-color: ${({ theme }) => rgba(theme.base.mainColor, 0.5)};
-  padding: 10px 15px;
-  height: 70px;
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-  justify-content: space-between;
-  overflow: hidden;
-`;
-
-export const NonSelectedOption = styled(Option)`
-  justify-content: flex-start;
-`;
-
-export const OptionText = styled.Text`
-  font-size: 16px;
-  color: #fff;
-`;
-
-export const NonSelectedOptionTextContainer = styled.View`
-  width: 75%;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-`;
-
-export const NonSelectedOptionText = styled(OptionText)``;
-
-export const OptionImage = styled.Image`
-  width: 45px;
-  height: 45px;
-  border-radius: 8px;
-  object-fit: cover;
+  height: 60px;
+  z-index: 1;
+  ${styles};
+  padding: 0 15px;
 `;
 
 export const OptionIcon = styled(Icon)`
@@ -55,15 +32,44 @@ export const OptionIcon = styled(Icon)`
   color: #fff;
 `;
 
-export const DropdownWrapper = styled.View`
-  width: 100%;
-  position: absolute;
-  top: 70px;
-  left: 0;
-  background-color: rgba(255, 255, 255, 0.1);
-  z-index: 100;
-  border-bottom-left-radius: 8px;
-  border-bottom-right-radius: 8px;
-  overflow: hidden;
-  opacity: 0;
+export const OptionText = styled.Text`
+  flex: 1;
+  text-align: center;
+  color: ${({ theme }) => theme.text.primary};
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: bold;
 `;
+
+export const Overlay = styled.TouchableOpacity`
+  width: 100%;
+  height: 100%;
+`;
+
+export const DropdownList = styled.View`
+  position: absolute;
+  width: 100%;
+`;
+
+export const DropdownItem = styled.TouchableOpacity`
+  margin: 0 10px;
+  padding: 15px 15px;
+  border-bottom-width: 1px;
+  border-bottom-color: ${({ theme }) => rgba(theme.base.mainColor, 0.3)};
+  background-color: rgba(255, 255, 255, 0.1);
+  flex-direction: row;
+  align-items: center;
+`;
+
+export const DropdownImage = styled.Image`
+  width: 40px;
+  height: 40px;
+  border-radius: 8px;
+  object-fit: cover;
+`;
+
+export const DropdownItemText = styled(OptionText)`
+  font-weight: 400;
+`;
+
+export const DropdownItemImage = styled(DropdownImage)``;

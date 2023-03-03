@@ -69,8 +69,8 @@ const AppStack = ({ setHiddenStatusBar }) => {
           },
         }}
       >
-        <Stack.Screen name="Home" component={HomeScreen} />
-        {/* <Stack.Screen name="Home" component={TESTING} /> */}
+        {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
+        <Stack.Screen name="Home" component={TESTING} />
         <Stack.Screen name="Search" component={SearchScreen} />
         <Stack.Screen name="Info" component={InfoScreen} />
         <Stack.Screen name="Settings" component={SettingsScreen} />
