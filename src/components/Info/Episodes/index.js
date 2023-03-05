@@ -1,18 +1,21 @@
-import React, { useEffect, useState } from "react";
+import { useFocusEffect } from "@react-navigation/native";
+import React, { useCallback, useEffect, useState } from "react";
 import { useAccessToken } from "../../../contexts";
 import { useBreakpoints } from "../../../hooks";
+import { api } from "../../../utils";
 import { MediaListStatusWithLabel } from "../../../utils/constants";
 import {
   useGetAnimeListQuery,
   useGetViewerQuery,
 } from "../../../utils/graphql/generated";
+import Dropdown from "../../Form/Dropdown";
 import Paginate from "../../Paginate";
 import { Container, Wrapper } from "../../styles";
 import Episode from "./Episode";
-import { Text } from "./Episodes.styles";
 
 const Episodes = (props) => {
   const { accessToken, setAccessToken } = useAccessToken();
+
   const [status, setStatus] = useState(MediaListStatusWithLabel[0].value);
   const { isMobile } = useBreakpoints();
 

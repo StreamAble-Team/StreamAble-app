@@ -42,7 +42,7 @@ const Episode = (props) => {
       nextEpisodeId:
         props.number !== props.totalEpisodes
           ? `${props.id.split("-").splice(0, 3).join("-")}-${props.number + 1}`
-          : props.id,
+          : undefined,
     });
 
     return setShowQualityModal(true);

@@ -1,4 +1,11 @@
-import { View, Text, TouchableOpacity, Modal, FlatList } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  Modal,
+  FlatList,
+  ScrollView,
+} from "react-native";
 import React, { useRef, useState } from "react";
 import {
   DropdownContainer,
@@ -45,7 +52,7 @@ const Dropdown = (props) => {
   };
 
   const renderItem = ({ item }) => (
-    <DropdownItem onPress={() => onItemPress(item)}>
+    <DropdownItem onPress={() => onItemPress(item)} activeOpacity={0.8}>
       <DropdownItemImage source={{ uri: item.image }} />
       <DropdownItemText>{item.label}</DropdownItemText>
     </DropdownItem>
@@ -53,10 +60,11 @@ const Dropdown = (props) => {
 
   const renderDropdown = () => {
     return (
-      <Modal visible={visible} transparent animationType="none">
-        <TouchableOpacity onPress={() => setVisible(false)}>
+      <Modal visible={visible} transparent animationType="slide">
+        <TouchableOpacity onPress={() => setVisible(false)} activeOpacity={0.8}>
           <DropdownList style={[{ top: dropdownTop }]}>
             <FlatList
+              horizontal={true}
               data={data}
               renderItem={renderItem}
               keyExtractor={(item, index) => index.toString()}
@@ -69,18 +77,20 @@ const Dropdown = (props) => {
 
   return (
     <DropdownContainer>
-      <DropdownWrapper onPress={toggleDropdown} ref={DropdownButton}>
-        {renderDropdown()}
-        <DropdownImage
-          source={{
-            uri: (selected && selected?.image) || data[whatsSelected]?.image,
-          }}
-        />
-        <OptionText>
-          {(selected && selected.label) || data[whatsSelected].label}
-        </OptionText>
-        <OptionIcon name={!visible ? "chevron-down" : "chevron-up"} />
-      </DropdownWrapper>
+      <ScrollView>
+        <DropdownWrapper onPress={toggleDropdown} ref={DropdownButton}>
+          {renderDropdown()}
+          <DropdownImage
+            source={{
+              uri: (selected && selected?.image) || data[whatsSelected]?.image,
+            }}
+          />
+          <OptionText>
+            {(selected && selected.label) || data[whatsSelected].label}
+          </OptionText>
+          <OptionIcon name={!visible ? "chevron-down" : "chevron-up"} />
+        </DropdownWrapper>
+      </ScrollView>
     </DropdownContainer>
   );
 };

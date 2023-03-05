@@ -67,13 +67,19 @@ const ContinueWatching = ({ refreshing, setRefreshing }) => {
   // get Watching data
   const newList = !list.length ? data : list.concat(data);
 
-  // combine all data and remove duplicates by animeId
+  // combine all data and remove duplicates by animeId or media.id (if animeId is null) and prioritize animeListData
   const uniqueList = newList
-    ? [
-        ...new Map(
-          newList.map((item) => [item?.media?.id || item?.animeId, item])
-        ).values(),
-      ]
+    ? Array.from(
+        new Set(
+          newList.map((item) => {
+            return item?.animeId ? item?.animeId : item?.media?.id;
+          })
+        )
+      ).map((id) => {
+        return newList.find((item) => {
+          return item.animeId ? item.animeId === id : item.media.id === id;
+        });
+      })
     : null;
 
   const getContinueWatching = async () => {

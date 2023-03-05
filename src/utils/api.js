@@ -155,3 +155,14 @@ export const getSkipTimes = async (malId, episodeNumber) => {
 
   return data;
 };
+
+export const getProviders = async (id) => {
+  const { data } = await api.get("/utils/providers/anime");
+
+  if (!data)
+    return {
+      error: "No data",
+    };
+
+  return data;
+};

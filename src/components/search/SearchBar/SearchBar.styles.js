@@ -6,7 +6,7 @@ export const SearchBarContainer = styled.View`
   flex-direction: row;
   justify-content: flex-start;
   height: 60px;
-  margin: 35px 20px;
+  margin: 25px 20px;
   margin-top: 52px;
   border-radius: 8px;
   overflow: hidden;

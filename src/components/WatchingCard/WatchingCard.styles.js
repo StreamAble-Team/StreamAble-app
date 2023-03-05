@@ -67,7 +67,7 @@ export const Delete = styled.TouchableOpacity`
   right: 0;
   width: 22px;
   height: 22px;
-  margin: 2px;
+  margin: 3px 8px;
   border-radius: 10px;
   display: flex;
   justify-content: center;
@@ -78,4 +78,27 @@ export const Delete = styled.TouchableOpacity`
 export const DeleteIcon = styled(Icon)`
   color: ${({ theme }) => theme.text.primary};
   font-size: 13px;
+`;
+
+export const FromAnilist = styled.View`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 22px;
+  height: 22px;
+  margin: 3px 8px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  pointer-events: none;
+`;
+
+export const FromAnilistText = styled.Text`
+  font-size: 13px;
+  font-family: ${({ theme }) => theme.text.font.primary};
+  text-transform: uppercase;
+  font-weight: bold;
+  color: ${({ theme }) => theme.text.offWhite};
 `;

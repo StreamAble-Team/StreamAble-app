@@ -56,7 +56,7 @@ export const DropdownItem = styled.TouchableOpacity`
   padding: 15px 15px;
   border-bottom-width: 1px;
   border-bottom-color: ${({ theme }) => rgba(theme.base.mainColor, 0.3)};
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: rgba(0, 0, 0, 1);
   flex-direction: row;
   align-items: center;
 `;

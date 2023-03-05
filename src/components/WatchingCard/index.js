@@ -8,6 +8,8 @@ import { helpers } from "../../utils";
 import {
   Delete,
   DeleteIcon,
+  FromAnilist,
+  FromAnilistText,
   WatchingBar,
   WatchingBarHolder,
   WatchingCardBackground,
@@ -68,6 +70,11 @@ const WatchingCard = (props) => {
           uri: props?.image ? props.image : props?.media?.coverImage?.large,
         }}
       >
+        {props?.media?.id ? (
+          <FromAnilist>
+            <FromAnilistText>AL</FromAnilistText>
+          </FromAnilist>
+        ) : null}
         <Delete onPress={handleDelete}>
           <DeleteIcon name={"times"} />
         </Delete>

@@ -43,7 +43,7 @@ const InfoTop = (props) => {
   const navigation = useNavigation();
 
   const gotoPlayer = async () => {
-    const whatEpisodeToGet = !nextEpisode ? props.episodes[0] : nextEpisode;
+    const whatEpisodeToGet = !nextEpisode ? undefined : nextEpisode;
     const { headers, sources } = await api.getSource(whatEpisodeToGet.id);
 
     setQualities(sources);
@@ -57,10 +57,11 @@ const InfoTop = (props) => {
       episode: whatEpisodeToGet.number,
       referer: headers.Referer,
       malId: malId,
-      nextEpisodeId: `${whatEpisodeToGet.id
-        .split("-")
-        .splice(0, 3)
-        .join("-")}-${whatEpisodeToGet.number + 1}`,
+      nextEpisodeId: whatEpisodeToGet
+        ? `${whatEpisodeToGet.id.split("-").splice(0, 3).join("-")}-${
+            whatEpisodeToGet.number + 1
+          }`
+        : undefined,
     });
 
     return setShowQualityModal(true);
