@@ -46,7 +46,10 @@ const SearchCard = (props) => {
   return (
     <SearchCardContainer onPress={handlePress}>
       <SearchCardImageContainer>
-        <SearchCardImage source={{ uri: props.image }} />
+        <SearchCardImage
+          source={{ uri: props.image }}
+          alt={title_english.toString()}
+        />
       </SearchCardImageContainer>
       <SearchCardInfo>
         <SearchCardDescription numberOfLines={3}>

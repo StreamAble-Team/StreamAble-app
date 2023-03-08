@@ -221,6 +221,7 @@ const Player = (props) => {
           HandleUpdateWatched(status);
           return setStatus(() => status);
         }}
+        isPiPModeEnabled={true}
         onError={(err) => console.log(err)}
       />
       <Controls

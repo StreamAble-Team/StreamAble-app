@@ -45,6 +45,7 @@ const Card = (props) => {
     <CardContainer index={props.index} onPress={handlePress}>
       <CardBackground
         source={{ uri: props?.media?.coverImage?.large || image }}
+        alt={title_native.toString()}
       >
         <CardContent>
           <CardTitle numberOfLines={2} ellipsizeMode={"tail"}>

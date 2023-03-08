@@ -69,6 +69,7 @@ const WatchingCard = (props) => {
         source={{
           uri: props?.image ? props.image : props?.media?.coverImage?.large,
         }}
+        alt={title_english.toString()}
       >
         {props?.media?.id ? (
           <FromAnilist>

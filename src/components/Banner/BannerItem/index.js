@@ -25,7 +25,14 @@ const BannerItem = (props) => {
 
   return (
     <BannerContainer key={item.id} width={width} onPress={handlePress}>
-      <BannerImage source={{ uri: item.cover }} alt={item.title}>
+      <BannerImage
+        source={{ uri: item.cover }}
+        alt={
+          item?.title?.english ||
+          item?.title?.userPreferred ||
+          item?.title?.romaji
+        }
+      >
         <BannerContent>
           <BannerDescription numberOfLines={4}>{description}</BannerDescription>
           <BannerMeta>
