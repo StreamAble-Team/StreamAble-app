@@ -45,7 +45,7 @@ export const getTrending = async (page = 1, perPage = 20) => {
   return sortedData;
 };
 
-export const getTopRated = async (limit, page = 1) => {
+export const getTopRated = async (limit = 20, page = 1) => {
   const { data } = await api.get(
     `/anilist/top-rated?page=${page}&perPage=${limit}`
   );

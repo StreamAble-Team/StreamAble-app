@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import { useQuery } from "react-query";
 
@@ -7,7 +7,10 @@ import { FlatList, ScrollView } from "react-native";
 import BannerItem from "./BannerItem";
 
 const Banner = () => {
-  const { data } = useQuery(["BannerData"], () => api.getTopRated(5));
+  const [stopScroll, setStopScroll] = useState(false);
+
+  const listRef = useRef(null);
+  const { data } = useQuery(["BannerData"], () => api.getTrending(1, 5));
 
   const renderItem = ({ item, index }) => {
     return <BannerItem key={`banner-${item.id}`} {...item} />;
@@ -15,9 +18,10 @@ const Banner = () => {
 
   return (
     <FlatList
+      ref={listRef}
       horizontal={true}
       showsHorizontalScrollIndicator={false}
-      data={data?.results}
+      data={data}
       renderItem={renderItem}
       keyExtractor={(item) => `banner-${item.id}`}
       pagingEnabled={true}

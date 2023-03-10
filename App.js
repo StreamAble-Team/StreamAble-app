@@ -7,6 +7,7 @@ import { DefaultTheme } from "./src/assets/theme/default";
 import {
   useFonts,
   OpenSans_400Regular,
+  OpenSans_600SemiBold,
   OpenSans_800ExtraBold,
 } from "@expo-google-fonts/open-sans";
 import { useState } from "react";
@@ -49,6 +50,7 @@ const InnerApp = () => {
 
   let [fontsLoaded] = useFonts({
     OpenSans_400Regular,
+    OpenSans_600SemiBold,
     OpenSans_800ExtraBold,
   });
 

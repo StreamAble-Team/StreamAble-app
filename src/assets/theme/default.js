@@ -21,6 +21,7 @@ export const DefaultTheme = {
     font: {
       primary: "OpenSans_400Regular",
       secondary: "OpenSans_800ExtraBold",
+      semiBold: "OpenSans_600SemiBold",
     },
   },
 };

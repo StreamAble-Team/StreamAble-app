@@ -26,6 +26,7 @@ export const MetaItem = styled.Text`
   text-transform: uppercase;
   font-size: 12px;
 `;
+
 export const MetaItemIcon = styled(Icon)`
   color: ${({ theme }) => theme.base.gold};
   font-size: 12px;

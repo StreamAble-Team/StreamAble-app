@@ -4,7 +4,12 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { Banner } from "../../components";
 import User from "../../components/User";
 
-import { Popular, ContinueWatching, Trending } from "../../containers";
+import {
+  Popular,
+  ContinueWatching,
+  Trending,
+  TopRated,
+} from "../../containers";
 import PlanToWatch from "../../containers/PlanToWatch";
 import { ScrollView } from "./home.styles";
 
@@ -37,7 +42,7 @@ const HomeScreen = () => {
           setRefreshing={setRefreshing}
         />
         <PlanToWatch refreshing={refreshing} setRefreshing={setRefreshing} />
-        <Trending />
+        <TopRated />
         <Popular />
       </ScrollView>
     </SafeAreaView>
