@@ -3,7 +3,11 @@
     <img src="./misc/images/logo.png"/ style="width: 550px" >
 </a>
 </div>
+<div align="center">
+    
+<strong>STREAMABLE is not going to be maintained anymore, I am currently creating a better and faster app called <a href="https://github.com/tdanks2000/ApolloTvRN">ApolloTv</a></strong>
 
+</div>
 <br />
 
 ---
